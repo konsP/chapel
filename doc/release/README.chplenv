@@ -351,8 +351,7 @@ Optional Settings
 
 *  Optionally, the CHPL_HWLOC environment variable can select between
    no hwloc support or using the hwloc package distributed with Chapel
-   in third-party (see $CHPL_HOME/third-party/hwloc/README for more information 
-   on the hwloc software package).
+   in third-party (see $CHPL_HOME/third-party/hwloc/README).
    Note that hwloc is only used by the qthreads tasking layer, and 
    does not need to be built for other tasking layers.  
    Current options are:
