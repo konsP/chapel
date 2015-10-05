@@ -350,6 +350,11 @@ int chpl_comm_numPollingTasks(void);
 // an atomic variable for other tasks to finish).
 void chpl_comm_make_progress(void);
 
+//mark the point after initialisation and before the user's code
+//has began executing
+
+void chpl_comm_userCode_starts(void);
+
 //
 // Comm diagnostics stuff
 //

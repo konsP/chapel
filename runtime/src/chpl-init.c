@@ -241,11 +241,21 @@ void chpl_std_module_init(void) {
     // the standard modules are initialized.
     //
     CHPL_TASK_STD_MODULES_INITIALIZED();
+    
+    
+    //call a comm function to notify user code starts now
+     chpl_comm_userCode_starts();
+      
+      
+    //print locale 0's pid
+     printf("---(PID) NODE %d PID %d \n", chpl_nodeID, getpid());
   } else {
     //
     // On non-0 locales, just call the pre- and post-user-code hooks
     // directly.
     //
+    
+    printf("---(PID) NODE %d PID %d \n", chpl_nodeID, getpid());
     chpl_rt_preUserCodeHook();
     chpl_rt_postUserCodeHook();
   }

@@ -54,6 +54,15 @@
   m(COMM_FRK_RCV_INFO,    "comm layer received remote fork info",     false), \
   m(COMM_FRK_RCV_ARG,     "comm layer received remote fork arg",      false), \
   m(COMM_FRK_DONE_FLAG,   "comm layer remote fork done flag(s)",      false), \
+  m(COMM_DEAD_NODE,       "comm layer update dead locales' list",  		false), \
+  m(COMM_SEND_TRANSIT_MSG,"comm layer send transit message",          false), \
+  m(COMM_SEND_TRANSIT_MSG_LARGE_ARG, "transit message large arg",     false), \
+  m(COMM_RECV_TRANSIT_MSG,"comm layer receive transit message",			  false), \
+	m(COMM_RECV_LARGE_TRANSIT_MSG,"comm layer receive large t m",				false), \
+	m(COMM_RECV_TRANSIT_MSG_LARGE_ARG,"comm layer rcv t m large arg",		false), \
+  m(COMM_TRANSIT_ARG,			"comm layer transit arg",										false), \
+  m(COMM_UPDATE_NODE, 		"comm layer update object for node status", false),	\
+  m(COMM_PID_NODE,        "comm layer pid object for a node",      		false), \
   m(COMM_PER_LOC_INFO,    "comm layer per-locale information",        false), \
   m(COMM_PRV_OBJ_ARRAY,   "comm layer private objects array",         false), \
   m(COMM_PRV_BCAST_DATA,  "comm layer private broadcast data",        false), \
