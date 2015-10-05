@@ -1,0 +1,8 @@
+TODO LIST - RESILIENCE IMPLEMENTATION (release 1.12)
+===================================================
+
+- replace medium with short AMrequests wherever possible
+- write script to check correctness (task adoption) for the nb case
+- modify/update RES_LARGE functions
+- update assumption set/ new rules for adoption
+

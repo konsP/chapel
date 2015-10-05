@@ -1,0 +1,29 @@
+CHANGELOG - RESILIENCE IMPLEMENTATION (release 1.12)
+====================================================
+
+- runtime/src/comm/gasnet/comm-gasnet.c
+	+resilient versions for chpl_comm_fork & chpl_comm_fork_nb
+	+signals and signal handlers for res functionality (BCAST_FAIL_TABLE, FAIL, FAILEDNODES,
+	 FAIL_UPDATE_REQUEST,  FAIL_UPDATE_REPLY, IN_TRANSIT, IN_TRANSIT_DEL, FORK_RES,
+	 FORK_RES_LARGE, FORK_NB_RES, FORK_NB_RES_LARGE, PID, TIMEOUT, TIMEOUTNB)
+	+replaced INIT_DONE_OBJ(done, 1) with init_done_obj(&done, 1)
+	+replaced memcpy with chpl_memcpy
+	+added structs  chpl_comm_transitMsgAlt,update_t, failed_t, quit_t(unused), buddies
+	+added attributes (int) recoveredLoc (int) recoveryfl in fork_t to distinguish 
+	between locally owned and adopted tasks
+	+added transit_msg_list, linked list for logging in-transit msgs
+	+added failed_table array for logging status info of other locales
+	+added auxiliary functions
+	+updated mem descriptors 
+
+- runtime/src/chpl-init.h
+	+added chpl_comm_userCode_starts() after initialisation
+	+added print stmt for the PID of each locale (for testing)
+	
+- runtime/include/chpl-mem-desc.h
+	+added new memory descriptors for aux structs
+	CHPL_COMM_DEAD_NODE, COMM_SEND_TRANSIT_MSG, COMM_SEND_TRANSIT_MSG_LARGE_ARG,
+	 COMM_RECV_TRANSIT_MSG, COMM_RECV_TRANSIT_MSG_LARGE_ARG, COMM_TRANSIT_ARG, COMM_UDATE_NODE, COMM_PID)
+
+-top level
+	+added examples directory with testing code for resilience
