@@ -1,0 +1,556 @@
+---(PID) NODE 1 PID 16548 
+---(PID) NODE 2 PID 14693 
+---(PID) NODE 3 PID 12620 
+---(PID) NODE 0 PID 17203 
+MasterLocale: bwlf04   
+
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+ pi = 3.14173 ----------on locale 0
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+ pi = 3.14173 ----------on locale 0
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+ pi = 3.14173 ----------on locale 0
+(*******) 0 FORK_NB_with_extras 0 -> 3 :: Timeout from child - recover - END -- should delete here 
+(*******) 0 FORK_NB_with_extras 0 -> 2 :: Timeout from child - recover - END -- should delete here 
+(*******) 0 FORK_NB_with_extras 0 -> 1 :: Timeout from child - recover - END -- should delete here 
+PROGRAM END ============= Time elapsed:176.687 
+
+--------------(SIGUSR2_handler) 3 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(fork_wrapper_nb_with_extras)3   ********** I AM  DEAD 
+ --------------(SIGUSR2_handler) 2 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(fork_wrapper_nb_with_extras)2   ********** I AM  DEAD 
+ --------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(fork_wrapper_nb_with_extras)1   ********** I AM  DEAD 
+ (COMM LAYER) 0 chpl_comm_exit ******************************* NBFORK ********************  
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+-- ID: 3  -- ALIVE 1 -- 
+---(PID) NODE 2 PID 12675 
+---(PID) NODE 1 PID 16600 
+---(PID) NODE 3 PID 14746 
+---(PID) NODE 0 PID 17251 
+MasterLocale: bwlf04   
+
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+ pi = 3.14173 ----------on locale 0
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+ pi = 3.14173 ----------on locale 0
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+ pi = 3.14173 ----------on locale 0
+(*******) 0 FORK_NB_with_extras 0 -> 3 :: Timeout from child - recover - END -- should delete here 
+(*******) 0 FORK_NB_with_extras 0 -> 2 :: Timeout from child - recover - END -- should delete here 
+(*******) 0 FORK_NB_with_extras 0 -> 1 :: Timeout from child - recover - END -- should delete here 
+PROGRAM END ============= Time elapsed:176.45 
+
+--------------(SIGUSR2_handler) 3 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(fork_wrapper_nb_with_extras)3   ********** I AM  DEAD 
+ --------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(fork_wrapper_nb_with_extras)1   ********** I AM  DEAD 
+ --------------(SIGUSR2_handler) 2 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(fork_wrapper_nb_with_extras)2   ********** I AM  DEAD 
+ (COMM LAYER) 0 chpl_comm_exit ******************************* NBFORK ********************  
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+-- ID: 3  -- ALIVE 1 -- 
+---(PID) NODE 3 PID 12728 
+---(PID) NODE 2 PID 14802 
+---(PID) NODE 1 PID 16649 
+---(PID) NODE 0 PID 17299 
+MasterLocale: bwlf04   
+
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+ pi = 3.14173 ----------on locale 0
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+ pi = 3.14173 ----------on locale 0
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+ pi = 3.14173 ----------on locale 0
+(*******) 0 FORK_NB_with_extras 0 -> 3 :: Timeout from child - recover - END -- should delete here 
+(*******) 0 FORK_NB_with_extras 0 -> 2 :: Timeout from child - recover - END -- should delete here 
+(*******) 0 FORK_NB_with_extras 0 -> 1 :: Timeout from child - recover - END -- should delete here 
+PROGRAM END ============= Time elapsed:177.743 
+
+--------------(SIGUSR2_handler) 2 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(fork_wrapper_nb_with_extras)2   ********** I AM  DEAD 
+ (COMM LAYER) 0 chpl_comm_exit ******************************* NBFORK ********************  
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+-- ID: 3  -- ALIVE 1 -- 
+--------------(SIGUSR2_handler) 3 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(fork_wrapper_nb_with_extras)3   ********** I AM  DEAD 
+ --------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(fork_wrapper_nb_with_extras)1   ********** I AM  DEAD 
+ ---(PID) NODE 1 PID 16701 
+---(PID) NODE 2 PID 12780 
+---(PID) NODE 3 PID 14856 
+---(PID) NODE 0 PID 17344 
+MasterLocale: bwlf04   
+
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+ pi = 3.14173 ----------on locale 0
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+ pi = 3.14173 ----------on locale 0
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+ pi = 3.14173 ----------on locale 0
+(*******) 0 FORK_NB_with_extras 0 -> 3 :: Timeout from child - recover - END -- should delete here 
+(*******) 0 FORK_NB_with_extras 0 -> 2 :: Timeout from child - recover - END -- should delete here 
+(*******) 0 FORK_NB_with_extras 0 -> 1 :: Timeout from child - recover - END -- should delete here 
+PROGRAM END ============= Time elapsed:176.489 
+
+--------------(SIGUSR2_handler) 3 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(fork_wrapper_nb_with_extras)3   ********** I AM  DEAD 
+ --------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(fork_wrapper_nb_with_extras)1   ********** I AM  DEAD 
+ --------------(SIGUSR2_handler) 2 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(fork_wrapper_nb_with_extras)2   ********** I AM  DEAD 
+ (COMM LAYER) 0 chpl_comm_exit ******************************* NBFORK ********************  
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+-- ID: 3  -- ALIVE 1 -- 
+---(PID) NODE 3 PID 12838 
+---(PID) NODE 1 PID 16754 
+---(PID) NODE 2 PID 14919 
+---(PID) NODE 0 PID 17395 
+MasterLocale: bwlf04   
+
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+ pi = 3.14173 ----------on locale 0
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+ pi = 3.14173 ----------on locale 0
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+ pi = 3.14173 ----------on locale 0
+(*******) 0 FORK_NB_with_extras 0 -> 3 :: Timeout from child - recover - END -- should delete here 
+(*******) 0 FORK_NB_with_extras 0 -> 2 :: Timeout from child - recover - END -- should delete here 
+(*******) 0 FORK_NB_with_extras 0 -> 1 :: Timeout from child - recover - END -- should delete here 
+PROGRAM END ============= Time elapsed:178.154 
+
+--------------(SIGUSR2_handler) 3 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(fork_wrapper_nb_with_extras)3   ********** I AM  DEAD 
+ --------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(fork_wrapper_nb_with_extras)1   ********** I AM  DEAD 
+ --------------(SIGUSR2_handler) 2 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(fork_wrapper_nb_with_extras)2   ********** I AM  DEAD 
+ (COMM LAYER) 0 chpl_comm_exit ******************************* NBFORK ********************  
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+-- ID: 3  -- ALIVE 1 -- 
+---(PID) NODE 1 PID 16806 
+---(PID) NODE 2 PID 14972 
+---(PID) NODE 3 PID 12890 
+---(PID) NODE 0 PID 17441 
+MasterLocale: bwlf04   
+
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+ pi = 3.14173 ----------on locale 0
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+ pi = 3.14173 ----------on locale 0
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+ pi = 3.14173 ----------on locale 0
+(*******) 0 FORK_NB_with_extras 0 -> 3 :: Timeout from child - recover - END -- should delete here 
+(*******) 0 FORK_NB_with_extras 0 -> 2 :: Timeout from child - recover - END -- should delete here 
+(*******) 0 FORK_NB_with_extras 0 -> 1 :: Timeout from child - recover - END -- should delete here 
+PROGRAM END ============= Time elapsed:176.633 
+
+--------------(SIGUSR2_handler) 3 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(fork_wrapper_nb_with_extras)3   ********** I AM  DEAD 
+ --------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(fork_wrapper_nb_with_extras)1   ********** I AM  DEAD 
+ (COMM LAYER) 0 chpl_comm_exit ******************************* NBFORK ********************  
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+-- ID: 3  -- ALIVE 1 -- 
+--------------(SIGUSR2_handler) 2 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(fork_wrapper_nb_with_extras)2   ********** I AM  DEAD 
+ bash: line 1: 17487 User defined signal 2   './threeon_fact_run_real' '__AMUDP_SLAVE_PROCESS__' 'amaterasu:56720' '-nl' '4'
+bash: line 1: 12944 User defined signal 2   './threeon_fact_run_real' '__AMUDP_SLAVE_PROCESS__' 'amaterasu:56720' '-nl' '4'
+bash: line 1: 16855 User defined signal 2   './threeon_fact_run_real' '__AMUDP_SLAVE_PROCESS__' 'amaterasu:56720' '-nl' '4'
+bash: line 1: 15024 User defined signal 2   './threeon_fact_run_real' '__AMUDP_SLAVE_PROCESS__' 'amaterasu:56720' '-nl' '4'
+---(PID) NODE 1 PID 12971 
+---(PID) NODE 2 PID 16884 
+---(PID) NODE 3 PID 15053 
+---(PID) NODE 0 PID 17513 
+MasterLocale: bwlf04   
+
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+ pi = 3.14173 ----------on locale 0
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+ pi = 3.14173 ----------on locale 0
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+ pi = 3.14173 ----------on locale 0
+(*******) 0 FORK_NB_with_extras 0 -> 3 :: Timeout from child - recover - END -- should delete here 
+(*******) 0 FORK_NB_with_extras 0 -> 2 :: Timeout from child - recover - END -- should delete here 
+(*******) 0 FORK_NB_with_extras 0 -> 1 :: Timeout from child - recover - END -- should delete here 
+PROGRAM END ============= Time elapsed:177.1 
+
+--------------(SIGUSR2_handler) 3 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(fork_wrapper_nb_with_extras)3   ********** I AM  DEAD 
+ --------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(fork_wrapper_nb_with_extras)1   ********** I AM  DEAD 
+ --------------(SIGUSR2_handler) 2 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(fork_wrapper_nb_with_extras)2   ********** I AM  DEAD 
+ (COMM LAYER) 0 chpl_comm_exit ******************************* NBFORK ********************  
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+-- ID: 3  -- ALIVE 1 -- 
+---(PID) NODE 2 PID 13047 
+---(PID) NODE 1 PID 16956 
+---(PID) NODE 3 PID 15127 
+---(PID) NODE 0 PID 17579 
+MasterLocale: bwlf04   
+
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+ pi = 3.14173 ----------on locale 0
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+ pi = 3.14173 ----------on locale 0
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+ pi = 3.14173 ----------on locale 0
+(*******) 0 FORK_NB_with_extras 0 -> 3 :: Timeout from child - recover - END -- should delete here 
+(*******) 0 FORK_NB_with_extras 0 -> 2 :: Timeout from child - recover - END -- should delete here 
+(*******) 0 FORK_NB_with_extras 0 -> 1 :: Timeout from child - recover - END -- should delete here 
+PROGRAM END ============= Time elapsed:177.477 
+
+--------------(SIGUSR2_handler) 2 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(fork_wrapper_nb_with_extras)2   ********** I AM  DEAD 
+ (COMM LAYER) 0 chpl_comm_exit ******************************* NBFORK ********************  
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+-- ID: 3  -- ALIVE 1 -- 
+--------------(SIGUSR2_handler) 3 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(fork_wrapper_nb_with_extras)3   ********** I AM  DEAD 
+ --------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(fork_wrapper_nb_with_extras)1   ********** I AM  DEAD 
+ ---(PID) NODE 3 PID 15181 
+---(PID) NODE 2 PID 13101 
+---(PID) NODE 1 PID 17007 
+---(PID) NODE 0 PID 17626 
+MasterLocale: bwlf04   
+
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+ pi = 3.14173 ----------on locale 0
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+ pi = 3.14173 ----------on locale 0
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+ pi = 3.14173 ----------on locale 0
+(*******) 0 FORK_NB_with_extras 0 -> 3 :: Timeout from child - recover - END -- should delete here 
+(*******) 0 FORK_NB_with_extras 0 -> 2 :: Timeout from child - recover - END -- should delete here 
+(*******) 0 FORK_NB_with_extras 0 -> 1 :: Timeout from child - recover - END -- should delete here 
+PROGRAM END ============= Time elapsed:177.005 
+
+--------------(SIGUSR2_handler) 2 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(fork_wrapper_nb_with_extras)2   ********** I AM  DEAD 
+ --------------(SIGUSR2_handler) 3 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(fork_wrapper_nb_with_extras)3   ********** I AM  DEAD 
+ (COMM LAYER) 0 chpl_comm_exit ******************************* NBFORK ********************  
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+-- ID: 3  -- ALIVE 1 -- 
+--------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(fork_wrapper_nb_with_extras)1   ********** I AM  DEAD 
+ ---(PID) NODE 3 PID 15233 
+---(PID) NODE 1 PID 17058 
+---(PID) NODE 2 PID 13153 
+---(PID) NODE 0 PID 17671 
+MasterLocale: bwlf04   
+
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+ pi = 3.14173 ----------on locale 0
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+ pi = 3.14173 ----------on locale 0
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+ pi = 3.14173 ----------on locale 0
+(*******) 0 FORK_NB_with_extras 0 -> 3 :: Timeout from child - recover - END -- should delete here 
+(*******) 0 FORK_NB_with_extras 0 -> 2 :: Timeout from child - recover - END -- should delete here 
+(*******) 0 FORK_NB_with_extras 0 -> 1 :: Timeout from child - recover - END -- should delete here 
+PROGRAM END ============= Time elapsed:176.542 
+
+--------------(SIGUSR2_handler) 3 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(fork_wrapper_nb_with_extras)3   ********** I AM  DEAD 
+ --------------(SIGUSR2_handler) 2 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(fork_wrapper_nb_with_extras)2   ********** I AM  DEAD 
+ --------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(fork_wrapper_nb_with_extras)1   ********** I AM  DEAD 
+ (COMM LAYER) 0 chpl_comm_exit ******************************* NBFORK ********************  
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+-- ID: 3  -- ALIVE 1 -- 
+---(PID) NODE 1 PID 15288 
+---(PID) NODE 2 PID 13211 
+---(PID) NODE 3 PID 17112 
+---(PID) NODE 0 PID 17720 
+MasterLocale: bwlf04   
+
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+ pi = 3.14173 ----------on locale 0
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+ pi = 3.14173 ----------on locale 0
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+ pi = 3.14173 ----------on locale 0
+(*******) 0 FORK_NB_with_extras 0 -> 3 :: Timeout from child - recover - END -- should delete here 
+(*******) 0 FORK_NB_with_extras 0 -> 2 :: Timeout from child - recover - END -- should delete here 
+(*******) 0 FORK_NB_with_extras 0 -> 1 :: Timeout from child - recover - END -- should delete here 
+PROGRAM END ============= Time elapsed:176.413 
+
+--------------(SIGUSR2_handler) 2 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(fork_wrapper_nb_with_extras)2   ********** I AM  DEAD 
+ --------------(SIGUSR2_handler) 3 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(fork_wrapper_nb_with_extras)3   ********** I AM  DEAD 
+ --------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(fork_wrapper_nb_with_extras)1   ********** I AM  DEAD 
+ (COMM LAYER) 0 chpl_comm_exit ******************************* NBFORK ********************  
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+-- ID: 3  -- ALIVE 1 -- 
+---(PID) NODE 1 PID 17163 
+---(PID) NODE 2 PID 13263 
+---(PID) NODE 3 PID 15345 
+---(PID) NODE 0 PID 17766 
+MasterLocale: bwlf04   
+
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+ pi = 3.14173 ----------on locale 0
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+ pi = 3.14173 ----------on locale 0
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+ pi = 3.14173 ----------on locale 0
+(*******) 0 FORK_NB_with_extras 0 -> 3 :: Timeout from child - recover - END -- should delete here 
+(*******) 0 FORK_NB_with_extras 0 -> 2 :: Timeout from child - recover - END -- should delete here 
+(*******) 0 FORK_NB_with_extras 0 -> 1 :: Timeout from child - recover - END -- should delete here 
+PROGRAM END ============= Time elapsed:176.799 
+
+--------------(SIGUSR2_handler) 2 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(fork_wrapper_nb_with_extras)2   ********** I AM  DEAD 
+ --------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(fork_wrapper_nb_with_extras)1   ********** I AM  DEAD 
+ --------------(SIGUSR2_handler) 3 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(fork_wrapper_nb_with_extras)3   ********** I AM  DEAD 
+ (COMM LAYER) 0 chpl_comm_exit ******************************* NBFORK ********************  
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+-- ID: 3  -- ALIVE 1 -- 
+---(PID) NODE 1 PID 15396 
+---(PID) NODE 2 PID 13317 
+---(PID) NODE 3 PID 17213 
+---(PID) NODE 0 PID 17812 
+MasterLocale: bwlf04   
+
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+ pi = 3.14173 ----------on locale 0
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+ pi = 3.14173 ----------on locale 0
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+ pi = 3.14173 ----------on locale 0
+(*******) 0 FORK_NB_with_extras 0 -> 3 :: Timeout from child - recover - END -- should delete here 
+(*******) 0 FORK_NB_with_extras 0 -> 2 :: Timeout from child - recover - END -- should delete here 
+(*******) 0 FORK_NB_with_extras 0 -> 1 :: Timeout from child - recover - END -- should delete here 
+PROGRAM END ============= Time elapsed:177.137 
+
+--------------(SIGUSR2_handler) 3 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(fork_wrapper_nb_with_extras)3   ********** I AM  DEAD 
+ --------------(SIGUSR2_handler) 2 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(fork_wrapper_nb_with_extras)2   ********** I AM  DEAD 
+ --------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(fork_wrapper_nb_with_extras)1   ********** I AM  DEAD 
+ (COMM LAYER) 0 chpl_comm_exit ******************************* NBFORK ********************  
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+-- ID: 3  -- ALIVE 1 -- 
+---(PID) NODE 2 PID 13375 
+---(PID) NODE 3 PID 15459 
+---(PID) NODE 1 PID 17270 
+---(PID) NODE 0 PID 17862 
+MasterLocale: bwlf04   
+
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+ pi = 3.14173 ----------on locale 0
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+ pi = 3.14173 ----------on locale 0
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+ pi = 3.14173 ----------on locale 0
+(*******) 0 FORK_NB_with_extras 0 -> 3 :: Timeout from child - recover - END -- should delete here 
+(*******) 0 FORK_NB_with_extras 0 -> 2 :: Timeout from child - recover - END -- should delete here 
+(*******) 0 FORK_NB_with_extras 0 -> 1 :: Timeout from child - recover - END -- should delete here 
+PROGRAM END ============= Time elapsed:176.16 
+
+--------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(fork_wrapper_nb_with_extras)1   ********** I AM  DEAD 
+ --------------(SIGUSR2_handler) 2 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(fork_wrapper_nb_with_extras)2   ********** I AM  DEAD 
+ --------------(SIGUSR2_handler) 3 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(fork_wrapper_nb_with_extras)3   ********** I AM  DEAD 
+ (COMM LAYER) 0 chpl_comm_exit ******************************* NBFORK ********************  
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+-- ID: 3  -- ALIVE 1 -- 
+---(PID) NODE 3 PID 13429 
+---(PID) NODE 1 PID 17320 
+---(PID) NODE 2 PID 15509 
+---(PID) NODE 0 PID 17908 
+MasterLocale: bwlf04   
+
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+ pi = 3.14173 ----------on locale 0
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+ pi = 3.14173 ----------on locale 0
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+ pi = 3.14173 ----------on locale 0
+(*******) 0 FORK_NB_with_extras 0 -> 3 :: Timeout from child - recover - END -- should delete here 
+(*******) 0 FORK_NB_with_extras 0 -> 2 :: Timeout from child - recover - END -- should delete here 
+(*******) 0 FORK_NB_with_extras 0 -> 1 :: Timeout from child - recover - END -- should delete here 
+PROGRAM END ============= Time elapsed:176.586 
+
+--------------(SIGUSR2_handler) 2 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(fork_wrapper_nb_with_extras)2   ********** I AM  DEAD 
+ --------------(SIGUSR2_handler) 3 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(fork_wrapper_nb_with_extras)3   ********** I AM  DEAD 
+ --------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(fork_wrapper_nb_with_extras)1   ********** I AM  DEAD 
+ (COMM LAYER) 0 chpl_comm_exit ******************************* NBFORK ********************  
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+-- ID: 3  -- ALIVE 1 -- 
+---(PID) NODE 1 PID 15563 
+---(PID) NODE 2 PID 17370 
+---(PID) NODE 3 PID 13480 
+---(PID) NODE 0 PID 17953 
+MasterLocale: bwlf04   
+
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+ pi = 3.14173 ----------on locale 0
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+ pi = 3.14173 ----------on locale 0
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+ pi = 3.14173 ----------on locale 0
+(*******) 0 FORK_NB_with_extras 0 -> 3 :: Timeout from child - recover - END -- should delete here 
+(*******) 0 FORK_NB_with_extras 0 -> 2 :: Timeout from child - recover - END -- should delete here 
+(*******) 0 FORK_NB_with_extras 0 -> 1 :: Timeout from child - recover - END -- should delete here 
+PROGRAM END ============= Time elapsed:177.147 
+
+--------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(fork_wrapper_nb_with_extras)1   ********** I AM  DEAD 
+ --------------(SIGUSR2_handler) 2 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(fork_wrapper_nb_with_extras)2   ********** I AM  DEAD 
+ (COMM LAYER) 0 chpl_comm_exit ******************************* NBFORK ********************  
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+-- ID: 3  -- ALIVE 1 -- 
+--------------(SIGUSR2_handler) 3 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(fork_wrapper_nb_with_extras)3   ********** I AM  DEAD 
+ ---(PID) NODE 3 PID 17424 
+---(PID) NODE 2 PID 13540 
+---(PID) NODE 1 PID 15619 
+---(PID) NODE 0 PID 18004 
+MasterLocale: bwlf04   
+
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+ pi = 3.14173 ----------on locale 0
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+ pi = 3.14173 ----------on locale 0
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+ pi = 3.14173 ----------on locale 0
+(*******) 0 FORK_NB_with_extras 0 -> 3 :: Timeout from child - recover - END -- should delete here 
+(*******) 0 FORK_NB_with_extras 0 -> 2 :: Timeout from child - recover - END -- should delete here 
+(*******) 0 FORK_NB_with_extras 0 -> 1 :: Timeout from child - recover - END -- should delete here 
+PROGRAM END ============= Time elapsed:176.439 
+
+--------------(SIGUSR2_handler) 2 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(fork_wrapper_nb_with_extras)2   ********** I AM  DEAD 
+ --------------(SIGUSR2_handler) 3 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(fork_wrapper_nb_with_extras)3   ********** I AM  DEAD 
+ (COMM LAYER) 0 chpl_comm_exit ******************************* NBFORK ********************  
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+-- ID: 3  -- ALIVE 1 -- 
+--------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(fork_wrapper_nb_with_extras)1   ********** I AM  DEAD 
+ ---(PID) NODE 2 PID 13592 
+---(PID) NODE 3 PID 15672 
+---(PID) NODE 1 PID 17473 
+---(PID) NODE 0 PID 18049 
+MasterLocale: bwlf04   
+
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+ pi = 3.14173 ----------on locale 0
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+ pi = 3.14173 ----------on locale 0
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+ pi = 3.14173 ----------on locale 0
+(*******) 0 FORK_NB_with_extras 0 -> 3 :: Timeout from child - recover - END -- should delete here 
+(*******) 0 FORK_NB_with_extras 0 -> 2 :: Timeout from child - recover - END -- should delete here 
+(*******) 0 FORK_NB_with_extras 0 -> 1 :: Timeout from child - recover - END -- should delete here 
+PROGRAM END ============= Time elapsed:176.471 
+
+--------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(fork_wrapper_nb_with_extras)1   ********** I AM  DEAD 
+ --------------(SIGUSR2_handler) 3 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(fork_wrapper_nb_with_extras)3   ********** I AM  DEAD 
+ (COMM LAYER) 0 chpl_comm_exit ******************************* NBFORK ********************  
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+-- ID: 3  -- ALIVE 1 -- 
+--------------(SIGUSR2_handler) 2 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(fork_wrapper_nb_with_extras)2   ********** I AM  DEAD 
+ ---(PID) NODE 2 PID 13644 
+---(PID) NODE 1 PID 17525 
+---(PID) NODE 3 PID 15725 
+---(PID) NODE 0 PID 18097 
+MasterLocale: bwlf04   
+
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+ pi = 3.14173 ----------on locale 0
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+ pi = 3.14173 ----------on locale 0
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+ pi = 3.14173 ----------on locale 0
+(*******) 0 FORK_NB_with_extras 0 -> 3 :: Timeout from child - recover - END -- should delete here 
+(*******) 0 FORK_NB_with_extras 0 -> 2 :: Timeout from child - recover - END -- should delete here 
+(*******) 0 FORK_NB_with_extras 0 -> 1 :: Timeout from child - recover - END -- should delete here 
+PROGRAM END ============= Time elapsed:176.419 
+
+--------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(fork_wrapper_nb_with_extras)1   ********** I AM  DEAD 
+ --------------(SIGUSR2_handler) 2 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(fork_wrapper_nb_with_extras)2   ********** I AM  DEAD 
+ (COMM LAYER) 0 chpl_comm_exit ******************************* NBFORK ********************  
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+-- ID: 3  -- ALIVE 1 -- 
+--------------(SIGUSR2_handler) 3 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(fork_wrapper_nb_with_extras)3   ********** I AM  DEAD 
+ 

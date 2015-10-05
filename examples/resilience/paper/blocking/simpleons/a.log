@@ -1,0 +1,364 @@
+---(PID) NODE 2 PID 16534 
+---(PID) NODE 1 PID 21777 
+---(PID) NODE 0 PID 17124 
+MasterLocale: bwlf03   
+
+(COMM_LAYER) 0 In AM_timeout *************************** **** **** *** *** checking node = 1000029928  
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+(COMM_LAYER) 0 In AM_timeout : ****** processedAMtimeoutNB == 1
+arg= 1----------on locale 0
+(COMM_LAYER) 0 In AM_timeout *************************** **** **** *** *** checking node = 0  
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+(COMM_LAYER) 0 In AM_timeout : ****** processedAMtimeoutNB == 1
+arg= 2----------on locale 0
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+--------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+--------------(SIGUSR2_handler) 2 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+---(PID) NODE 2 PID 21806 
+---(PID) NODE 1 PID 17153 
+---(PID) NODE 0 PID 16577 
+MasterLocale: bwlf31   
+
+(COMM_LAYER) 0 In AM_timeout *************************** **** **** *** *** checking node = -422396184  
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+(COMM_LAYER) 0 In AM_timeout : ****** processedAMtimeoutNB == 1
+arg= 1----------on locale 0
+(COMM_LAYER) 0 In AM_timeout *************************** **** **** *** *** checking node = 0  
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+(COMM_LAYER) 0 In AM_timeout : ****** processedAMtimeoutNB == 1
+arg= 2----------on locale 0
+--------------(SIGUSR2_handler) 2 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+--------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+---(PID) NODE 1 PID 17184 
+---(PID) NODE 2 PID 21838 
+---(PID) NODE 0 PID 16606 
+MasterLocale: bwlf31   
+
+(COMM_LAYER) 0 In AM_timeout *************************** **** **** *** *** checking node = -1771376920  
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+(COMM_LAYER) 0 In AM_timeout : ****** processedAMtimeoutNB == 1
+arg= 1----------on locale 0
+(COMM_LAYER) 0 In AM_timeout *************************** **** **** *** *** checking node = 0  
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+(COMM_LAYER) 0 In AM_timeout : ****** processedAMtimeoutNB == 1
+arg= 2----------on locale 0
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+--------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+--------------(SIGUSR2_handler) 2 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+---(PID) NODE 1 PID 21868 
+---(PID) NODE 2 PID 17216 
+---(PID) NODE 0 PID 16636 
+MasterLocale: bwlf31   
+
+(COMM_LAYER) 0 In AM_timeout *************************** **** **** *** *** checking node = 2076438248  
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+(COMM_LAYER) 0 In AM_timeout : ****** processedAMtimeoutNB == 1
+arg= 1----------on locale 0
+(COMM_LAYER) 0 In AM_timeout *************************** **** **** *** *** checking node = 0  
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+(COMM_LAYER) 0 In AM_timeout : ****** processedAMtimeoutNB == 1
+arg= 2----------on locale 0
+--------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+--------------(SIGUSR2_handler) 2 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+---(PID) NODE 2 PID 21899 
+---(PID) NODE 1 PID 17246 
+---(PID) NODE 0 PID 16669 
+MasterLocale: bwlf31   
+
+(COMM_LAYER) 0 In AM_timeout *************************** **** **** *** *** checking node = 645734120  
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+(COMM_LAYER) 0 In AM_timeout : ****** processedAMtimeoutNB == 1
+arg= 1----------on locale 0
+(COMM_LAYER) 0 In AM_timeout *************************** **** **** *** *** checking node = 0  
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+(COMM_LAYER) 0 In AM_timeout : ****** processedAMtimeoutNB == 1
+arg= 2----------on locale 0
+--------------(SIGUSR2_handler) 2 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+--------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+---(PID) NODE 2 PID 17275 
+---(PID) NODE 1 PID 16700 
+---(PID) NODE 0 PID 21937 
+MasterLocale: bwlf32   
+
+(COMM_LAYER) 0 In AM_timeout *************************** **** **** *** *** checking node = 445054696  
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+(COMM_LAYER) 0 In AM_timeout : ****** processedAMtimeoutNB == 1
+arg= 1----------on locale 0
+(COMM_LAYER) 0 In AM_timeout *************************** **** **** *** *** checking node = 0  
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+(COMM_LAYER) 0 In AM_timeout : ****** processedAMtimeoutNB == 1
+arg= 2----------on locale 0
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+--------------(SIGUSR2_handler) 2 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+--------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+---(PID) NODE 2 PID 16738 
+---(PID) NODE 1 PID 17307 
+---(PID) NODE 0 PID 21969 
+MasterLocale: bwlf32   
+
+(COMM_LAYER) 0 In AM_timeout *************************** **** **** *** *** checking node = -1486258456  
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+(COMM_LAYER) 0 In AM_timeout : ****** processedAMtimeoutNB == 1
+arg= 1----------on locale 0
+(COMM_LAYER) 0 In AM_timeout *************************** **** **** *** *** checking node = 0  
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+(COMM_LAYER) 0 In AM_timeout : ****** processedAMtimeoutNB == 1
+arg= 2----------on locale 0
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+--------------(SIGUSR2_handler) 2 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+--------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+---(PID) NODE 2 PID 22000 
+---(PID) NODE 1 PID 16769 
+---(PID) NODE 0 PID 17339 
+MasterLocale: bwlf03   
+
+(COMM_LAYER) 0 In AM_timeout *************************** **** **** *** *** checking node = 0  
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+(COMM_LAYER) 0 In AM_timeout : ****** processedAMtimeoutNB == 1
+arg= 1----------on locale 0
+(COMM_LAYER) 0 In AM_timeout *************************** **** **** *** *** checking node = 0  
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+(COMM_LAYER) 0 In AM_timeout : ****** processedAMtimeoutNB == 1
+arg= 2----------on locale 0
+--------------(SIGUSR2_handler) 2 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+--------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+bash: line 1: 16802 User defined signal 2   './simpleons_real' '__AMUDP_SLAVE_PROCESS__' 'amaterasu:49687' '-nl' '3'
+bash: line 1: 17368 User defined signal 2   './simpleons_real' '__AMUDP_SLAVE_PROCESS__' 'amaterasu:49687' '-nl' '3'
+bash: line 1: 22030 User defined signal 2   './simpleons_real' '__AMUDP_SLAVE_PROCESS__' 'amaterasu:49687' '-nl' '3'
+---(PID) NODE 2 PID 16827 
+---(PID) NODE 1 PID 17392 
+---(PID) NODE 0 PID 22054 
+MasterLocale: bwlf32   
+
+(COMM_LAYER) 0 In AM_timeout *************************** **** **** *** *** checking node = 0  
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+(COMM_LAYER) 0 In AM_timeout : ****** processedAMtimeoutNB == 1
+arg= 1----------on locale 0
+(COMM_LAYER) 0 In AM_timeout *************************** **** **** *** *** checking node = 0  
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+(COMM_LAYER) 0 In AM_timeout : ****** processedAMtimeoutNB == 1
+arg= 2----------on locale 0
+--------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+--------------(SIGUSR2_handler) 2 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+---(PID) NODE 1 PID 16856 
+---(PID) NODE 2 PID 17423 
+---(PID) NODE 0 PID 22095 
+MasterLocale: bwlf32   
+
+(COMM_LAYER) 0 In AM_timeout *************************** **** **** *** *** checking node = 0  
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+(COMM_LAYER) 0 In AM_timeout : ****** processedAMtimeoutNB == 1
+arg= 1----------on locale 0
+(COMM_LAYER) 0 In AM_timeout *************************** **** **** *** *** checking node = 0  
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+(COMM_LAYER) 0 In AM_timeout : ****** processedAMtimeoutNB == 1
+arg= 2----------on locale 0
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+--------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+--------------(SIGUSR2_handler) 2 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+---(PID) NODE 1 PID 17457 
+---(PID) NODE 2 PID 16889 
+---(PID) NODE 0 PID 22128 
+MasterLocale: bwlf32   
+
+(COMM_LAYER) 0 In AM_timeout *************************** **** **** *** *** checking node = -1113116952  
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+(COMM_LAYER) 0 In AM_timeout : ****** processedAMtimeoutNB == 1
+arg= 1----------on locale 0
+(COMM_LAYER) 0 In AM_timeout *************************** **** **** *** *** checking node = 0  
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+(COMM_LAYER) 0 In AM_timeout : ****** processedAMtimeoutNB == 1
+arg= 2----------on locale 0
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+--------------(SIGUSR2_handler) 2 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+--------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+---(PID) NODE 1 PID 22158 
+---(PID) NODE 2 PID 17487 
+---(PID) NODE 0 PID 16930 
+MasterLocale: bwlf31   
+
+(COMM_LAYER) 0 In AM_timeout *************************** **** **** *** *** checking node = 0  
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+(COMM_LAYER) 0 In AM_timeout : ****** processedAMtimeoutNB == 1
+arg= 1----------on locale 0
+(COMM_LAYER) 0 In AM_timeout *************************** **** **** *** *** checking node = 0  
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+(COMM_LAYER) 0 In AM_timeout : ****** processedAMtimeoutNB == 1
+arg= 2----------on locale 0
+--------------(SIGUSR2_handler) 2 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+--------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+---(PID) NODE 1 PID 22189 
+---(PID) NODE 2 PID 17517 
+---(PID) NODE 0 PID 16961 
+MasterLocale: bwlf31   
+
+(COMM_LAYER) 0 In AM_timeout *************************** **** **** *** *** checking node = -859914520  
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+(COMM_LAYER) 0 In AM_timeout : ****** processedAMtimeoutNB == 1
+arg= 1----------on locale 0
+(COMM_LAYER) 0 In AM_timeout *************************** **** **** *** *** checking node = 0  
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+(COMM_LAYER) 0 In AM_timeout : ****** processedAMtimeoutNB == 1
+arg= 2----------on locale 0
+--------------(SIGUSR2_handler) 2 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+--------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+---(PID) NODE 1 PID 22219 
+---(PID) NODE 2 PID 16990 
+---(PID) NODE 0 PID 17548 
+MasterLocale: bwlf03   
+
+(COMM_LAYER) 0 In AM_timeout *************************** **** **** *** *** checking node = 0  
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+(COMM_LAYER) 0 In AM_timeout : ****** processedAMtimeoutNB == 1
+arg= 1----------on locale 0
+(COMM_LAYER) 0 In AM_timeout *************************** **** **** *** *** checking node = 0  
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+(COMM_LAYER) 0 In AM_timeout : ****** processedAMtimeoutNB == 1
+arg= 2----------on locale 0
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+--------------(SIGUSR2_handler) 2 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+--------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+---(PID) NODE 1 PID 17583 
+---(PID) NODE 2 PID 17021 
+---(PID) NODE 0 PID 22260 
+MasterLocale: bwlf32   
+
+(COMM_LAYER) 0 In AM_timeout *************************** **** **** *** *** checking node = 0  
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+(COMM_LAYER) 0 In AM_timeout : ****** processedAMtimeoutNB == 1
+arg= 1----------on locale 0
+(COMM_LAYER) 0 In AM_timeout *************************** **** **** *** *** checking node = 0  
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+(COMM_LAYER) 0 In AM_timeout : ****** processedAMtimeoutNB == 1
+arg= 2----------on locale 0
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+--------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+--------------(SIGUSR2_handler) 2 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+---(PID) NODE 2 PID 22289 
+---(PID) NODE 1 PID 17612 
+---(PID) NODE 0 PID 17054 
+MasterLocale: bwlf31   
+
+(COMM_LAYER) 0 In AM_timeout *************************** **** **** *** *** checking node = 0  
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+(COMM_LAYER) 0 In AM_timeout : ****** processedAMtimeoutNB == 1
+arg= 1----------on locale 0
+(COMM_LAYER) 0 In AM_timeout *************************** **** **** *** *** checking node = 0  
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+(COMM_LAYER) 0 In AM_timeout : ****** processedAMtimeoutNB == 1
+arg= 2----------on locale 0
+--------------(SIGUSR2_handler) 2 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+--------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+---(PID) NODE 1 PID 17654 
+---(PID) NODE 2 PID 22320 
+---(PID) NODE 0 PID 17084 
+MasterLocale: bwlf31   
+
+(COMM_LAYER) 0 In AM_timeout *************************** **** **** *** *** checking node = -129315096  
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+(COMM_LAYER) 0 In AM_timeout : ****** processedAMtimeoutNB == 1
+arg= 1----------on locale 0
+(COMM_LAYER) 0 In AM_timeout *************************** **** **** *** *** checking node = 0  
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+(COMM_LAYER) 0 In AM_timeout : ****** processedAMtimeoutNB == 1
+arg= 2----------on locale 0
+--------------(SIGUSR2_handler) 2 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+--------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+---(PID) NODE 1 PID 17691 
+---(PID) NODE 2 PID 22354 
+---(PID) NODE 0 PID 17127 
+MasterLocale: bwlf31   
+
+(COMM_LAYER) 0 In AM_timeout *************************** **** **** *** *** checking node = 356097768  
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+(COMM_LAYER) 0 In AM_timeout : ****** processedAMtimeoutNB == 1
+arg= 1----------on locale 0
+(COMM_LAYER) 0 In AM_timeout *************************** **** **** *** *** checking node = 0  
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+(COMM_LAYER) 0 In AM_timeout : ****** processedAMtimeoutNB == 1
+arg= 2----------on locale 0
+--------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+--------------(SIGUSR2_handler) 2 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+---(PID) NODE 2 PID 22385 
+---(PID) NODE 1 PID 17721 
+---(PID) NODE 0 PID 17160 
+MasterLocale: bwlf31   
+
+(COMM_LAYER) 0 In AM_timeout *************************** **** **** *** *** checking node = 330374888  
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+(COMM_LAYER) 0 In AM_timeout : ****** processedAMtimeoutNB == 1
+arg= 1----------on locale 0
+(COMM_LAYER) 0 In AM_timeout *************************** **** **** *** *** checking node = 0  
+(COMM_LAYER) 0 In AM_timeout : setting timeout flag ******
+(COMM_LAYER) 0 In AM_timeout : ****** processedAMtimeoutNB == 1
+arg= 2----------on locale 0
+--------------(SIGUSR2_handler) 2 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+--------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 

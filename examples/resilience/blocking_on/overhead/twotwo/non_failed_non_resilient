@@ -1,0 +1,25 @@
+MasterLocale: bwlf04   
+
+ pi = 3.14173 ----------on locale 1
+ pi = 3.14173 ----------on locale 2
+ pi = 3.14173 ----------on locale 3
+ pi = 3.14173 ----------on locale 2
+PROGRAM END ============= Time elapsed:188.363 
+
+
+real	3m31.708s
+user	0m0.009s
+sys	0m0.005s
+
+MasterLocale: bwlf31   
+
+ pi = 3.14173 ----------on locale 1
+ pi = 3.14173 ----------on locale 2
+ pi = 3.14173 ----------on locale 3
+ pi = 3.14173 ----------on locale 2
+PROGRAM END ============= Time elapsed:187.528 
+
+
+real	3m29.673s
+user	0m0.004s
+sys	0m0.009s

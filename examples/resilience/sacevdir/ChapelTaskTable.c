@@ -1,0 +1,1064 @@
+/* ChapelTaskTable.chpl:4 */
+static void chpl__init_ChapelTaskTable(int64_t _ln, c_string _fn) {
+  c_string modFormatStr;
+  c_string modStr;
+  _ref_int32_t refIndentLevel = NULL;
+  chpldev_taskTable_t call_tmp = NULL;
+  chpldev_taskTable_t T = NULL;
+  chpl_bool call_tmp2;
+  chpl____wide_chpldev_taskTable_t chpl_macro_tmp_1331;
+  if (chpl__init_ChapelTaskTable_p) {
+    goto _exit_chpl__init_ChapelTaskTable;
+  }
+  modFormatStr = "%*s\n";
+  modStr = "ChapelTaskTable";
+  printModuleInit(modFormatStr, modStr, INT64(15));
+  refIndentLevel = &moduleInitLevel;
+  *(refIndentLevel) += INT64(1);
+  chpl__init_ChapelTaskTable_p = true;
+  {
+    chpl__init_ChapelBase(INT64(4), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+    chpl__init_ChapelIO(INT64(4), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+    chpl__init_ChapelArray(INT64(4), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+    chpl__init_DefaultRectangular(INT64(4), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+    chpl__init_DefaultAssociative(INT64(4), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+  }
+  T = ((chpldev_taskTable_t)(nil));
+  call_tmp = T;
+  chpl_macro_tmp_1331.locale = chpl_gen_getLocaleID();
+  chpl_macro_tmp_1331.addr = call_tmp;
+  chpldev_taskTable = chpl_macro_tmp_1331;
+  call_tmp2 = (taskreport != INT32(0));
+  if (call_tmp2) {
+    chpldev_taskTable_init();
+  }
+  *(refIndentLevel) -= INT64(1);
+  _exit_chpl__init_ChapelTaskTable:;
+  return;
+}
+
+/* ChapelTaskTable.chpl:46 */
+static chpldev_Task _construct_chpldev_Task(taskState state, uint32_t lineno, c_string filename, uint64_t tl_info, chpldev_Task* const meme) {
+  chpldev_Task this8;
+  this8 = *(meme);
+  (&this8)->state = state;
+  (&this8)->lineno = lineno;
+  (&this8)->filename = filename;
+  (&this8)->tl_info = tl_info;
+  return this8;
+}
+
+/* ChapelTaskTable.chpl:46 */
+static void chpl___ASSIGN_5(chpl____wide__ref_chpldev_Task* const _arg1, chpldev_Task* const _arg2) {
+  chpl____wide__ref_taskState call_tmp = {CHPL_LOCALEID_T_INIT, NULL};
+  taskState ret;
+  chpl____wide__ref_uint32_t call_tmp2 = {CHPL_LOCALEID_T_INIT, NULL};
+  uint32_t ret2;
+  chpl____wide__ref_c_string call_tmp3 = {CHPL_LOCALEID_T_INIT, NULL};
+  c_string ret3;
+  chpl____wide__ref_uint64_t call_tmp4 = {CHPL_LOCALEID_T_INIT, NULL};
+  uint64_t ret4;
+  chpl____wide__ref_taskState chpl_macro_tmp_1332;
+  chpl____wide__ref_uint32_t chpl_macro_tmp_1333;
+  chpl____wide__ref_c_string chpl_macro_tmp_1334;
+  chpl____wide__ref_uint64_t chpl_macro_tmp_1335;
+  chpl_macro_tmp_1332.locale = (*(_arg1)).locale;
+  chpl_macro_tmp_1332.addr = &(((*(_arg1)).addr)->state);
+  call_tmp = chpl_macro_tmp_1332;
+  ret = (_arg2)->state;
+  chpl_gen_comm_put(((void*)(&ret)), chpl_nodeFromLocaleID(&((call_tmp).locale), INT64(0), NULL), (call_tmp).addr, sizeof(taskState), -1, INT64(1), INT64(46), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+  chpl_macro_tmp_1333.locale = (*(_arg1)).locale;
+  chpl_macro_tmp_1333.addr = &(((*(_arg1)).addr)->lineno);
+  call_tmp2 = chpl_macro_tmp_1333;
+  ret2 = (_arg2)->lineno;
+  chpl_gen_comm_put(((void*)(&ret2)), chpl_nodeFromLocaleID(&((call_tmp2).locale), INT64(0), NULL), (call_tmp2).addr, sizeof(uint32_t), -1, INT64(1), INT64(46), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+  chpl_macro_tmp_1334.locale = (*(_arg1)).locale;
+  chpl_macro_tmp_1334.addr = &(((*(_arg1)).addr)->filename);
+  call_tmp3 = chpl_macro_tmp_1334;
+  ret3 = (_arg2)->filename;
+  chpl_gen_comm_put(((void*)(&ret3)), chpl_nodeFromLocaleID(&((call_tmp3).locale), INT64(0), NULL), (call_tmp3).addr, sizeof(c_string), -1, INT64(1), INT64(46), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+  chpl_macro_tmp_1335.locale = (*(_arg1)).locale;
+  chpl_macro_tmp_1335.addr = &(((*(_arg1)).addr)->tl_info);
+  call_tmp4 = chpl_macro_tmp_1335;
+  ret4 = (_arg2)->tl_info;
+  chpl_gen_comm_put(((void*)(&ret4)), chpl_nodeFromLocaleID(&((call_tmp4).locale), INT64(0), NULL), (call_tmp4).addr, sizeof(uint64_t), -1, INT64(1), INT64(46), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+  return;
+}
+
+/* ChapelTaskTable.chpl:46 */
+static chpldev_Task chpl__initCopy3(chpldev_Task* const x) {
+  taskState ret;
+  uint32_t ret2;
+  c_string ret3;
+  uint64_t ret4;
+  chpldev_Task this8;
+  c_string T;
+  chpldev_Task wrap_call_tmp;
+  ret = (x)->state;
+  ret2 = (x)->lineno;
+  ret3 = (x)->filename;
+  ret4 = (x)->tl_info;
+  (&this8)->state = taskState_pending;
+  (&this8)->lineno = UINT32(0);
+  T = "";
+  (&this8)->filename = T;
+  (&this8)->tl_info = UINT64(0);
+  (&this8)->state = ret;
+  (&this8)->lineno = ret2;
+  (&this8)->filename = ret3;
+  (&this8)->tl_info = ret4;
+  wrap_call_tmp = _construct_chpldev_Task(ret, ret2, ret3, ret4, &this8);
+  return wrap_call_tmp;
+}
+
+/* ChapelTaskTable.chpl:53 */
+static chpldev_taskTable_t _construct_chpldev_taskTable_t(chpl____wide_DefaultAssociativeDom_chpl_taskID_t_F* const dom, chpl____wide_DefaultAssociativeArr_chpldev_Task_chpl_taskID_t_F* const map, chpldev_taskTable_t meme) {
+  chpldev_taskTable_t this8 = NULL;
+  object T = NULL;
+  this8 = meme;
+  chpl_check_nil(this8, INT64(53), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+  T = &((this8)->super);
+  _construct_object(T);
+  chpl_check_nil(this8, INT64(54), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+  (this8)->dom = *(dom);
+  chpl_check_nil(this8, INT64(55), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+  (this8)->map = *(map);
+  return this8;
+}
+
+/* ChapelTaskTable.chpl:53 */
+static void chpl__auto_destroy_chpldev_taskTable_t(chpldev_taskTable_t this8) {
+  chpl____wide_DefaultAssociativeArr_chpldev_Task_chpl_taskID_t_F _field_destructor_tmp_ = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide_DefaultAssociativeDom_chpl_taskID_t_F _field_destructor_tmp_2 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl_check_nil(this8, INT64(55), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+  _field_destructor_tmp_ = (this8)->map;
+  chpl__autoDestroy8(&_field_destructor_tmp_);
+  chpl_check_nil(this8, INT64(54), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+  _field_destructor_tmp_2 = (this8)->dom;
+  chpl__autoDestroy3(&_field_destructor_tmp_2);
+  return;
+}
+
+/* ChapelTaskTable.chpl:64 */
+static void chpldev_taskTable_init(void) {
+  chpl___EndCount _coforallCount = NULL;
+  chpl___EndCount this8 = NULL;
+  int64_t call_tmp;
+  chpl_opaque cast_tmp;
+  chpl___EndCount T = NULL;
+  atomic_int64 _init_class_tmp_;
+  atomic_int64 this9;
+  atomic_int_least64_t ret;
+  atomic_int_least64_t type_tmp;
+  atomic_int_least64_t ret2;
+  _ref_atomic_int_least64_t _ref_tmp_ = NULL;
+  _ref_atomic_int_least64_t T2 = NULL;
+  _ref_atomic_int_least64_t _ref_tmp_2 = NULL;
+  atomic_int_least64_t type_tmp2;
+  atomic_int_least64_t x;
+  _ref_atomic_int_least64_t _ref_tmp_3 = NULL;
+  atomic_int64 wrap_call_tmp;
+  chpl_task_list_p type_tmp3;
+  chpl_task_list_p x2;
+  _ref_chpl_task_list_p _ref_tmp_4 = NULL;
+  chpl___EndCount wrap_call_tmp2 = NULL;
+  chpl____wide_DefaultRectangularArr_locale_1_int64_t_F ret3 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide_DefaultRectangularArr_locale_1_int64_t_F _ic__F0_this = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide_DefaultRectangularArr_locale_1_int64_t_F this10 = {CHPL_LOCALEID_T_INIT, NULL};
+  int64_t wrap_call_tmp3;
+  chpl____wide_DefaultRectangularDom_1_int64_t_F call_tmp2 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide_DefaultRectangularArr_locale_1_int64_t_F this11 = {CHPL_LOCALEID_T_INIT, NULL};
+  int64_t sum;
+  int64_t ret_x1;
+  chpl____wide__ref__tuple_1_star_int64_t ret_ = {CHPL_LOCALEID_T_INIT, NULL};
+  int64_t call_tmp3;
+  _ref_int64_t _ref_tmp_5 = NULL;
+  chpl____wide_DefaultRectangularArr_locale_1_int64_t_F this12 = {CHPL_LOCALEID_T_INIT, NULL};
+  int64_t wrap_call_tmp4;
+  chpl____wide_DefaultRectangularDom_1_int64_t_F call_tmp4 = {CHPL_LOCALEID_T_INIT, NULL};
+  int64_t call_tmp5;
+  chpl____wide_DefaultRectangularArr_locale_1_int64_t_F this13 = {CHPL_LOCALEID_T_INIT, NULL};
+  int64_t sum2;
+  int64_t ret_x12;
+  chpl____wide__ref__tuple_1_star_int64_t ret_2 = {CHPL_LOCALEID_T_INIT, NULL};
+  int64_t call_tmp6;
+  _ref_int64_t _ref_tmp_6 = NULL;
+  int64_t step;
+  int64_t call_tmp7;
+  int64_t last;
+  chpl____wide_DefaultRectangularArr_locale_1_int64_t_F this14 = {CHPL_LOCALEID_T_INIT, NULL};
+  int64_t wrap_call_tmp5;
+  chpl____wide_DefaultRectangularDom_1_int64_t_F call_tmp8 = {CHPL_LOCALEID_T_INIT, NULL};
+  int64_t call_tmp9;
+  int64_t call_tmp10;
+  int64_t i;
+  chpl_bool T3;
+  chpl_bool call_tmp11;
+  chpl____wide_DefaultRectangularArr_locale_1_int64_t_F this15 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide__ddata_locale call_tmp12 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide__ref_locale call_tmp13 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide__EndCount T4 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl_localeID_t call_tmp14;
+  chpl____wide_locale T5 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl___EndCount rvfDerefTmp = NULL;
+  _class_localson_fn50 _args_foron_fn = NULL;
+  int64_t chpl_here_alloc_size;
+  chpl_opaque chpl_here_alloc_tmp;
+  chpl____wide__EndCount T6 = {CHPL_LOCALEID_T_INIT, NULL};
+  _ref_int64_t _ref_tmp_7 = NULL;
+  chpl_bool call_tmp15;
+  chpl____wide__EndCount delete_tmp = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide__ref_atomic_int64 _field_destructor_tmp_ = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide__ref_atomic_int_least64_t call_tmp16 = {CHPL_LOCALEID_T_INIT, NULL};
+  _ref_atomic_int_least64_t T7 = NULL;
+  chpl_localeID_t call_tmp17;
+  chpl____wide__EndCount rvfDerefTmp2 = {CHPL_LOCALEID_T_INIT, NULL};
+  _class_localson_fn29 _args_foron_fn2 = NULL;
+  int64_t chpl_here_alloc_size2;
+  chpl_opaque chpl_here_alloc_tmp2;
+  chpl____wide__ref_DefaultRectangularDom_1_int64_t_F chpl_macro_tmp_1336;
+  chpl____wide__ref__tuple_1_star_int64_t chpl_macro_tmp_1337;
+  chpl____wide__ref_int64_t chpl_macro_tmp_1338;
+  chpl____wide__ref_DefaultRectangularDom_1_int64_t_F chpl_macro_tmp_1339;
+  chpl____wide__ref__tuple_1_star_int64_t chpl_macro_tmp_1340;
+  chpl____wide__ref_int64_t chpl_macro_tmp_1341;
+  chpl____wide__ref_DefaultRectangularDom_1_int64_t_F chpl_macro_tmp_1342;
+  chpl____wide__ref__ddata_locale chpl_macro_tmp_1343;
+  chpl____wide__ref_locale chpl_macro_tmp_1344;
+  chpl____wide__EndCount chpl_macro_tmp_1345;
+  chpl____wide__EndCount chpl_macro_tmp_1346;
+  chpl____wide__EndCount chpl_macro_tmp_1347;
+  chpl____wide__ref_atomic_int64 chpl_macro_tmp_1348;
+  chpl____wide__ref_atomic_int_least64_t chpl_macro_tmp_1349;
+  chpl____wide__ref_atomic_int_least64_t chpl_macro_tmp_1350;
+  call_tmp = sizeof(chpl_chpl___EndCount_object);
+  cast_tmp = chpl_here_alloc(call_tmp, INT16(16));
+  T = ((chpl___EndCount)(cast_tmp));
+  this8 = T;
+  ((object)(this8))->chpl__cid = chpl__cid_chpl___EndCount;
+  chpl_check_nil(this8, INT64(68), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+  (this8)->i = _init_class_tmp_;
+  chpl_check_nil(this8, INT64(68), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+  (this8)->taskCnt = INT64(0);
+  chpl_check_nil(this8, INT64(68), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+  (this8)->taskList = NULL;
+  ret2 = type_tmp;
+  _ref_tmp_ = &ret2;
+  T2 = _ref_tmp_;
+  atomic_init_int_least64_t(T2, INT64(0));
+  _ref_tmp_ = T2;
+  _ref_tmp_2 = &ret;
+  *(_ref_tmp_2) = ret2;
+  x = type_tmp2;
+  _ref_tmp_3 = &x;
+  *(_ref_tmp_3) = ret;
+  (&this9)->_v = x;
+  wrap_call_tmp = _construct_atomic_int64(x, &this9);
+  chpl_check_nil(this8, INT64(68), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+  (this8)->i = wrap_call_tmp;
+  chpl_check_nil(this8, INT64(68), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+  (this8)->taskCnt = INT64(0);
+  type_tmp3 = NULL;
+  x2 = type_tmp3;
+  _ref_tmp_4 = &x2;
+  *(_ref_tmp_4) = NULL;
+  chpl_check_nil(this8, INT64(68), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+  (this8)->taskList = x2;
+  wrap_call_tmp2 = _construct__EndCount(&wrap_call_tmp, INT64(0), x2, this8);
+  _coforallCount = wrap_call_tmp2;
+  ret3 = Locales;
+  _ic__F0_this = ret3;
+  this10 = ret3;
+  chpl_check_nil((&this10)->addr, INT64(68), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+  chpl_macro_tmp_1336.locale = (&this10)->locale;
+  chpl_macro_tmp_1336.addr = &(((&this10)->addr)->dom);
+  chpl_gen_comm_get(((void*)(&call_tmp2)), chpl_nodeFromLocaleID(&((chpl_macro_tmp_1336).locale), INT64(0), NULL), (chpl_macro_tmp_1336).addr, sizeof(chpl____wide_DefaultRectangularDom_1_int64_t_F), -1, INT64(1), INT64(68), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+  chpl_check_nil((&call_tmp2)->addr, INT64(68), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+  wrap_call_tmp3 = dsiLow(&call_tmp2);
+  this11 = ret3;
+  sum = INT64(0);
+  chpl_check_nil((&this11)->addr, INT64(68), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+  chpl_macro_tmp_1337.locale = (&this11)->locale;
+  chpl_macro_tmp_1337.addr = &(((&this11)->addr)->blk);
+  ret_ = chpl_macro_tmp_1337;
+  chpl_macro_tmp_1338.locale = (ret_).locale;
+  chpl_macro_tmp_1338.addr = (*((ret_).addr) + INT64(0));
+  chpl_gen_comm_get(((void*)(&ret_x1)), chpl_nodeFromLocaleID(&((chpl_macro_tmp_1338).locale), INT64(0), NULL), (chpl_macro_tmp_1338).addr, sizeof(int64_t), -1, INT64(1), INT64(68), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+  call_tmp3 = (wrap_call_tmp3 * ret_x1);
+  _ref_tmp_5 = &sum;
+  *(_ref_tmp_5) += call_tmp3;
+  this12 = ret3;
+  chpl_check_nil((&this12)->addr, INT64(68), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+  chpl_macro_tmp_1339.locale = (&this12)->locale;
+  chpl_macro_tmp_1339.addr = &(((&this12)->addr)->dom);
+  chpl_gen_comm_get(((void*)(&call_tmp4)), chpl_nodeFromLocaleID(&((chpl_macro_tmp_1339).locale), INT64(0), NULL), (chpl_macro_tmp_1339).addr, sizeof(chpl____wide_DefaultRectangularDom_1_int64_t_F), -1, INT64(1), INT64(68), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+  chpl_check_nil((&call_tmp4)->addr, INT64(68), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+  wrap_call_tmp4 = dsiLow(&call_tmp4);
+  call_tmp5 = (wrap_call_tmp4 + INT64(1));
+  this13 = ret3;
+  sum2 = INT64(0);
+  chpl_check_nil((&this13)->addr, INT64(68), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+  chpl_macro_tmp_1340.locale = (&this13)->locale;
+  chpl_macro_tmp_1340.addr = &(((&this13)->addr)->blk);
+  ret_2 = chpl_macro_tmp_1340;
+  chpl_macro_tmp_1341.locale = (ret_2).locale;
+  chpl_macro_tmp_1341.addr = (*((ret_2).addr) + INT64(0));
+  chpl_gen_comm_get(((void*)(&ret_x12)), chpl_nodeFromLocaleID(&((chpl_macro_tmp_1341).locale), INT64(0), NULL), (chpl_macro_tmp_1341).addr, sizeof(int64_t), -1, INT64(1), INT64(68), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+  call_tmp6 = (call_tmp5 * ret_x12);
+  _ref_tmp_6 = &sum2;
+  *(_ref_tmp_6) += call_tmp6;
+  call_tmp7 = (sum2 - sum);
+  step = call_tmp7;
+  this14 = ret3;
+  chpl_check_nil((&this14)->addr, INT64(68), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+  chpl_macro_tmp_1342.locale = (&this14)->locale;
+  chpl_macro_tmp_1342.addr = &(((&this14)->addr)->dom);
+  chpl_gen_comm_get(((void*)(&call_tmp8)), chpl_nodeFromLocaleID(&((chpl_macro_tmp_1342).locale), INT64(0), NULL), (chpl_macro_tmp_1342).addr, sizeof(chpl____wide_DefaultRectangularDom_1_int64_t_F), -1, INT64(1), INT64(68), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+  chpl_check_nil((&call_tmp8)->addr, INT64(68), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+  wrap_call_tmp5 = dsiNumIndices(&call_tmp8);
+  call_tmp9 = (wrap_call_tmp5 * call_tmp7);
+  call_tmp10 = (sum + call_tmp9);
+  last = call_tmp10;
+  i = sum;
+  call_tmp11 = (sum != call_tmp10);
+  T3 = call_tmp11;
+  while (T3) {
+    this15 = _ic__F0_this;
+    chpl_check_nil((&this15)->addr, INT64(68), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+    chpl_macro_tmp_1343.locale = (&this15)->locale;
+    chpl_macro_tmp_1343.addr = &(((&this15)->addr)->shiftedData);
+    chpl_gen_comm_get(((void*)(&call_tmp12)), chpl_nodeFromLocaleID(&((chpl_macro_tmp_1343).locale), INT64(0), NULL), (chpl_macro_tmp_1343).addr, sizeof(chpl____wide__ddata_locale), -1, INT64(1), INT64(68), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+    chpl_macro_tmp_1344.locale = (&call_tmp12)->locale;
+    chpl_macro_tmp_1344.addr = ((&call_tmp12)->addr + i);
+    call_tmp13 = chpl_macro_tmp_1344;
+    chpl_macro_tmp_1345.locale = chpl_gen_getLocaleID();
+    chpl_macro_tmp_1345.addr = _coforallCount;
+    T4 = chpl_macro_tmp_1345;
+    _upEndCount(&T4);
+    chpl_gen_comm_get(((void*)(&T5)), chpl_nodeFromLocaleID(&((call_tmp13).locale), INT64(0), NULL), (call_tmp13).addr, sizeof(chpl____wide_locale), -1, INT64(1), INT64(68), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+    call_tmp14 = (&T5)->locale;
+    rvfDerefTmp = _coforallCount;
+    chpl_here_alloc_size = sizeof(chpl__class_localson_fn50_object);
+    chpl_here_alloc_tmp = chpl_here_alloc(chpl_here_alloc_size, INT16(36));
+    _args_foron_fn = ((_class_localson_fn50)(chpl_here_alloc_tmp));
+    chpl_check_nil(_args_foron_fn, INT64(68), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+    (_args_foron_fn)->_0__tmp = call_tmp14;
+    chpl_macro_tmp_1346.locale = chpl_gen_getLocaleID();
+    chpl_macro_tmp_1346.addr = rvfDerefTmp;
+    T6 = chpl_macro_tmp_1346;
+    chpl_check_nil(_args_foron_fn, INT64(68), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+    (_args_foron_fn)->_1_rvfDerefTmp = T6;
+    /*** wrapon_fn50 ***/ chpl_executeOnNB(&call_tmp14, INT32(55), _args_foron_fn, sizeof(chpl__class_localson_fn50_object), INT64(68), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+    chpl_here_free(((void*)(_args_foron_fn)));
+    _ref_tmp_7 = &i;
+    *(_ref_tmp_7) += step;
+    call_tmp15 = (i != last);
+    T3 = call_tmp15;
+  }
+  _waitEndCount(_coforallCount);
+  chpl_macro_tmp_1347.locale = chpl_gen_getLocaleID();
+  chpl_macro_tmp_1347.addr = _coforallCount;
+  delete_tmp = chpl_macro_tmp_1347;
+  chpl_check_nil((&delete_tmp)->addr, INT64(68), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+  chpl_macro_tmp_1348.locale = (&delete_tmp)->locale;
+  chpl_macro_tmp_1348.addr = &(((&delete_tmp)->addr)->i);
+  _field_destructor_tmp_ = chpl_macro_tmp_1348;
+  chpl_macro_tmp_1349.locale = (_field_destructor_tmp_).locale;
+  chpl_macro_tmp_1349.addr = &(((_field_destructor_tmp_).addr)->_v);
+  call_tmp16 = chpl_macro_tmp_1349;
+  T7 = (&call_tmp16)->addr;
+  atomic_destroy_int_least64_t(T7);
+  chpl_macro_tmp_1350.locale = chpl_gen_getLocaleID();
+  chpl_macro_tmp_1350.addr = T7;
+  call_tmp16 = chpl_macro_tmp_1350;
+  call_tmp17 = (&delete_tmp)->locale;
+  rvfDerefTmp2 = delete_tmp;
+  chpl_here_alloc_size2 = sizeof(chpl__class_localson_fn29_object);
+  chpl_here_alloc_tmp2 = chpl_here_alloc(chpl_here_alloc_size2, INT16(36));
+  _args_foron_fn2 = ((_class_localson_fn29)(chpl_here_alloc_tmp2));
+  chpl_check_nil(_args_foron_fn2, INT64(68), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+  (_args_foron_fn2)->_0__tmp = call_tmp17;
+  chpl_check_nil(_args_foron_fn2, INT64(68), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+  (_args_foron_fn2)->_1_rvfDerefTmp = rvfDerefTmp2;
+  /*** wrapon_fn29 ***/ chpl_executeOn(&call_tmp17, INT32(32), _args_foron_fn2, sizeof(chpl__class_localson_fn29_object), INT64(766), "/home/kp167/chap-svn/modules/internal/ChapelBase.chpl");
+  chpl_here_free(((void*)(_args_foron_fn2)));
+  return;
+}
+
+/* ChapelTaskTable.chpl:68 */
+static void on_fn50(chpl____wide__EndCount* const _coforallCount) {
+  chpldev_taskTable_t this8 = NULL;
+  int64_t call_tmp;
+  chpl_opaque cast_tmp;
+  chpldev_taskTable_t T = NULL;
+  DefaultAssociativeDom_chpl_taskID_t_F _init_class_tmp_ = NULL;
+  chpl____wide_DefaultAssociativeDom_chpl_taskID_t_F T2 = {CHPL_LOCALEID_T_INIT, NULL};
+  DefaultAssociativeArr_chpldev_Task_chpl_taskID_t_F _init_class_tmp_2 = NULL;
+  chpl____wide_DefaultAssociativeArr_chpldev_Task_chpl_taskID_t_F T3 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide_DefaultAssociativeDom_chpl_taskID_t_F default_argdom = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl___RuntimeTypeInfo2 call_tmp2;
+  chpl____wide_DefaultDist _runtime_type_tmp_ = {CHPL_LOCALEID_T_INIT, NULL};
+  _ref_DefaultAssociativeDom_chpl_taskID_t_F ret_to_arg_ref_tmp_ = NULL;
+  chpl____wide_DefaultAssociativeArr_chpldev_Task_chpl_taskID_t_F default_argmap = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide_DefaultAssociativeDom_chpl_taskID_t_F call_tmp3 = {CHPL_LOCALEID_T_INIT, NULL};
+  _ref_DefaultAssociativeDom_chpl_taskID_t_F ret_to_arg_ref_tmp_2 = NULL;
+  chpl___RuntimeTypeInfo6 call_tmp4;
+  chpl____wide_DefaultAssociativeDom_chpl_taskID_t_F _runtime_type_tmp_2 = {CHPL_LOCALEID_T_INIT, NULL};
+  _ref_DefaultAssociativeArr_chpldev_Task_chpl_taskID_t_F ret_to_arg_ref_tmp_3 = NULL;
+  chpldev_taskTable_t wrap_call_tmp = NULL;
+  _ref_chpldev_taskTable_t _ref_tmp_ = NULL;
+  chpl____wide_chpldev_taskTable_t T4 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide_DefaultAssociativeDom_chpl_taskID_t_F chpl_macro_tmp_1351;
+  chpl____wide_DefaultAssociativeArr_chpldev_Task_chpl_taskID_t_F chpl_macro_tmp_1352;
+  chpl____wide_chpldev_taskTable_t chpl_macro_tmp_1353;
+  call_tmp = sizeof(chpl_chpldev_taskTable_t_object);
+  cast_tmp = chpl_here_alloc(call_tmp, INT16(28));
+  T = ((chpldev_taskTable_t)(cast_tmp));
+  this8 = T;
+  ((object)(this8))->chpl__cid = chpl__cid_chpldev_taskTable_t;
+  _init_class_tmp_ = nil;
+  chpl_macro_tmp_1351.locale = chpl_gen_getLocaleID();
+  chpl_macro_tmp_1351.addr = _init_class_tmp_;
+  T2 = chpl_macro_tmp_1351;
+  chpl_check_nil(this8, INT64(69), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+  (this8)->dom = T2;
+  _init_class_tmp_2 = nil;
+  chpl_macro_tmp_1352.locale = chpl_gen_getLocaleID();
+  chpl_macro_tmp_1352.addr = _init_class_tmp_2;
+  T3 = chpl_macro_tmp_1352;
+  chpl_check_nil(this8, INT64(69), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+  (this8)->map = T3;
+  call_tmp2 = chpl__buildDomainRuntimeType2(&defaultDist);
+  _runtime_type_tmp_ = (&call_tmp2)->d;
+  ret_to_arg_ref_tmp_ = &default_argdom;
+  chpl__convertRuntimeTypeToValue2(&_runtime_type_tmp_, ret_to_arg_ref_tmp_);
+  chpl_check_nil(this8, INT64(69), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+  (this8)->dom = default_argdom;
+  ret_to_arg_ref_tmp_2 = &call_tmp3;
+  chpl__ensureDomainExpr2(&default_argdom, ret_to_arg_ref_tmp_2);
+  call_tmp4 = chpl__buildArrayRuntimeType4(&call_tmp3);
+  _runtime_type_tmp_2 = (&call_tmp4)->dom;
+  ret_to_arg_ref_tmp_3 = &default_argmap;
+  chpl__convertRuntimeTypeToValue7(&_runtime_type_tmp_2, ret_to_arg_ref_tmp_3);
+  chpl_check_nil(this8, INT64(69), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+  (this8)->map = default_argmap;
+  wrap_call_tmp = _construct_chpldev_taskTable_t(&default_argdom, &default_argmap, this8);
+  chpl__autoDestroy3(&call_tmp3);
+  _ref_tmp_ = &chpldev_taskTable;
+  chpl_macro_tmp_1353.locale = chpl_gen_getLocaleID();
+  chpl_macro_tmp_1353.addr = wrap_call_tmp;
+  T4 = chpl_macro_tmp_1353;
+  *(_ref_tmp_) = T4;
+  _downEndCount(_coforallCount);
+  return;
+}
+
+/* ChapelTaskTable.chpl:68 */
+static void wrapon_fn50(_class_localson_fn50 c) {
+  chpl____wide__EndCount _1_rvfDerefTmp = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl_check_nil(c, INT64(68), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+  _1_rvfDerefTmp = (c)->_1_rvfDerefTmp;
+  on_fn50(&_1_rvfDerefTmp);
+  return;
+}
+
+/* ChapelTaskTable.chpl:92 */
+void chpldev_taskTable_add(chpl_taskID_t taskID, uint32_t lineno, c_string filename, uint64_t tl_info) {
+  chpl____wide_object call_tmp = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl_bool call_tmp2;
+  chpl____wide_DefaultAssociativeDom_chpl_taskID_t_F call_tmp3 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl_bool wrap_call_tmp;
+  chpl_bool call_tmp4;
+  chpl_bool call_tmp5;
+  chpl____wide_DefaultAssociativeDom_chpl_taskID_t_F call_tmp6 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide_DefaultAssociativeArr_chpldev_Task_chpl_taskID_t_F call_tmp7 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide_DefaultAssociativeArr_chpldev_Task_chpl_taskID_t_F call_tmp8 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide_DefaultAssociativeArr_chpldev_Task_chpl_taskID_t_F ret = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide__ref_chpldev_Task wrap_call_tmp2 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpldev_Task this8;
+  c_string T;
+  chpldev_Task wrap_call_tmp3;
+  chpl____wide_object chpl_macro_tmp_1354;
+  chpl____wide__ref_DefaultAssociativeDom_chpl_taskID_t_F chpl_macro_tmp_1355;
+  chpl____wide__ref_DefaultAssociativeDom_chpl_taskID_t_F chpl_macro_tmp_1356;
+  chpl____wide__ref_DefaultAssociativeArr_chpldev_Task_chpl_taskID_t_F chpl_macro_tmp_1357;
+  chpl_macro_tmp_1354.locale = (&chpldev_taskTable)->locale;
+  chpl_macro_tmp_1354.addr = ((object)((&chpldev_taskTable)->addr));
+  call_tmp = chpl_macro_tmp_1354;
+  call_tmp2 = (&call_tmp)->addr == nil;
+  if (call_tmp2) {
+    goto _end_chpldev_taskTable_add;
+  }
+  chpl_check_nil((&chpldev_taskTable)->addr, INT64(99), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+  chpl_macro_tmp_1355.locale = (&chpldev_taskTable)->locale;
+  chpl_macro_tmp_1355.addr = &(((&chpldev_taskTable)->addr)->dom);
+  chpl_gen_comm_get(((void*)(&call_tmp3)), chpl_nodeFromLocaleID(&((chpl_macro_tmp_1355).locale), INT64(0), NULL), (chpl_macro_tmp_1355).addr, sizeof(chpl____wide_DefaultAssociativeDom_chpl_taskID_t_F), -1, INT64(1), INT64(99), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+  chpl_check_nil((&call_tmp3)->addr, INT64(99), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+  wrap_call_tmp = member2(&call_tmp3, taskID);
+  call_tmp4 = (! wrap_call_tmp);
+  if (call_tmp4) {
+    call_tmp5 = chpl_task_getSerial();
+    chpl_task_setSerial(true);
+    chpl_check_nil((&chpldev_taskTable)->addr, INT64(104), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+    chpl_macro_tmp_1356.locale = (&chpldev_taskTable)->locale;
+    chpl_macro_tmp_1356.addr = &(((&chpldev_taskTable)->addr)->dom);
+    chpl_gen_comm_get(((void*)(&call_tmp6)), chpl_nodeFromLocaleID(&((chpl_macro_tmp_1356).locale), INT64(0), NULL), (chpl_macro_tmp_1356).addr, sizeof(chpl____wide_DefaultAssociativeDom_chpl_taskID_t_F), -1, INT64(1), INT64(104), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+    chpl_check_nil((&call_tmp6)->addr, INT64(104), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+    add(&call_tmp6, taskID);
+    chpl_task_setSerial(call_tmp5);
+  }
+  chpl_check_nil((&chpldev_taskTable)->addr, INT64(106), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+  chpl_macro_tmp_1357.locale = (&chpldev_taskTable)->locale;
+  chpl_macro_tmp_1357.addr = &(((&chpldev_taskTable)->addr)->map);
+  chpl_gen_comm_get(((void*)(&call_tmp7)), chpl_nodeFromLocaleID(&((chpl_macro_tmp_1357).locale), INT64(0), NULL), (chpl_macro_tmp_1357).addr, sizeof(chpl____wide_DefaultAssociativeArr_chpldev_Task_chpl_taskID_t_F), -1, INT64(1), INT64(106), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+  call_tmp8 = call_tmp7;
+  ret = call_tmp8;
+  chpl_check_nil((&ret)->addr, INT64(106), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+  wrap_call_tmp2 = dsiAccess(&ret, taskID);
+  (&this8)->state = taskState_pending;
+  (&this8)->lineno = UINT32(0);
+  T = "";
+  (&this8)->filename = T;
+  (&this8)->tl_info = UINT64(0);
+  (&this8)->state = taskState_pending;
+  (&this8)->lineno = lineno;
+  (&this8)->filename = filename;
+  (&this8)->tl_info = tl_info;
+  wrap_call_tmp3 = _construct_chpldev_Task(taskState_pending, lineno, filename, tl_info, &this8);
+  chpl___ASSIGN_5(&wrap_call_tmp2, &wrap_call_tmp3);
+  _end_chpldev_taskTable_add:;
+  return;
+}
+
+/* ChapelTaskTable.chpl:110 */
+void chpldev_taskTable_remove(chpl_taskID_t taskID) {
+  chpl____wide_object call_tmp = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl_bool call_tmp2;
+  chpl_bool T;
+  chpl____wide_DefaultAssociativeDom_chpl_taskID_t_F call_tmp3 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl_bool wrap_call_tmp;
+  chpl_bool call_tmp4;
+  chpl_bool call_tmp5;
+  chpl____wide_DefaultAssociativeDom_chpl_taskID_t_F call_tmp6 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide_object chpl_macro_tmp_1358;
+  chpl____wide__ref_DefaultAssociativeDom_chpl_taskID_t_F chpl_macro_tmp_1359;
+  chpl____wide__ref_DefaultAssociativeDom_chpl_taskID_t_F chpl_macro_tmp_1360;
+  chpl_macro_tmp_1358.locale = (&chpldev_taskTable)->locale;
+  chpl_macro_tmp_1358.addr = ((object)((&chpldev_taskTable)->addr));
+  call_tmp = chpl_macro_tmp_1358;
+  call_tmp2 = (&call_tmp)->addr == nil;
+  if (call_tmp2) {
+    T = true;
+  } else {
+    chpl_check_nil((&chpldev_taskTable)->addr, INT64(112), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+    chpl_macro_tmp_1359.locale = (&chpldev_taskTable)->locale;
+    chpl_macro_tmp_1359.addr = &(((&chpldev_taskTable)->addr)->dom);
+    chpl_gen_comm_get(((void*)(&call_tmp3)), chpl_nodeFromLocaleID(&((chpl_macro_tmp_1359).locale), INT64(0), NULL), (chpl_macro_tmp_1359).addr, sizeof(chpl____wide_DefaultAssociativeDom_chpl_taskID_t_F), -1, INT64(1), INT64(112), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+    chpl_check_nil((&call_tmp3)->addr, INT64(112), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+    wrap_call_tmp = member2(&call_tmp3, taskID);
+    call_tmp4 = (! wrap_call_tmp);
+    T = call_tmp4;
+  }
+  if (T) {
+    goto _end_chpldev_taskTable_remove;
+  }
+  call_tmp5 = chpl_task_getSerial();
+  chpl_task_setSerial(true);
+  chpl_check_nil((&chpldev_taskTable)->addr, INT64(119), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+  chpl_macro_tmp_1360.locale = (&chpldev_taskTable)->locale;
+  chpl_macro_tmp_1360.addr = &(((&chpldev_taskTable)->addr)->dom);
+  chpl_gen_comm_get(((void*)(&call_tmp6)), chpl_nodeFromLocaleID(&((chpl_macro_tmp_1360).locale), INT64(0), NULL), (chpl_macro_tmp_1360).addr, sizeof(chpl____wide_DefaultAssociativeDom_chpl_taskID_t_F), -1, INT64(1), INT64(119), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+  chpl_check_nil((&call_tmp6)->addr, INT64(119), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+  remove2(&call_tmp6, taskID);
+  chpl_task_setSerial(call_tmp5);
+  _end_chpldev_taskTable_remove:;
+  return;
+}
+
+/* ChapelTaskTable.chpl:122 */
+void chpldev_taskTable_set_active(chpl_taskID_t taskID) {
+  chpl____wide_object call_tmp = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl_bool call_tmp2;
+  chpl_bool T;
+  chpl____wide_DefaultAssociativeDom_chpl_taskID_t_F call_tmp3 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl_bool wrap_call_tmp;
+  chpl_bool call_tmp4;
+  chpl____wide_DefaultAssociativeArr_chpldev_Task_chpl_taskID_t_F call_tmp5 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide_DefaultAssociativeArr_chpldev_Task_chpl_taskID_t_F call_tmp6 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide_DefaultAssociativeArr_chpldev_Task_chpl_taskID_t_F ret = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide__ref_chpldev_Task wrap_call_tmp2 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide__ref_taskState call_tmp7 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide_object chpl_macro_tmp_1361;
+  chpl____wide__ref_DefaultAssociativeDom_chpl_taskID_t_F chpl_macro_tmp_1362;
+  chpl____wide__ref_DefaultAssociativeArr_chpldev_Task_chpl_taskID_t_F chpl_macro_tmp_1363;
+  chpl____wide__ref_taskState chpl_macro_tmp_1364;
+  taskState chpl_macro_tmp_1365;
+  chpl_macro_tmp_1361.locale = (&chpldev_taskTable)->locale;
+  chpl_macro_tmp_1361.addr = ((object)((&chpldev_taskTable)->addr));
+  call_tmp = chpl_macro_tmp_1361;
+  call_tmp2 = (&call_tmp)->addr == nil;
+  if (call_tmp2) {
+    T = true;
+  } else {
+    chpl_check_nil((&chpldev_taskTable)->addr, INT64(124), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+    chpl_macro_tmp_1362.locale = (&chpldev_taskTable)->locale;
+    chpl_macro_tmp_1362.addr = &(((&chpldev_taskTable)->addr)->dom);
+    chpl_gen_comm_get(((void*)(&call_tmp3)), chpl_nodeFromLocaleID(&((chpl_macro_tmp_1362).locale), INT64(0), NULL), (chpl_macro_tmp_1362).addr, sizeof(chpl____wide_DefaultAssociativeDom_chpl_taskID_t_F), -1, INT64(1), INT64(124), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+    chpl_check_nil((&call_tmp3)->addr, INT64(124), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+    wrap_call_tmp = member2(&call_tmp3, taskID);
+    call_tmp4 = (! wrap_call_tmp);
+    T = call_tmp4;
+  }
+  if (T) {
+    goto _end_chpldev_taskTable_set_active;
+  }
+  chpl_check_nil((&chpldev_taskTable)->addr, INT64(127), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+  chpl_macro_tmp_1363.locale = (&chpldev_taskTable)->locale;
+  chpl_macro_tmp_1363.addr = &(((&chpldev_taskTable)->addr)->map);
+  chpl_gen_comm_get(((void*)(&call_tmp5)), chpl_nodeFromLocaleID(&((chpl_macro_tmp_1363).locale), INT64(0), NULL), (chpl_macro_tmp_1363).addr, sizeof(chpl____wide_DefaultAssociativeArr_chpldev_Task_chpl_taskID_t_F), -1, INT64(1), INT64(127), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+  call_tmp6 = call_tmp5;
+  ret = call_tmp6;
+  chpl_check_nil((&ret)->addr, INT64(127), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+  wrap_call_tmp2 = dsiAccess(&ret, taskID);
+  chpl_macro_tmp_1364.locale = (wrap_call_tmp2).locale;
+  chpl_macro_tmp_1364.addr = &(((wrap_call_tmp2).addr)->state);
+  call_tmp7 = chpl_macro_tmp_1364;
+  chpl_macro_tmp_1365 = taskState_active;
+  chpl_gen_comm_put(((void*)(&chpl_macro_tmp_1365)), chpl_nodeFromLocaleID(&((call_tmp7).locale), INT64(0), NULL), (call_tmp7).addr, sizeof(taskState), -1, INT64(1), INT64(127), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+  _end_chpldev_taskTable_set_active:;
+  return;
+}
+
+/* ChapelTaskTable.chpl:130 */
+void chpldev_taskTable_set_suspended(chpl_taskID_t taskID) {
+  chpl____wide_object call_tmp = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl_bool call_tmp2;
+  chpl_bool T;
+  chpl____wide_DefaultAssociativeDom_chpl_taskID_t_F call_tmp3 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl_bool wrap_call_tmp;
+  chpl_bool call_tmp4;
+  chpl____wide_DefaultAssociativeArr_chpldev_Task_chpl_taskID_t_F call_tmp5 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide_DefaultAssociativeArr_chpldev_Task_chpl_taskID_t_F call_tmp6 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide_DefaultAssociativeArr_chpldev_Task_chpl_taskID_t_F ret = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide__ref_chpldev_Task wrap_call_tmp2 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide__ref_taskState call_tmp7 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide_object chpl_macro_tmp_1366;
+  chpl____wide__ref_DefaultAssociativeDom_chpl_taskID_t_F chpl_macro_tmp_1367;
+  chpl____wide__ref_DefaultAssociativeArr_chpldev_Task_chpl_taskID_t_F chpl_macro_tmp_1368;
+  chpl____wide__ref_taskState chpl_macro_tmp_1369;
+  taskState chpl_macro_tmp_1370;
+  chpl_macro_tmp_1366.locale = (&chpldev_taskTable)->locale;
+  chpl_macro_tmp_1366.addr = ((object)((&chpldev_taskTable)->addr));
+  call_tmp = chpl_macro_tmp_1366;
+  call_tmp2 = (&call_tmp)->addr == nil;
+  if (call_tmp2) {
+    T = true;
+  } else {
+    chpl_check_nil((&chpldev_taskTable)->addr, INT64(132), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+    chpl_macro_tmp_1367.locale = (&chpldev_taskTable)->locale;
+    chpl_macro_tmp_1367.addr = &(((&chpldev_taskTable)->addr)->dom);
+    chpl_gen_comm_get(((void*)(&call_tmp3)), chpl_nodeFromLocaleID(&((chpl_macro_tmp_1367).locale), INT64(0), NULL), (chpl_macro_tmp_1367).addr, sizeof(chpl____wide_DefaultAssociativeDom_chpl_taskID_t_F), -1, INT64(1), INT64(132), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+    chpl_check_nil((&call_tmp3)->addr, INT64(132), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+    wrap_call_tmp = member2(&call_tmp3, taskID);
+    call_tmp4 = (! wrap_call_tmp);
+    T = call_tmp4;
+  }
+  if (T) {
+    goto _end_chpldev_taskTable_set_suspended;
+  }
+  chpl_check_nil((&chpldev_taskTable)->addr, INT64(135), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+  chpl_macro_tmp_1368.locale = (&chpldev_taskTable)->locale;
+  chpl_macro_tmp_1368.addr = &(((&chpldev_taskTable)->addr)->map);
+  chpl_gen_comm_get(((void*)(&call_tmp5)), chpl_nodeFromLocaleID(&((chpl_macro_tmp_1368).locale), INT64(0), NULL), (chpl_macro_tmp_1368).addr, sizeof(chpl____wide_DefaultAssociativeArr_chpldev_Task_chpl_taskID_t_F), -1, INT64(1), INT64(135), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+  call_tmp6 = call_tmp5;
+  ret = call_tmp6;
+  chpl_check_nil((&ret)->addr, INT64(135), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+  wrap_call_tmp2 = dsiAccess(&ret, taskID);
+  chpl_macro_tmp_1369.locale = (wrap_call_tmp2).locale;
+  chpl_macro_tmp_1369.addr = &(((wrap_call_tmp2).addr)->state);
+  call_tmp7 = chpl_macro_tmp_1369;
+  chpl_macro_tmp_1370 = taskState_suspended;
+  chpl_gen_comm_put(((void*)(&chpl_macro_tmp_1370)), chpl_nodeFromLocaleID(&((call_tmp7).locale), INT64(0), NULL), (call_tmp7).addr, sizeof(taskState), -1, INT64(1), INT64(135), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+  _end_chpldev_taskTable_set_suspended:;
+  return;
+}
+
+/* ChapelTaskTable.chpl:138 */
+uint64_t chpldev_taskTable_get_tl_info(chpl_taskID_t taskID) {
+  uint64_t ret;
+  chpl____wide_object call_tmp = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl_bool call_tmp2;
+  chpl_bool T;
+  chpl____wide_DefaultAssociativeDom_chpl_taskID_t_F call_tmp3 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl_bool wrap_call_tmp;
+  chpl_bool call_tmp4;
+  chpl____wide_DefaultAssociativeArr_chpldev_Task_chpl_taskID_t_F call_tmp5 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide_DefaultAssociativeArr_chpldev_Task_chpl_taskID_t_F call_tmp6 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide_DefaultAssociativeArr_chpldev_Task_chpl_taskID_t_F ret2 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide__ref_chpldev_Task wrap_call_tmp2 = {CHPL_LOCALEID_T_INIT, NULL};
+  uint64_t ret3;
+  chpl____wide_object chpl_macro_tmp_1371;
+  chpl____wide__ref_DefaultAssociativeDom_chpl_taskID_t_F chpl_macro_tmp_1372;
+  chpl____wide__ref_DefaultAssociativeArr_chpldev_Task_chpl_taskID_t_F chpl_macro_tmp_1373;
+  chpl____wide__ref_uint64_t chpl_macro_tmp_1374;
+  chpl_macro_tmp_1371.locale = (&chpldev_taskTable)->locale;
+  chpl_macro_tmp_1371.addr = ((object)((&chpldev_taskTable)->addr));
+  call_tmp = chpl_macro_tmp_1371;
+  call_tmp2 = (&call_tmp)->addr == nil;
+  if (call_tmp2) {
+    T = true;
+  } else {
+    chpl_check_nil((&chpldev_taskTable)->addr, INT64(140), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+    chpl_macro_tmp_1372.locale = (&chpldev_taskTable)->locale;
+    chpl_macro_tmp_1372.addr = &(((&chpldev_taskTable)->addr)->dom);
+    chpl_gen_comm_get(((void*)(&call_tmp3)), chpl_nodeFromLocaleID(&((chpl_macro_tmp_1372).locale), INT64(0), NULL), (chpl_macro_tmp_1372).addr, sizeof(chpl____wide_DefaultAssociativeDom_chpl_taskID_t_F), -1, INT64(1), INT64(140), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+    chpl_check_nil((&call_tmp3)->addr, INT64(140), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+    wrap_call_tmp = member2(&call_tmp3, taskID);
+    call_tmp4 = (! wrap_call_tmp);
+    T = call_tmp4;
+  }
+  if (T) {
+    ret = UINT64(0);
+    goto _end_chpldev_taskTable_get_tl_info;
+  }
+  chpl_check_nil((&chpldev_taskTable)->addr, INT64(143), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+  chpl_macro_tmp_1373.locale = (&chpldev_taskTable)->locale;
+  chpl_macro_tmp_1373.addr = &(((&chpldev_taskTable)->addr)->map);
+  chpl_gen_comm_get(((void*)(&call_tmp5)), chpl_nodeFromLocaleID(&((chpl_macro_tmp_1373).locale), INT64(0), NULL), (chpl_macro_tmp_1373).addr, sizeof(chpl____wide_DefaultAssociativeArr_chpldev_Task_chpl_taskID_t_F), -1, INT64(1), INT64(143), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+  call_tmp6 = call_tmp5;
+  ret2 = call_tmp6;
+  chpl_check_nil((&ret2)->addr, INT64(143), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+  wrap_call_tmp2 = dsiAccess(&ret2, taskID);
+  chpl_macro_tmp_1374.locale = (wrap_call_tmp2).locale;
+  chpl_macro_tmp_1374.addr = &(((wrap_call_tmp2).addr)->tl_info);
+  chpl_gen_comm_get(((void*)(&ret3)), chpl_nodeFromLocaleID(&((chpl_macro_tmp_1374).locale), INT64(0), NULL), (chpl_macro_tmp_1374).addr, sizeof(uint64_t), -1, INT64(1), INT64(143), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+  ret = ret3;
+  _end_chpldev_taskTable_get_tl_info:;
+  return ret;
+}
+
+/* ChapelTaskTable.chpl:146 */
+void chpldev_taskTable_print(void) {
+  channel_T_dynamic_T local_stderr;
+  chpl____wide_object call_tmp = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl_bool call_tmp2;
+  chpl____wide_DefaultAssociativeDom_chpl_taskID_t_F call_tmp3 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide_DefaultAssociativeDom_chpl_taskID_t_F call_tmp4 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide_DefaultAssociativeDom_chpl_taskID_t_F ret = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide_DefaultAssociativeDom_chpl_taskID_t_F _ic__F0_this = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide_DefaultRectangularArr_chpl_TableEntry_chpl_taskID_t_1_int64_t_F call_tmp_F1_tab = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide_DefaultAssociativeDom_chpl_taskID_t_F this8 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide_DefaultRectangularArr_chpl_TableEntry_chpl_taskID_t_1_int64_t_F call_tmp5 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide_DefaultRectangularArr_chpl_TableEntry_chpl_taskID_t_1_int64_t_F wrap_call_tmp_F1_tab = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide_DefaultRectangularArr_chpl_TableEntry_chpl_taskID_t_1_int64_t_F T = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide_DefaultRectangularArr_chpl_TableEntry_chpl_taskID_t_1_int64_t_F T2 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide_DefaultRectangularArr_chpl_TableEntry_chpl_taskID_t_1_int64_t_F _ic__F1_tab = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide_DefaultRectangularDom_1_int64_t_F call_tmp6 = {CHPL_LOCALEID_T_INIT, NULL};
+  _ref_DefaultRectangularDom_1_int64_t_F ret_to_arg_ref_tmp_ = NULL;
+  chpl____wide_DefaultRectangularDom_1_int64_t_F ret2 = {CHPL_LOCALEID_T_INIT, NULL};
+  _tuple_1_star_int64_t default_argoffset;
+  _ref__tuple_1_star_int64_t ret_to_arg_ref_tmp_2 = NULL;
+  chpl____wide_DefaultRectangularDom_1_int64_t_F this9 = {CHPL_LOCALEID_T_INIT, NULL};
+  range_int64_t_bounded_F ret_x1;
+  chpl____wide__ref__tuple_1_star_range_int64_t_bounded_F ret_ = {CHPL_LOCALEID_T_INIT, NULL};
+  range_int64_t_bounded_F _ic__F0_this2;
+  rangeBase_int64_t_bounded_F T3;
+  rangeBase_int64_t_bounded_F _ic__F0_this3;
+  int64_t i;
+  int64_t ret3;
+  int64_t type_tmp;
+  int64_t end;
+  int64_t T4;
+  int64_t ret4;
+  int64_t ret5;
+  chpl_bool call_tmp7;
+  int64_t ret6;
+  int64_t call_tmp8;
+  _ref_int64_t _ref_tmp_ = NULL;
+  chpl_bool T5;
+  chpl_bool call_tmp9;
+  chpl____wide_DefaultRectangularArr_chpl_TableEntry_chpl_taskID_t_1_int64_t_F tab = {CHPL_LOCALEID_T_INIT, NULL};
+  _tuple_1_star_int64_t i2;
+  _tuple_1_star_int64_t this10;
+  chpl____wide_DefaultRectangularArr_chpl_TableEntry_chpl_taskID_t_1_int64_t_F call_tmp10 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide_DefaultRectangularArr_chpl_TableEntry_chpl_taskID_t_1_int64_t_F ret7 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl_bool wrap_call_tmp;
+  chpl____wide_DefaultRectangularDom_1_int64_t_F call_tmp11 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl_bool call_tmp12;
+  chpl____wide_chpl_string call_tmp13 = {CHPL_LOCALEID_T_INIT, NULL};
+  int64_t sum;
+  int64_t ret_x12;
+  chpl____wide__ref__tuple_1_star_int64_t ret_2 = {CHPL_LOCALEID_T_INIT, NULL};
+  int64_t call_tmp14;
+  int64_t call_tmp15;
+  _ref_int64_t _ref_tmp_2 = NULL;
+  chpl____wide__ddata_chpl_TableEntry_chpl_taskID_t call_tmp16 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide__ref_chpl_TableEntry_chpl_taskID_t call_tmp17 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl__hash_status ret8;
+  int64_t call_tmp18;
+  int64_t call_tmp19;
+  chpl_bool call_tmp20;
+  chpl____wide_DefaultAssociativeDom_chpl_taskID_t_F this11 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide_DefaultRectangularArr_chpl_TableEntry_chpl_taskID_t_1_int64_t_F call_tmp21 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide_DefaultRectangularArr_chpl_TableEntry_chpl_taskID_t_1_int64_t_F call_tmp22 = {CHPL_LOCALEID_T_INIT, NULL};
+  _tuple_1_star_int64_t i3;
+  _tuple_1_star_int64_t this12;
+  chpl____wide_DefaultRectangularArr_chpl_TableEntry_chpl_taskID_t_1_int64_t_F call_tmp23 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide_DefaultRectangularArr_chpl_TableEntry_chpl_taskID_t_1_int64_t_F ret9 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl_bool wrap_call_tmp2;
+  chpl____wide_DefaultRectangularDom_1_int64_t_F call_tmp24 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl_bool call_tmp25;
+  chpl____wide_chpl_string call_tmp26 = {CHPL_LOCALEID_T_INIT, NULL};
+  int64_t sum2;
+  int64_t ret_x13;
+  chpl____wide__ref__tuple_1_star_int64_t ret_3 = {CHPL_LOCALEID_T_INIT, NULL};
+  int64_t call_tmp27;
+  int64_t call_tmp28;
+  _ref_int64_t _ref_tmp_3 = NULL;
+  chpl____wide__ddata_chpl_TableEntry_chpl_taskID_t call_tmp29 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide__ref_chpl_TableEntry_chpl_taskID_t call_tmp30 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl_taskID_t ret10;
+  chpl____wide_DefaultAssociativeArr_chpldev_Task_chpl_taskID_t_F call_tmp31 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide_DefaultAssociativeArr_chpldev_Task_chpl_taskID_t_F call_tmp32 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide_DefaultAssociativeArr_chpldev_Task_chpl_taskID_t_F ret11 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide__ref_chpldev_Task wrap_call_tmp3 = {CHPL_LOCALEID_T_INIT, NULL};
+  c_string ret12;
+  chpl____wide_DefaultAssociativeArr_chpldev_Task_chpl_taskID_t_F call_tmp33 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide_DefaultAssociativeArr_chpldev_Task_chpl_taskID_t_F call_tmp34 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide_DefaultAssociativeArr_chpldev_Task_chpl_taskID_t_F ret13 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide__ref_chpldev_Task wrap_call_tmp4 = {CHPL_LOCALEID_T_INIT, NULL};
+  uint32_t ret14;
+  chpl____wide_DefaultAssociativeArr_chpldev_Task_chpl_taskID_t_F call_tmp35 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide_DefaultAssociativeArr_chpldev_Task_chpl_taskID_t_F call_tmp36 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide_DefaultAssociativeArr_chpldev_Task_chpl_taskID_t_F ret15 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide__ref_chpldev_Task wrap_call_tmp5 = {CHPL_LOCALEID_T_INIT, NULL};
+  taskState ret16;
+  _ref_channel_T_dynamic_T _ref_tmp_4 = NULL;
+  chpl____wide_chpl_string call_tmp37 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide_chpl_string call_tmp38 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide_chpl_string call_tmp39 = {CHPL_LOCALEID_T_INIT, NULL};
+  int64_t call_tmp40;
+  _ref_int64_t _ref_tmp_5 = NULL;
+  chpl_bool call_tmp41;
+  chpl____wide_object chpl_macro_tmp_1375;
+  chpl____wide__ref_DefaultAssociativeDom_chpl_taskID_t_F chpl_macro_tmp_1376;
+  chpl____wide__ref_DefaultRectangularArr_chpl_TableEntry_chpl_taskID_t_1_int64_t_F chpl_macro_tmp_1377;
+  chpl____wide__ref__tuple_1_star_range_int64_t_bounded_F chpl_macro_tmp_1378;
+  chpl____wide__ref_range_int64_t_bounded_F chpl_macro_tmp_1379;
+  chpl____wide__ref_DefaultRectangularDom_1_int64_t_F chpl_macro_tmp_1380;
+  chpl____wide__ref__tuple_1_star_int64_t chpl_macro_tmp_1381;
+  chpl____wide__ref_int64_t chpl_macro_tmp_1382;
+  chpl____wide__ref__ddata_chpl_TableEntry_chpl_taskID_t chpl_macro_tmp_1383;
+  chpl____wide__ref_chpl_TableEntry_chpl_taskID_t chpl_macro_tmp_1384;
+  chpl____wide__ref_chpl__hash_status chpl_macro_tmp_1385;
+  chpl____wide__ref_DefaultRectangularArr_chpl_TableEntry_chpl_taskID_t_1_int64_t_F chpl_macro_tmp_1386;
+  chpl____wide__ref_DefaultRectangularDom_1_int64_t_F chpl_macro_tmp_1387;
+  chpl____wide__ref__tuple_1_star_int64_t chpl_macro_tmp_1388;
+  chpl____wide__ref_int64_t chpl_macro_tmp_1389;
+  chpl____wide__ref__ddata_chpl_TableEntry_chpl_taskID_t chpl_macro_tmp_1390;
+  chpl____wide__ref_chpl_TableEntry_chpl_taskID_t chpl_macro_tmp_1391;
+  chpl____wide__ref_chpl_taskID_t chpl_macro_tmp_1392;
+  chpl____wide__ref_DefaultAssociativeArr_chpldev_Task_chpl_taskID_t_F chpl_macro_tmp_1393;
+  chpl____wide__ref_c_string chpl_macro_tmp_1394;
+  chpl____wide__ref_DefaultAssociativeArr_chpldev_Task_chpl_taskID_t_F chpl_macro_tmp_1395;
+  chpl____wide__ref_uint32_t chpl_macro_tmp_1396;
+  chpl____wide__ref_DefaultAssociativeArr_chpldev_Task_chpl_taskID_t_F chpl_macro_tmp_1397;
+  chpl____wide__ref_taskState chpl_macro_tmp_1398;
+  local_stderr = stderr2;
+  chpl_macro_tmp_1375.locale = (&chpldev_taskTable)->locale;
+  chpl_macro_tmp_1375.addr = ((object)((&chpldev_taskTable)->addr));
+  call_tmp = chpl_macro_tmp_1375;
+  call_tmp2 = (&call_tmp)->addr == nil;
+  if (call_tmp2) {
+    goto _end_chpldev_taskTable_print;
+  }
+  chpl_check_nil((&chpldev_taskTable)->addr, INT64(150), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+  chpl_macro_tmp_1376.locale = (&chpldev_taskTable)->locale;
+  chpl_macro_tmp_1376.addr = &(((&chpldev_taskTable)->addr)->dom);
+  chpl_gen_comm_get(((void*)(&call_tmp3)), chpl_nodeFromLocaleID(&((chpl_macro_tmp_1376).locale), INT64(0), NULL), (chpl_macro_tmp_1376).addr, sizeof(chpl____wide_DefaultAssociativeDom_chpl_taskID_t_F), -1, INT64(1), INT64(150), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+  call_tmp4 = call_tmp3;
+  ret = call_tmp4;
+  _ic__F0_this = ret;
+  this8 = ret;
+  chpl_check_nil((&this8)->addr, INT64(150), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+  chpl_macro_tmp_1377.locale = (&this8)->locale;
+  chpl_macro_tmp_1377.addr = &(((&this8)->addr)->table);
+  chpl_gen_comm_get(((void*)(&call_tmp5)), chpl_nodeFromLocaleID(&((chpl_macro_tmp_1377).locale), INT64(0), NULL), (chpl_macro_tmp_1377).addr, sizeof(chpl____wide_DefaultRectangularArr_chpl_TableEntry_chpl_taskID_t_1_int64_t_F), -1, INT64(1), INT64(150), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+  T = chpl__autoCopy6(&call_tmp5);
+  wrap_call_tmp_F1_tab = T;
+  T2 = chpl__autoCopy6(&T);
+  call_tmp_F1_tab = T2;
+  chpl__autoDestroy6(&wrap_call_tmp_F1_tab);
+  _ic__F1_tab = T2;
+  ret_to_arg_ref_tmp_ = &call_tmp6;
+  chpl_check_nil((&T2)->addr, INT64(150), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+  _dom2(&T2, ret_to_arg_ref_tmp_);
+  ret2 = call_tmp6;
+  ret_to_arg_ref_tmp_2 = &default_argoffset;
+  createTuple(INT64(0), ret_to_arg_ref_tmp_2);
+  this9 = ret2;
+  chpl_check_nil((&this9)->addr, INT64(150), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+  chpl_macro_tmp_1378.locale = (&this9)->locale;
+  chpl_macro_tmp_1378.addr = &(((&this9)->addr)->ranges);
+  ret_ = chpl_macro_tmp_1378;
+  chpl_macro_tmp_1379.locale = (ret_).locale;
+  chpl_macro_tmp_1379.addr = (*((ret_).addr) + INT64(0));
+  chpl_gen_comm_get(((void*)(&ret_x1)), chpl_nodeFromLocaleID(&((chpl_macro_tmp_1379).locale), INT64(0), NULL), (chpl_macro_tmp_1379).addr, sizeof(range_int64_t_bounded_F), -1, INT64(1), INT64(150), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+  _ic__F0_this2 = ret_x1;
+  T3 = (&_ic__F0_this2)->_base;
+  _ic__F0_this3 = T3;
+  ret3 = (&_ic__F0_this3)->_low;
+  i = ret3;
+  type_tmp = INT64(0);
+  ret4 = (&_ic__F0_this3)->_low;
+  ret5 = (&_ic__F0_this3)->_high;
+  call_tmp7 = (ret4 > ret5);
+  if (call_tmp7) {
+    T4 = ret3;
+  } else {
+    ret6 = (&_ic__F0_this3)->_high;
+    call_tmp8 = (ret6 + INT64(1));
+    T4 = call_tmp8;
+  }
+  _ref_tmp_ = &type_tmp;
+  *(_ref_tmp_) = T4;
+  end = type_tmp;
+  call_tmp9 = (ret3 != type_tmp);
+  T5 = call_tmp9;
+  while (T5) {
+    tab = _ic__F1_tab;
+    *(this10 + INT64(0)) = i;
+    *(i2 + INT64(0)) = *(this10 + INT64(0));
+    ret7 = tab;
+    call_tmp10 = ret7;
+    chpl_check_nil((&call_tmp10)->addr, INT64(150), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+    chpl_macro_tmp_1380.locale = (&call_tmp10)->locale;
+    chpl_macro_tmp_1380.addr = &(((&call_tmp10)->addr)->dom);
+    chpl_gen_comm_get(((void*)(&call_tmp11)), chpl_nodeFromLocaleID(&((chpl_macro_tmp_1380).locale), INT64(0), NULL), (chpl_macro_tmp_1380).addr, sizeof(chpl____wide_DefaultRectangularDom_1_int64_t_F), -1, INT64(1), INT64(150), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+    chpl_check_nil((&call_tmp11)->addr, INT64(150), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+    wrap_call_tmp = dsiMember2(&call_tmp11, &this10);
+    call_tmp12 = (! wrap_call_tmp);
+    if (call_tmp12) {
+      wide_string_from_c_string(&call_tmp13, "array index out of bounds: ", INT64(0), INT64(0), INT64(150), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+      halt2(call_tmp13, &this10, INT64(150), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+    }
+    sum = INT64(0);
+    chpl_check_nil((&call_tmp10)->addr, INT64(150), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+    chpl_macro_tmp_1381.locale = (&call_tmp10)->locale;
+    chpl_macro_tmp_1381.addr = &(((&call_tmp10)->addr)->blk);
+    ret_2 = chpl_macro_tmp_1381;
+    chpl_macro_tmp_1382.locale = (ret_2).locale;
+    chpl_macro_tmp_1382.addr = (*((ret_2).addr) + INT64(0));
+    chpl_gen_comm_get(((void*)(&ret_x12)), chpl_nodeFromLocaleID(&((chpl_macro_tmp_1382).locale), INT64(0), NULL), (chpl_macro_tmp_1382).addr, sizeof(int64_t), -1, INT64(1), INT64(150), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+    call_tmp14 = *(i2 + INT64(0));
+    call_tmp15 = (call_tmp14 * ret_x12);
+    _ref_tmp_2 = &sum;
+    *(_ref_tmp_2) += call_tmp15;
+    chpl_check_nil((&call_tmp10)->addr, INT64(150), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+    chpl_macro_tmp_1383.locale = (&call_tmp10)->locale;
+    chpl_macro_tmp_1383.addr = &(((&call_tmp10)->addr)->shiftedData);
+    chpl_gen_comm_get(((void*)(&call_tmp16)), chpl_nodeFromLocaleID(&((chpl_macro_tmp_1383).locale), INT64(0), NULL), (chpl_macro_tmp_1383).addr, sizeof(chpl____wide__ddata_chpl_TableEntry_chpl_taskID_t), -1, INT64(1), INT64(150), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+    chpl_macro_tmp_1384.locale = (&call_tmp16)->locale;
+    chpl_macro_tmp_1384.addr = ((&call_tmp16)->addr + sum);
+    call_tmp17 = chpl_macro_tmp_1384;
+    chpl_macro_tmp_1385.locale = (call_tmp17).locale;
+    chpl_macro_tmp_1385.addr = &(((call_tmp17).addr)->status);
+    chpl_gen_comm_get(((void*)(&ret8)), chpl_nodeFromLocaleID(&((chpl_macro_tmp_1385).locale), INT64(0), NULL), (chpl_macro_tmp_1385).addr, sizeof(chpl__hash_status), -1, INT64(1), INT64(150), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+    call_tmp18 = ((int64_t)(chpl__hash_status_full));
+    call_tmp19 = ((int64_t)(ret8));
+    call_tmp20 = (call_tmp19 == call_tmp18);
+    if (call_tmp20) {
+      this11 = _ic__F0_this;
+      chpl_check_nil((&this11)->addr, INT64(150), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+      chpl_macro_tmp_1386.locale = (&this11)->locale;
+      chpl_macro_tmp_1386.addr = &(((&this11)->addr)->table);
+      chpl_gen_comm_get(((void*)(&call_tmp21)), chpl_nodeFromLocaleID(&((chpl_macro_tmp_1386).locale), INT64(0), NULL), (chpl_macro_tmp_1386).addr, sizeof(chpl____wide_DefaultRectangularArr_chpl_TableEntry_chpl_taskID_t_1_int64_t_F), -1, INT64(1), INT64(150), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+      call_tmp22 = call_tmp21;
+      *(this12 + INT64(0)) = i;
+      *(i3 + INT64(0)) = *(this12 + INT64(0));
+      ret9 = call_tmp22;
+      call_tmp23 = ret9;
+      chpl_check_nil((&call_tmp23)->addr, INT64(150), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+      chpl_macro_tmp_1387.locale = (&call_tmp23)->locale;
+      chpl_macro_tmp_1387.addr = &(((&call_tmp23)->addr)->dom);
+      chpl_gen_comm_get(((void*)(&call_tmp24)), chpl_nodeFromLocaleID(&((chpl_macro_tmp_1387).locale), INT64(0), NULL), (chpl_macro_tmp_1387).addr, sizeof(chpl____wide_DefaultRectangularDom_1_int64_t_F), -1, INT64(1), INT64(150), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+      chpl_check_nil((&call_tmp24)->addr, INT64(150), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+      wrap_call_tmp2 = dsiMember2(&call_tmp24, &this12);
+      call_tmp25 = (! wrap_call_tmp2);
+      if (call_tmp25) {
+        wide_string_from_c_string(&call_tmp26, "array index out of bounds: ", INT64(0), INT64(0), INT64(150), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+        halt2(call_tmp26, &this12, INT64(150), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+      }
+      sum2 = INT64(0);
+      chpl_check_nil((&call_tmp23)->addr, INT64(150), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+      chpl_macro_tmp_1388.locale = (&call_tmp23)->locale;
+      chpl_macro_tmp_1388.addr = &(((&call_tmp23)->addr)->blk);
+      ret_3 = chpl_macro_tmp_1388;
+      chpl_macro_tmp_1389.locale = (ret_3).locale;
+      chpl_macro_tmp_1389.addr = (*((ret_3).addr) + INT64(0));
+      chpl_gen_comm_get(((void*)(&ret_x13)), chpl_nodeFromLocaleID(&((chpl_macro_tmp_1389).locale), INT64(0), NULL), (chpl_macro_tmp_1389).addr, sizeof(int64_t), -1, INT64(1), INT64(150), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+      call_tmp27 = *(i3 + INT64(0));
+      call_tmp28 = (call_tmp27 * ret_x13);
+      _ref_tmp_3 = &sum2;
+      *(_ref_tmp_3) += call_tmp28;
+      chpl_check_nil((&call_tmp23)->addr, INT64(150), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+      chpl_macro_tmp_1390.locale = (&call_tmp23)->locale;
+      chpl_macro_tmp_1390.addr = &(((&call_tmp23)->addr)->shiftedData);
+      chpl_gen_comm_get(((void*)(&call_tmp29)), chpl_nodeFromLocaleID(&((chpl_macro_tmp_1390).locale), INT64(0), NULL), (chpl_macro_tmp_1390).addr, sizeof(chpl____wide__ddata_chpl_TableEntry_chpl_taskID_t), -1, INT64(1), INT64(150), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+      chpl_macro_tmp_1391.locale = (&call_tmp29)->locale;
+      chpl_macro_tmp_1391.addr = ((&call_tmp29)->addr + sum2);
+      call_tmp30 = chpl_macro_tmp_1391;
+      chpl_macro_tmp_1392.locale = (call_tmp30).locale;
+      chpl_macro_tmp_1392.addr = &(((call_tmp30).addr)->idx);
+      chpl_gen_comm_get(((void*)(&ret10)), chpl_nodeFromLocaleID(&((chpl_macro_tmp_1392).locale), INT64(0), NULL), (chpl_macro_tmp_1392).addr, sizeof(chpl_taskID_t), -1, INT64(1), INT64(150), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+      chpl_check_nil((&chpldev_taskTable)->addr, INT64(151), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+      chpl_macro_tmp_1393.locale = (&chpldev_taskTable)->locale;
+      chpl_macro_tmp_1393.addr = &(((&chpldev_taskTable)->addr)->map);
+      chpl_gen_comm_get(((void*)(&call_tmp31)), chpl_nodeFromLocaleID(&((chpl_macro_tmp_1393).locale), INT64(0), NULL), (chpl_macro_tmp_1393).addr, sizeof(chpl____wide_DefaultAssociativeArr_chpldev_Task_chpl_taskID_t_F), -1, INT64(1), INT64(151), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+      call_tmp32 = call_tmp31;
+      ret11 = call_tmp32;
+      chpl_check_nil((&ret11)->addr, INT64(151), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+      wrap_call_tmp3 = dsiAccess(&ret11, ret10);
+      chpl_macro_tmp_1394.locale = (wrap_call_tmp3).locale;
+      chpl_macro_tmp_1394.addr = &(((wrap_call_tmp3).addr)->filename);
+      chpl_gen_comm_get(((void*)(&ret12)), chpl_nodeFromLocaleID(&((chpl_macro_tmp_1394).locale), INT64(0), NULL), (chpl_macro_tmp_1394).addr, sizeof(c_string), -1, INT64(1), INT64(151), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+      chpl_check_nil((&chpldev_taskTable)->addr, INT64(152), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+      chpl_macro_tmp_1395.locale = (&chpldev_taskTable)->locale;
+      chpl_macro_tmp_1395.addr = &(((&chpldev_taskTable)->addr)->map);
+      chpl_gen_comm_get(((void*)(&call_tmp33)), chpl_nodeFromLocaleID(&((chpl_macro_tmp_1395).locale), INT64(0), NULL), (chpl_macro_tmp_1395).addr, sizeof(chpl____wide_DefaultAssociativeArr_chpldev_Task_chpl_taskID_t_F), -1, INT64(1), INT64(152), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+      call_tmp34 = call_tmp33;
+      ret13 = call_tmp34;
+      chpl_check_nil((&ret13)->addr, INT64(152), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+      wrap_call_tmp4 = dsiAccess(&ret13, ret10);
+      chpl_macro_tmp_1396.locale = (wrap_call_tmp4).locale;
+      chpl_macro_tmp_1396.addr = &(((wrap_call_tmp4).addr)->lineno);
+      chpl_gen_comm_get(((void*)(&ret14)), chpl_nodeFromLocaleID(&((chpl_macro_tmp_1396).locale), INT64(0), NULL), (chpl_macro_tmp_1396).addr, sizeof(uint32_t), -1, INT64(1), INT64(152), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+      chpl_check_nil((&chpldev_taskTable)->addr, INT64(153), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+      chpl_macro_tmp_1397.locale = (&chpldev_taskTable)->locale;
+      chpl_macro_tmp_1397.addr = &(((&chpldev_taskTable)->addr)->map);
+      chpl_gen_comm_get(((void*)(&call_tmp35)), chpl_nodeFromLocaleID(&((chpl_macro_tmp_1397).locale), INT64(0), NULL), (chpl_macro_tmp_1397).addr, sizeof(chpl____wide_DefaultAssociativeArr_chpldev_Task_chpl_taskID_t_F), -1, INT64(1), INT64(153), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+      call_tmp36 = call_tmp35;
+      ret15 = call_tmp36;
+      chpl_check_nil((&ret15)->addr, INT64(153), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+      wrap_call_tmp5 = dsiAccess(&ret15, ret10);
+      chpl_macro_tmp_1398.locale = (wrap_call_tmp5).locale;
+      chpl_macro_tmp_1398.addr = &(((wrap_call_tmp5).addr)->state);
+      chpl_gen_comm_get(((void*)(&ret16)), chpl_nodeFromLocaleID(&((chpl_macro_tmp_1398).locale), INT64(0), NULL), (chpl_macro_tmp_1398).addr, sizeof(taskState), -1, INT64(1), INT64(153), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+      _ref_tmp_4 = &local_stderr;
+      wide_string_from_c_string(&call_tmp37, "- ", INT64(0), INT64(0), INT64(151), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+      wide_string_from_c_string(&call_tmp38, ":", INT64(0), INT64(0), INT64(151), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+      wide_string_from_c_string(&call_tmp39, " is ", INT64(0), INT64(0), INT64(151), "/home/kp167/chap-svn/modules/internal/ChapelTaskTable.chpl");
+      writeln5(_ref_tmp_4, call_tmp37, ret12, call_tmp38, ret14, call_tmp39, ret16);
+    }
+    call_tmp40 = (i + INT64(1));
+    _ref_tmp_5 = &i;
+    *(_ref_tmp_5) = call_tmp40;
+    call_tmp41 = (i != end);
+    T5 = call_tmp41;
+  }
+  chpl__autoDestroy2(&call_tmp6);
+  chpl__autoDestroy6(&call_tmp_F1_tab);
+  _end_chpldev_taskTable_print:;
+  return;
+}
+

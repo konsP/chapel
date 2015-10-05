@@ -1,0 +1,260 @@
+---(PID) NODE 1 PID 27017 
+---(PID) NODE 2 PID 15978 
+---(PID) NODE 0 PID 19909 
+MasterLocale: bwlf32   
+
+PROGRAM END ============= Time elapsed:0.000158 
+
+ pi = 3.14173 ----------on locale 0
+ pi = 3.14173 ----------on locale 0
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+---(PID) NODE 2 PID 16052 
+---(PID) NODE 1 PID 27043 
+---(PID) NODE 0 PID 19941 
+MasterLocale: bwlf32   
+
+PROGRAM END ============= Time elapsed:0.000154 
+
+ pi = 3.14173 ----------on locale 0
+ pi = 3.14173 ----------on locale 0
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+---(PID) NODE 2 PID 16098 
+---(PID) NODE 1 PID 19963 
+---(PID) NODE 0 PID 27078 
+MasterLocale: bwlf03   
+
+PROGRAM END ============= Time elapsed:0.000193 
+
+ pi = 3.14173 ----------on locale 0
+ pi = 3.14173 ----------on locale 0
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+---(PID) NODE 2 PID 16167 
+---(PID) NODE 1 PID 27104 
+---(PID) NODE 0 PID 19991 
+MasterLocale: bwlf32   
+
+PROGRAM END ============= Time elapsed:0.000179 
+
+ pi = 3.14173 ----------on locale 0
+ pi = 3.14173 ----------on locale 0
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+---(PID) NODE 2 PID 27170 
+---(PID) NODE 1 PID 16257 
+---(PID) NODE 0 PID 20061 
+MasterLocale: bwlf32   
+
+PROGRAM END ============= Time elapsed:0.000158 
+
+ pi = 3.14173 ----------on locale 0
+ pi = 3.14173 ----------on locale 0
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+---(PID) NODE 1 PID 16301 
+---(PID) NODE 2 PID 27192 
+---(PID) NODE 0 PID 20083 
+MasterLocale: bwlf32   
+
+PROGRAM END ============= Time elapsed:0.00016 
+
+ pi = 3.14173 ----------on locale 0
+ pi = 3.14173 ----------on locale 0
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+---(PID) NODE 2 PID 16368 
+---(PID) NODE 1 PID 27253 
+---(PID) NODE 0 PID 20135 
+MasterLocale: bwlf32   
+
+PROGRAM END ============= Time elapsed:0.000169 
+
+ pi = 3.14173 ----------on locale 0
+ pi = 3.14173 ----------on locale 0
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+---(PID) NODE 1 PID 20156 
+---(PID) NODE 2 PID 27269 
+---(PID) NODE 0 PID 16407 
+MasterLocale: bwlf31   
+
+PROGRAM END ============= Time elapsed:0.001538 
+
+ pi = 3.14173 ----------on locale 0
+ pi = 3.14173 ----------on locale 0
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+---(PID) NODE 1 PID 16454 
+---(PID) NODE 2 PID 27287 
+---(PID) NODE 0 PID 20173 
+MasterLocale: bwlf32   
+
+PROGRAM END ============= Time elapsed:0.000162 
+
+ pi = 3.14173 ----------on locale 0
+ pi = 3.14173 ----------on locale 0
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+---(PID) NODE 1 PID 27322 
+---(PID) NODE 2 PID 16489 
+---(PID) NODE 0 PID 20195 
+MasterLocale: bwlf32   
+
+PROGRAM END ============= Time elapsed:0.000189 
+
+ pi = 3.14173 ----------on locale 0
+ pi = 3.14173 ----------on locale 0
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+---(PID) NODE 2 PID 16543 
+---(PID) NODE 1 PID 20224 
+---(PID) NODE 0 PID 27344 
+MasterLocale: bwlf03   
+
+PROGRAM END ============= Time elapsed:0.000201 
+
+ pi = 3.14173 ----------on locale 0
+ pi = 3.14173 ----------on locale 0
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+---(PID) NODE 1 PID 27362 
+---(PID) NODE 2 PID 20242 
+---(PID) NODE 0 PID 16581 
+MasterLocale: bwlf31   
+
+PROGRAM END ============= Time elapsed:0.000155 
+
+ pi = 3.14173 ----------on locale 0
+ pi = 3.14173 ----------on locale 0
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+---(PID) NODE 1 PID 20262 
+---(PID) NODE 2 PID 27382 
+---(PID) NODE 0 PID 16627 
+MasterLocale: bwlf31   
+
+PROGRAM END ============= Time elapsed:0.000194 
+
+ pi = 3.14173 ----------on locale 0
+ pi = 3.14173 ----------on locale 0
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+---(PID) NODE 2 PID 16667 
+---(PID) NODE 1 PID 27416 
+---(PID) NODE 0 PID 20283 
+MasterLocale: bwlf32   
+
+PROGRAM END ============= Time elapsed:0.000199 
+
+ pi = 3.14173 ----------on locale 0
+ pi = 3.14173 ----------on locale 0
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+---(PID) NODE 2 PID 16707 
+---(PID) NODE 1 PID 27432 
+---(PID) NODE 0 PID 20305 
+MasterLocale: bwlf32   
+
+PROGRAM END ============= Time elapsed:0.0002 
+
+ pi = 3.14173 ----------on locale 0
+ pi = 3.14173 ----------on locale 0
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+---(PID) NODE 1 PID 27451 
+---(PID) NODE 2 PID 16743 
+---(PID) NODE 0 PID 20326 
+MasterLocale: bwlf32   
+
+PROGRAM END ============= Time elapsed:0.000183 
+
+ pi = 3.14173 ----------on locale 0
+ pi = 3.14173 ----------on locale 0
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+---(PID) NODE 1 PID 20353 
+---(PID) NODE 2 PID 16793 
+---(PID) NODE 0 PID 27485 
+MasterLocale: bwlf03   
+
+PROGRAM END ============= Time elapsed:0.000171 
+
+ pi = 3.14173 ----------on locale 0
+ pi = 3.14173 ----------on locale 0
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+---(PID) NODE 2 PID 16833 
+---(PID) NODE 1 PID 27503 
+---(PID) NODE 0 PID 20373 
+MasterLocale: bwlf32   
+
+PROGRAM END ============= Time elapsed:0.000189 
+
+ pi = 3.14173 ----------on locale 0
+ pi = 3.14173 ----------on locale 0
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+---(PID) NODE 1 PID 27522 
+---(PID) NODE 2 PID 16870 
+---(PID) NODE 0 PID 20394 
+MasterLocale: bwlf32   
+
+PROGRAM END ============= Time elapsed:0.000196 
+
+ pi = 3.14173 ----------on locale 0
+ pi = 3.14173 ----------on locale 0
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+---(PID) NODE 2 PID 16905 
+---(PID) NODE 1 PID 20416 
+---(PID) NODE 0 PID 27551 
+MasterLocale: bwlf03   
+
+PROGRAM END ============= Time elapsed:0.00018 
+
+ pi = 3.14173 ----------on locale 0
+ pi = 3.14173 ----------on locale 0
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 

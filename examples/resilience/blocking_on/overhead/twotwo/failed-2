@@ -1,0 +1,38 @@
+---(PID) NODE 1 PID 2618 
+---(PID) NODE 3 PID 15431 
+---(PID) NODE 2 PID 15043 
+---(PID) NODE 0 PID 4591 
+MasterLocale: bwlf03   
+
+ pi = 3.14173 ----------on locale 0
+ pi = 3.14173 ----------on locale 0
+ pi = 3.14173 ----------on locale 0
+ pi = 3.14173 ----------on locale 0
+PROGRAM END ============= Time elapsed:298.652 
+
+(sigUSR1_handler) 1 RECEIVED SIGUSR1
+(sigUSR1_handler) 2 RECEIVED SIGUSR1
+(sigUSR1_handler) 3 RECEIVED SIGUSR1
+
+real	5m20.153s
+user	0m0.006s
+sys	0m0.010s
+
+---(PID) NODE 1 PID 15535 
+---(PID) NODE 3 PID 15145 
+---(PID) NODE 2 PID 4707 
+---(PID) NODE 0 PID 2754 
+MasterLocale: bwlf04   
+
+ pi = 3.14173 ----------on locale 0
+ pi = 3.14173 ----------on locale 0
+ pi = 3.14173 ----------on locale 0
+ pi = 3.14173 ----------on locale 0
+PROGRAM END ============= Time elapsed:193.905 
+
+(sigUSR1_handler) 3 RECEIVED SIGUSR1
+(sigUSR1_handler) 1 RECEIVED SIGUSR1
+(sigUSR1_handler) 2 RECEIVED SIGUSR1
+
+real	3m35.789s
+user	0m0.006s

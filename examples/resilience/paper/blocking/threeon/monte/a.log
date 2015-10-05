@@ -1,0 +1,367 @@
+---(PID) NODE 1 PID 15693 
+---(PID) NODE 3 PID 30459 
+---(PID) NODE 2 PID 10370 
+---(PID) NODE 0 PID 5910 
+MasterLocale: bwlf31   
+
+arg= 1----------on locale 0
+arg= 2----------on locale 0
+arg= 3----------on locale 0
+PROGRAM END ============================= 
+
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+-- ID: 3  -- ALIVE 1 -- 
+--------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+--------------(SIGUSR2_handler) 2 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+--------------(SIGUSR2_handler) 3 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+---(PID) NODE 3 PID 30490 
+---(PID) NODE 1 PID 15723 
+---(PID) NODE 2 PID 5940 
+---(PID) NODE 0 PID 10402 
+MasterLocale: bwlf32   
+
+arg= 1----------on locale 0
+arg= 2----------on locale 0
+arg= 3----------on locale 0
+PROGRAM END ============================= 
+
+--------------(SIGUSR2_handler) 2 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+--------------(SIGUSR2_handler) 3 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+-- ID: 3  -- ALIVE 1 -- 
+--------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+---(PID) NODE 3 PID 15753 
+---(PID) NODE 1 PID 10433 
+---(PID) NODE 2 PID 30522 
+---(PID) NODE 0 PID 5970 
+MasterLocale: bwlf31   
+
+arg= 1----------on locale 0
+arg= 2----------on locale 0
+arg= 3----------on locale 0
+PROGRAM END ============================= 
+
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+-- ID: 3  -- ALIVE 1 -- 
+--------------(SIGUSR2_handler) 3 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+--------------(SIGUSR2_handler) 2 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+--------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+---(PID) NODE 1 PID 6001 
+---(PID) NODE 3 PID 15784 
+---(PID) NODE 2 PID 10464 
+---(PID) NODE 0 PID 30551 
+MasterLocale: bwlf03   
+
+arg= 1----------on locale 0
+arg= 2----------on locale 0
+arg= 3----------on locale 0
+PROGRAM END ============================= 
+
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+-- ID: 3  -- ALIVE 1 -- 
+--------------(SIGUSR2_handler) 2 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+--------------(SIGUSR2_handler) 3 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+--------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+---(PID) NODE 1 PID 6034 
+---(PID) NODE 2 PID 10502 
+---(PID) NODE 3 PID 15813 
+---(PID) NODE 0 PID 30581 
+MasterLocale: bwlf03   
+
+arg= 1----------on locale 0
+arg= 2----------on locale 0
+arg= 3----------on locale 0
+PROGRAM END ============================= 
+
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+-- ID: 3  -- ALIVE 1 -- 
+--------------(SIGUSR2_handler) 3 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+--------------(SIGUSR2_handler) 2 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+--------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+---(PID) NODE 3 PID 15845 
+---(PID) NODE 1 PID 30612 
+---(PID) NODE 2 PID 6073 
+---(PID) NODE 0 PID 10531 
+MasterLocale: bwlf32   
+
+arg= 1----------on locale 0
+arg= 2----------on locale 0
+arg= 3----------on locale 0
+PROGRAM END ============================= 
+
+--------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+--------------(SIGUSR2_handler) 3 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+--------------(SIGUSR2_handler) 2 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+-- ID: 3  -- ALIVE 1 -- 
+---(PID) NODE 3 PID 10563 
+---(PID) NODE 1 PID 30651 
+---(PID) NODE 2 PID 15883 
+---(PID) NODE 0 PID 6102 
+MasterLocale: bwlf31   
+
+arg= 1----------on locale 0
+arg= 2----------on locale 0
+arg= 3----------on locale 0
+PROGRAM END ============================= 
+
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+-- ID: 3  -- ALIVE 1 -- 
+--------------(SIGUSR2_handler) 2 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+--------------(SIGUSR2_handler) 3 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+--------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+---(PID) NODE 3 PID 30683 
+---(PID) NODE 1 PID 15913 
+---(PID) NODE 2 PID 6133 
+---(PID) NODE 0 PID 10593 
+MasterLocale: bwlf32   
+
+arg= 1----------on locale 0
+arg= 2----------on locale 0
+arg= 3----------on locale 0
+PROGRAM END ============================= 
+
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+-- ID: 3  -- ALIVE 1 -- 
+--------------(SIGUSR2_handler) 2 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+--------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+--------------(SIGUSR2_handler) 3 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+---(PID) NODE 3 PID 30712 
+---(PID) NODE 1 PID 15943 
+---(PID) NODE 2 PID 6174 
+---(PID) NODE 0 PID 10625 
+MasterLocale: bwlf32   
+
+arg= 1----------on locale 0
+arg= 2----------on locale 0
+arg= 3----------on locale 0
+PROGRAM END ============================= 
+
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+-- ID: 3  -- ALIVE 1 -- 
+--------------(SIGUSR2_handler) 2 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+--------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+--------------(SIGUSR2_handler) 3 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+---(PID) NODE 3 PID 15972 
+---(PID) NODE 1 PID 10664 
+---(PID) NODE 2 PID 30742 
+---(PID) NODE 0 PID 6207 
+MasterLocale: bwlf31   
+
+arg= 1----------on locale 0
+arg= 2----------on locale 0
+arg= 3----------on locale 0
+PROGRAM END ============================= 
+
+--------------(SIGUSR2_handler) 3 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+--------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+--------------(SIGUSR2_handler) 2 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+-- ID: 3  -- ALIVE 1 -- 
+---(PID) NODE 3 PID 10695 
+---(PID) NODE 2 PID 16004 
+---(PID) NODE 1 PID 30774 
+---(PID) NODE 0 PID 6240 
+MasterLocale: bwlf31   
+
+arg= 1----------on locale 0
+arg= 2----------on locale 0
+arg= 3----------on locale 0
+PROGRAM END ============================= 
+
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+-- ID: 3  -- ALIVE 1 -- 
+--------------(SIGUSR2_handler) 3 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+--------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+--------------(SIGUSR2_handler) 2 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+---(PID) NODE 3 PID 16033 
+---(PID) NODE 2 PID 6279 
+---(PID) NODE 1 PID 10727 
+---(PID) NODE 0 PID 30804 
+MasterLocale: bwlf03   
+
+arg= 1----------on locale 0
+arg= 2----------on locale 0
+arg= 3----------on locale 0
+PROGRAM END ============================= 
+
+--------------(SIGUSR2_handler) 2 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+-- ID: 3  -- ALIVE 1 -- 
+--------------(SIGUSR2_handler) 3 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+--------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+---(PID) NODE 1 PID 16063 
+---(PID) NODE 2 PID 10757 
+---(PID) NODE 3 PID 30846 
+---(PID) NODE 0 PID 6309 
+MasterLocale: bwlf31   
+
+arg= 1----------on locale 0
+arg= 2----------on locale 0
+arg= 3----------on locale 0
+PROGRAM END ============================= 
+
+--------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+--------------(SIGUSR2_handler) 2 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+--------------(SIGUSR2_handler) 3 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+-- ID: 3  -- ALIVE 1 -- 
+---(PID) NODE 3 PID 16103 
+---(PID) NODE 1 PID 10788 
+---(PID) NODE 2 PID 30875 
+---(PID) NODE 0 PID 6340 
+MasterLocale: bwlf31   
+
+arg= 1----------on locale 0
+arg= 2----------on locale 0
+arg= 3----------on locale 0
+PROGRAM END ============================= 
+
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+-- ID: 3  -- ALIVE 1 -- 
+--------------(SIGUSR2_handler) 2 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+--------------(SIGUSR2_handler) 3 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+--------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+bash: line 1: 10827 Killed                  './threeon_real' '__AMUDP_SLAVE_PROCESS__' 'amaterasu:56383' '-nl' '4'
+*** FATAL ERROR: Got an xSocket while spawning slave process: connection closed on recv() in recvAll() (0:Success)
+bash: line 1: 30900 Aborted                 './threeon_real' '__AMUDP_SLAVE_PROCESS__' 'amaterasu:56383' '-nl' '4'
+bash: line 1:  6373 User defined signal 2   './threeon_real' '__AMUDP_SLAVE_PROCESS__' 'amaterasu:56383' '-nl' '4'
+*** FATAL ERROR: Got an xSocket while spawning slave process: connect() failed while creating a connect socket (111:Connection refused)
+bash: line 1: 16131 Aborted                 './threeon_real' '__AMUDP_SLAVE_PROCESS__' 'amaterasu:56383' '-nl' '4'
+---(PID) NODE 2 PID 6399 
+---(PID) NODE 1 PID 16160 
+---(PID) NODE 3 PID 10850 
+---(PID) NODE 0 PID 30930 
+MasterLocale: bwlf03   
+
+arg= 1----------on locale 0
+arg= 2----------on locale 0
+arg= 3----------on locale 0
+PROGRAM END ============================= 
+
+--------------(SIGUSR2_handler) 2 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+--------------(SIGUSR2_handler) 3 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+--------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+-- ID: 3  -- ALIVE 1 -- 
+---(PID) NODE 2 PID 30962 
+---(PID) NODE 3 PID 16190 
+---(PID) NODE 1 PID 10882 
+---(PID) NODE 0 PID 6428 
+MasterLocale: bwlf31   
+
+arg= 1----------on locale 0
+arg= 2----------on locale 0
+arg= 3----------on locale 0
+PROGRAM END ============================= 
+
+--------------(SIGUSR2_handler) 2 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+-- ID: 3  -- ALIVE 1 -- 
+--------------(SIGUSR2_handler) 3 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+--------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+---(PID) NODE 3 PID 6459 
+---(PID) NODE 1 PID 16220 
+---(PID) NODE 2 PID 10912 
+---(PID) NODE 0 PID 30994 
+MasterLocale: bwlf03   
+
+arg= 1----------on locale 0
+arg= 2----------on locale 0
+arg= 3----------on locale 0
+PROGRAM END ============================= 
+
+--------------(SIGUSR2_handler) 3 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+-- ID: 3  -- ALIVE 1 -- 
+--------------(SIGUSR2_handler) 2 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+--------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+---(PID) NODE 1 PID 10943 
+---(PID) NODE 3 PID 31024 
+---(PID) NODE 2 PID 16251 
+---(PID) NODE 0 PID 6498 
+MasterLocale: bwlf31   
+
+arg= 1----------on locale 0
+arg= 2----------on locale 0
+arg= 3----------on locale 0
+PROGRAM END ============================= 
+
+--------------(SIGUSR2_handler) 3 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+--------------(SIGUSR2_handler) 2 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+--------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+-- ID: 3  -- ALIVE 1 -- 
+---(PID) NODE 3 PID 6532 
+---(PID) NODE 1 PID 10981 
+---(PID) NODE 2 PID 16281 
+---(PID) NODE 0 PID 31063 
+MasterLocale: bwlf03   
+
+arg= 1----------on locale 0
+arg= 2----------on locale 0
+arg= 3----------on locale 0
+PROGRAM END ============================= 
+
+--------------(SIGUSR2_handler) 2 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+-- ID: 3  -- ALIVE 1 -- 
+--------------(SIGUSR2_handler) 3 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+--------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 

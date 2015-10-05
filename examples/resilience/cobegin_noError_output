@@ -1,0 +1,166 @@
+bash-4.1$ chpl -o cobegin2loc examples/resilience/cobegin.chpl
+bash-4.1$ ./cobegin2loc -nl 2
+---(PID) NODE 1 PID 22133 
+(COMM_LAYER) 1 In AM_fork :::
+(COMM_LAYER) 1 In AM_fork ::: 2 
+(COMM_LAYER) 1 fork_wrapper:::
+(COMM_LAYER) 1 fork_wrapper::: 2
+(COMM LAYER) 1 chpl_comm_fork:: ### from 1 to 0 ### 
+(COMM LAYER) 1 chpl_comm_fork:: calling chpl_comm_fork 1 -> 0  ******************* userCodeStart=0 
+(COMM LAYER) 1 chpl_comm_fork:: calling chpl_comm_fork 1 -> 0  ******************* userCodeStart=0 END
+FORK_NB regular 0 ----------to 0  
+FORK_NB regular  0 ----------to 0  2 ************ 
+FORK_NB 0 ----------to 0  3 ************ 
+FORK_NB regular 0 ----------to 1  
+FORK_NB regular  0 ----------to 1  2 ************ 
+FORK_NB 0 ----------to 1  3 ************ 
+(COMM LAYER) 0 chpl_comm_fork:: ### from 0 to 1 ### 
+(COMM LAYER) 0 chpl_comm_fork:: calling chpl_comm_fork 0 -> 1  ******************* userCodeStart=0 
+(COMM LAYER) 0 chpl_comm_fork:: calling chpl_comm_fork 0 -> 1  ******************* userCodeStart=0 END
+(COMM_LAYER) 0 In AM_fork :::
+(COMM_LAYER) 0 In AM_fork ::: 2 
+(COMM_LAYER) 0 fork_wrapper:::
+(COMM_LAYER) 0 fork_wrapper::: 2
+(COMM LAYER) 0 chpl_comm_fork_fast 0 -> 1 :: calling chpl_comm_fork_fast ******************* 
+---(PID) NODE 0 PID 24105 
+======  GO GO
+(COMM LAYER) 0 chpl_comm_fork_nb 0 -> 1 :: calling chpl_comm_fork_nb_with_extras ******************* 
+(*******) 0 FORK_NB_with_extras  ----------to 1  
+(*******) 0 FORK_NB_with_extras ----------to 1   create fork_t object  
+(*******) 0 FORK_NB_with_extras ----------to 1   moving to execution  
+(*******) 0 FORK_NB_with_extras   ----------to 1 ++++++++chpl_nodeID!=node +++++++ REMOTE EXECUTION 
+(*******) 0 FORK_NB_with_extras:: check child alive ========local check~~~~~~~~~~~~ 
+(*******) 0 FORK_NB_with_extras:: CHILD ALIVE -- sending transit_msg 
+(COMM LAYER) 0 addToTransitMsgList :: adding fid=94 =====*******
+(COMM LAYER) 0 addToTransitMsgList :: adding fid=94 in else 
+(COMM LAYER) 0 =========== TRANSIT MSG LIST =========== 
+(COMM LAYER) 0 :::: (tail)-- fid = 94
+(COMM LAYER) 0 printTransitMsgList:: TransitMsgList 1 message(s) stored
+(COMM LAYER) 0 FORK_NB_with_extras 0 ->1 :: PHASE 1 print
+(COMM LAYER) 0 =========== TRANSIT MSG LIST =========== 
+(COMM LAYER) 0 :::: (tail)-- fid = 94
+(COMM LAYER) 0 printTransitMsgList:: TransitMsgList 1 message(s) stored
+(*******) 0 FORK_NB_with_extras:: CHILD ALIVE -- sending FORK_NB_WE 
+(*******) 0 FORK_NB_with_extras:: CHILD ALIVE -- FORK_NB_WE  sent!! 
+(*******) 0 FORK_NB_with_extras 0 -> 1 :: Reached the end-- 
+(*******) 0 FORK_NB_with_extras 0 -> 1 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 0 -- 
+======  Time elapsed: 25.0029
+
+(COMM LAYER) 0 AM_in_transit  :: ADDING fid = 86 
+(COMM LAYER) 0 addToTransitMsgList :: adding fid=86 =====*******
+(COMM LAYER) 0 addToTransitMsgList :: adding fid=86 in if msg_lit_tail 
+(COMM LAYER) 0 =========== TRANSIT MSG LIST =========== 
+(COMM LAYER) 0 :::: -- fid = 94
+(COMM LAYER) 0 :::: (tail)-- fid = 86
+(COMM LAYER) 0 printTransitMsgList:: TransitMsgList 2 message(s) stored
+(AM_fork_with_extras) 0 In AM_fork_with_extras, my pid = 24105 my ppid = 24104 
+(AM_fork_with_extras) 0 ------------------------Doing real work...
+ (fork_wrapper_with_extras)0   ***********************-=-------*********amIalive 0 
+ count78543249
+(COMM LAYER) 0 AM_in_transit  :: DELETING fid = 86 
+(COMM LAYER) 0 deleteFromTransitMsgList2 :: deleting fid=86 =====******* TRANSIT MSG LIST 
+(COMM LAYER) 0 =========== TRANSIT MSG LIST =========== 
+(COMM LAYER) 0 :::: -- fid = 94
+(COMM LAYER) 0 :::: (tail)-- fid = 86
+(COMM LAYER) 0 printTransitMsgList:: TransitMsgList 2 message(s) stored
+(COMM LAYER) 0 deleteFromTransitMsgList2 :: deleting fid=86 ****LIST NOT EMPTY 
+(COMM LAYER) 0 deleteFromTransitMsgList2 :: deleting fid=86  *** MORE THAN ONE NODES IN THE LIST (COMM LAYER) 0 deleteFromTransitMsgList2 :: deleting fid=86 FOUNDDDDDDDD
+(COMM LAYER) 0 deleteFromTransitMsgList2 :: deleting fid=86 ===temp==msg_list_tail
+(COMM LAYER) 0 AM_in_transit  :: ADDING fid = 87 
+(COMM LAYER) 0 addToTransitMsgList :: adding fid=87 =====*******
+(COMM LAYER) 0 addToTransitMsgList :: adding fid=87 in if msg_lit_tail 
+(COMM LAYER) 0 =========== TRANSIT MSG LIST =========== 
+(COMM LAYER) 0 :::: -- fid = 94
+(COMM LAYER) 0 :::: (tail)-- fid = 87
+(COMM LAYER) 0 printTransitMsgList:: TransitMsgList 2 message(s) stored
+(AM_fork_with_extras) 0 In AM_fork_with_extras, my pid = 24105 my ppid = 24104 
+(AM_fork_with_extras) 0 ------------------------Doing real work...
+ (fork_wrapper_with_extras)0   ***********************-=-------*********amIalive 0 
+ pi = 3.14173 ----------on locale 1
+(COMM LAYER) 0 AM_in_transit  :: DELETING fid = 87 
+(COMM LAYER) 0 deleteFromTransitMsgList2 :: deleting fid=87 =====******* TRANSIT MSG LIST 
+(COMM LAYER) 0 =========== TRANSIT MSG LIST =========== 
+(COMM LAYER) 0 :::: -- fid = 94
+(COMM LAYER) 0 :::: (tail)-- fid = 87
+(COMM LAYER) 0 printTransitMsgList:: TransitMsgList 2 message(s) stored
+(COMM LAYER) 0 deleteFromTransitMsgList2 :: deleting fid=87 ****LIST NOT EMPTY 
+(COMM LAYER) 0 deleteFromTransitMsgList2 :: deleting fid=87  *** MORE THAN ONE NODES IN THE LIST (COMM LAYER) 0 deleteFromTransitMsgList2 :: deleting fid=87 FOUNDDDDDDDD
+(COMM LAYER) 0 deleteFromTransitMsgList2 :: deleting fid=87 ===temp==msg_list_tail
+(COMM LAYER) 0 AM_in_transit  :: ADDING fid = 10 
+(COMM LAYER) 0 addToTransitMsgList :: adding fid=10 =====*******
+(COMM LAYER) 0 addToTransitMsgList :: adding fid=10 in if msg_lit_tail 
+(COMM LAYER) 0 =========== TRANSIT MSG LIST =========== 
+(COMM LAYER) 0 :::: -- fid = 94
+(COMM LAYER) 0 :::: (tail)-- fid = 10
+(COMM LAYER) 0 printTransitMsgList:: TransitMsgList 2 message(s) stored
+(AM_fork_with_extras) 0 In AM_fork_with_extras, my pid = 24105 my ppid = 24104 
+(AM_fork_with_extras) 0 ------------------------Doing real work...
+ (fork_wrapper_with_extras)0   ***********************-=-------*********amIalive 0 
+ (COMM LAYER) 0 AM_in_transit  :: DELETING fid = 10 
+(COMM LAYER) 0 deleteFromTransitMsgList2 :: deleting fid=10 =====******* TRANSIT MSG LIST 
+(COMM LAYER) 0 =========== TRANSIT MSG LIST =========== 
+(COMM LAYER) 0 :::: -- fid = 94
+(COMM LAYER) 0 :::: (tail)-- fid = 10
+(COMM LAYER) 0 printTransitMsgList:: TransitMsgList 2 message(s) stored
+(COMM LAYER) 0 deleteFromTransitMsgList2 :: deleting fid=10 ****LIST NOT EMPTY 
+(COMM LAYER) 0 deleteFromTransitMsgList2 :: deleting fid=10  *** MORE THAN ONE NODES IN THE LIST (COMM LAYER) 0 deleteFromTransitMsgList2 :: deleting fid=10 FOUNDDDDDDDD
+(COMM LAYER) 0 deleteFromTransitMsgList2 :: deleting fid=10 ===temp==msg_list_tail
+*****************(COMM LAYER) 0 AM_in_transit_DEL :: DELETING fid = 94 
+(COMM LAYER) 0 deleteFromTransitMsgList2 :: deleting fid=94 =====******* TRANSIT MSG LIST 
+(COMM LAYER) 0 =========== TRANSIT MSG LIST =========== 
+(COMM LAYER) 0 :::: (tail)-- fid = 94
+(COMM LAYER) 0 printTransitMsgList:: TransitMsgList 1 message(s) stored
+(COMM LAYER) 0 deleteFromTransitMsgList2 :: deleting fid=94 ****LIST NOT EMPTY 
+(COMM LAYER) 0 deleteFromTransitMsgList2 :: deleting fid=94 ****ONE NODE ONLY 
+(COMM LAYER) 0 deleteFromTransitMsgList2 :: deleting fid=94  *** =head=tail *****************(COMM LAYER) 0 AM_in_transit_DEL :: DELETING fid = 94  DONE!!!
+(COMM LAYER) 0 chpl_comm_exit ------------------- printTransitMsgList 
+(COMM LAYER) 0 =========== TRANSIT MSG LIST =========== 
+(COMM LAYER) 0 printTransitMsgList:: TransitMsgList EMPTY
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 0 -- 
+(AM_fork_nb_with_extras) 1 ------------------------STARTED...
+ (AM_fork_nb_with_extras) 1 ------------------------Doing real work...
+ (fork_wrapper_nb_with_extras)1   ********** ALL GOOD  
+ (COMM LAYER) 1 chpl_comm_fork:: ### from 1 to 0 ### 
+(COMM LAYER) 1 chpl_comm_fork 1 -> 0 :: calling chpl_comm_fork_with_extras ******************* 
+(COMM LAYER) 1 chpl_comm_fork_with_extras:: ### from 1 to 0 #### my pid = 22133
+
+(COMM LAYER) 1 chpl_comm_fork_with_extras 1 -> 0:: EXECUTED REMOTELY
+(COMM LAYER) 1 chpl_comm_fork_with_extras:: check child alive ========dst is locale 0 -- unfailed~~~~~~~~~~~~ 
+(COMM LAYER) 1 chpl_comm_fork_with_extras:: CHILD ALIVE 
+(COMM LAYER) 1 chpl_comm_fork_with_extras 1 -> 0  :: CHILD ALIVE 
+(COMM LAYER) 1 chpl_comm_fork_with_extras 1 -> 0:: chpl_nodeID!=0  ---> MSGSENT
+(COMM LAYER) 1 chpl_comm_fork_with_extras 1 -> 0 :: chpl_nodeID!=0  ---> MSGSENT DONE
+(COMM LAYER) 1 chpl_comm_fork_with_extras 1 -> 0 :: Reached the end-- 
+(COMM LAYER) 1 chpl_comm_fork:: ### from 1 to 0 ### 
+(COMM LAYER) 1 chpl_comm_fork 1 -> 0 :: calling chpl_comm_fork_with_extras ******************* 
+(COMM LAYER) 1 chpl_comm_fork_with_extras:: ### from 1 to 0 #### my pid = 22133
+
+(COMM LAYER) 1 chpl_comm_fork_with_extras 1 -> 0:: EXECUTED REMOTELY
+(COMM LAYER) 1 chpl_comm_fork_with_extras:: check child alive ========dst is locale 0 -- unfailed~~~~~~~~~~~~ 
+(COMM LAYER) 1 chpl_comm_fork_with_extras:: CHILD ALIVE 
+(COMM LAYER) 1 chpl_comm_fork_with_extras 1 -> 0  :: CHILD ALIVE 
+(COMM LAYER) 1 chpl_comm_fork_with_extras 1 -> 0:: chpl_nodeID!=0  ---> MSGSENT
+(COMM LAYER) 1 chpl_comm_fork_with_extras 1 -> 0 :: chpl_nodeID!=0  ---> MSGSENT DONE
+(COMM LAYER) 1 chpl_comm_fork_with_extras 1 -> 0 :: Reached the end-- 
+(COMM LAYER) 1 chpl_comm_fork:: ### from 1 to 0 ### 
+(COMM LAYER) 1 chpl_comm_fork 1 -> 0 :: calling chpl_comm_fork_with_extras ******************* 
+(COMM LAYER) 1 chpl_comm_fork_with_extras:: ### from 1 to 0 #### my pid = 22133
+
+(COMM LAYER) 1 chpl_comm_fork_with_extras 1 -> 0:: EXECUTED REMOTELY
+(COMM LAYER) 1 chpl_comm_fork_with_extras:: check child alive ========dst is locale 0 -- unfailed~~~~~~~~~~~~ 
+(COMM LAYER) 1 chpl_comm_fork_with_extras:: CHILD ALIVE 
+(COMM LAYER) 1 chpl_comm_fork_with_extras 1 -> 0  :: CHILD ALIVE 
+(COMM LAYER) 1 chpl_comm_fork_with_extras 1 -> 0:: chpl_nodeID!=0  ---> MSGSENT
+(COMM LAYER) 1 chpl_comm_fork_with_extras 1 -> 0 :: chpl_nodeID!=0  ---> MSGSENT DONE
+(COMM LAYER) 1 chpl_comm_fork_with_extras 1 -> 0 :: Reached the end-- 
+(fork_wrapper_nb_with_extras)1   ********** ALL GOOD AM_in_transit_del on Locale 0 
+
+
+
+
+
+

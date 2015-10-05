@@ -1,0 +1,279 @@
+---(PID) NODE 1 PID 9715 
+---(PID) NODE 2 PID 1183 
+---(PID) NODE 0 PID 14013 
+MasterLocale: bwlf32   
+
+ pi = 3.14173 ----------on locale 0
+ pi = 3.14173 ----------on locale 2
+PROGRAM END ============= Time elapsed:92.8448 
+
+--------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 0 -- 
+---(PID) NODE 2 PID 1224 
+---(PID) NODE 1 PID 9776 
+---(PID) NODE 0 PID 14054 
+MasterLocale: bwlf32   
+
+ pi = 3.14173 ----------on locale 0
+ pi = 3.14173 ----------on locale 2
+PROGRAM END ============= Time elapsed:93.4155 
+
+--------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 0 -- 
+---(PID) NODE 1 PID 1261 
+---(PID) NODE 2 PID 14111 
+---(PID) NODE 0 PID 9823 
+MasterLocale: bwlf31   
+
+ pi = 3.14173 ----------on locale 1
+ pi = 3.14173 ----------on locale 2
+PROGRAM END ============= Time elapsed:92.7393 
+
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 0 -- 
+-- ID: 2  -- ALIVE 0 -- 
+---(PID) NODE 1 PID 9881 
+---(PID) NODE 2 PID 14154 
+---(PID) NODE 0 PID 1302 
+MasterLocale: bwlf03   
+
+ pi = 3.14173 ----------on locale 0
+ pi = 3.14173 ----------on locale 2
+PROGRAM END ============= Time elapsed:93.0204 
+
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 0 -- 
+--------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+---(PID) NODE 1 PID 1339 
+---(PID) NODE 2 PID 14191 
+---(PID) NODE 0 PID 9927 
+MasterLocale: bwlf31   
+
+ pi = 3.14173 ----------on locale 1
+ pi = 3.14173 ----------on locale 1
+PROGRAM END ============= Time elapsed:95.6794 
+
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 0 -- 
+-- ID: 2  -- ALIVE 1 -- 
+--------------(SIGUSR2_handler) 2 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+---(PID) NODE 1 PID 9976 
+---(PID) NODE 2 PID 14247 
+---(PID) NODE 0 PID 1383 
+MasterLocale: bwlf03   
+
+ pi = 3.14173 ----------on locale 0
+ pi = 3.14173 ----------on locale 0
+PROGRAM END ============= Time elapsed:96.1984 
+
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+--------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+--------------(SIGUSR2_handler) 2 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+---(PID) NODE 2 PID 1423 
+---(PID) NODE 1 PID 10028 
+---(PID) NODE 0 PID 14295 
+MasterLocale: bwlf32   
+
+ pi = 3.14173 ----------on locale 0
+ pi = 3.14173 ----------on locale 2
+PROGRAM END ============= Time elapsed:92.5984 
+
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 0 -- 
+--------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+---(PID) NODE 2 PID 1461 
+---(PID) NODE 1 PID 14342 
+---(PID) NODE 0 PID 10075 
+MasterLocale: bwlf31   
+
+ pi = 3.14173 ----------on locale 0
+ pi = 3.14173 ----------on locale 2
+PROGRAM END ============= Time elapsed:92.5575 
+
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 0 -- 
+--------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+---(PID) NODE 1 PID 10126 
+---(PID) NODE 2 PID 1496 
+---(PID) NODE 0 PID 14388 
+MasterLocale: bwlf32   
+
+ pi = 3.14173 ----------on locale 0
+ pi = 3.14173 ----------on locale 2
+PROGRAM END ============= Time elapsed:92.7472 
+
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 0 -- 
+--------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+---(PID) NODE 1 PID 14461 
+---(PID) NODE 2 PID 1559 
+---(PID) NODE 0 PID 10205 
+MasterLocale: bwlf31   
+
+ pi = 3.14173 ----------on locale 1
+ pi = 3.14173 ----------on locale 2
+PROGRAM END ============= Time elapsed:93.3166 
+
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 0 -- 
+-- ID: 2  -- ALIVE 0 -- 
+---(PID) NODE 2 PID 14506 
+---(PID) NODE 1 PID 10257 
+---(PID) NODE 0 PID 1593 
+MasterLocale: bwlf03   
+
+ pi = 3.14173 ----------on locale 0
+ pi = 3.14173 ----------on locale 2
+PROGRAM END ============= Time elapsed:92.8444 
+
+--------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 0 -- 
+---(PID) NODE 1 PID 10331 
+---(PID) NODE 2 PID 14572 
+---(PID) NODE 0 PID 1661 
+MasterLocale: bwlf03   
+
+ pi = 3.14173 ----------on locale 0
+ pi = 3.14173 ----------on locale 2
+PROGRAM END ============= Time elapsed:92.5823 
+
+--------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 0 -- 
+---(PID) NODE 1 PID 14610 
+---(PID) NODE 2 PID 1702 
+---(PID) NODE 0 PID 10384 
+MasterLocale: bwlf31   
+
+ pi = 3.14173 ----------on locale 0
+ pi = 3.14173 ----------on locale 2
+PROGRAM END ============= Time elapsed:93.3576 
+
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 0 -- 
+--------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+---(PID) NODE 2 PID 1739 
+---(PID) NODE 1 PID 14666 
+---(PID) NODE 0 PID 10431 
+MasterLocale: bwlf31   
+
+ pi = 3.14173 ----------on locale 0
+ pi = 3.14173 ----------on locale 2
+PROGRAM END ============= Time elapsed:93.0521 
+
+--------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 0 -- 
+---(PID) NODE 2 PID 1779 
+---(PID) NODE 1 PID 10489 
+---(PID) NODE 0 PID 14720 
+MasterLocale: bwlf32   
+
+ pi = 3.14173 ----------on locale 0
+ pi = 3.14173 ----------on locale 2
+PROGRAM END ============= Time elapsed:92.6785 
+
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 0 -- 
+--------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+---(PID) NODE 2 PID 14769 
+---(PID) NODE 1 PID 1808 
+---(PID) NODE 0 PID 10538 
+MasterLocale: bwlf31   
+
+ pi = 3.14173 ----------on locale 1
+ pi = 3.14173 ----------on locale 1
+PROGRAM END ============= Time elapsed:95.7077 
+
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 0 -- 
+-- ID: 2  -- ALIVE 1 -- 
+--------------(SIGUSR2_handler) 2 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+---(PID) NODE 1 PID 14816 
+---(PID) NODE 2 PID 1846 
+---(PID) NODE 0 PID 10590 
+MasterLocale: bwlf31   
+
+ pi = 3.14173 ----------on locale 0
+ pi = 3.14173 ----------on locale 2
+PROGRAM END ============= Time elapsed:93.3662 
+
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 0 -- 
+--------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+---(PID) NODE 2 PID 10640 
+---(PID) NODE 1 PID 1895 
+---(PID) NODE 0 PID 14871 
+MasterLocale: bwlf32   
+
+ pi = 3.14173 ----------on locale 1
+ pi = 3.14173 ----------on locale 1
+PROGRAM END ============= Time elapsed:97.1349 
+
+--------------(SIGUSR2_handler) 2 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 0 -- 
+-- ID: 2  -- ALIVE 1 -- 
+---(PID) NODE 2 PID 14941 
+---(PID) NODE 1 PID 1966 
+---(PID) NODE 0 PID 10716 
+MasterLocale: bwlf31   
+
+ pi = 3.14173 ----------on locale 1
+ pi = 3.14173 ----------on locale 1
+PROGRAM END ============= Time elapsed:95.662 
+
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 0 -- 
+-- ID: 2  -- ALIVE 1 -- 
+--------------(SIGUSR2_handler) 2 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+---(PID) NODE 1 PID 10796 
+---(PID) NODE 2 PID 2036 
+---(PID) NODE 0 PID 15015 
+MasterLocale: bwlf32   
+
+ pi = 3.14173 ----------on locale 0
+ pi = 3.14173 ----------on locale 2
+PROGRAM END ============= Time elapsed:94.0118 
+
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 0 -- 
+--------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 

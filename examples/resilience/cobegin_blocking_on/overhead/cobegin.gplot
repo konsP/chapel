@@ -1,0 +1,24 @@
+clear
+reset
+unset key
+set term png tiny truecolor enhanced 
+set output "cobegin-overhead.png"
+
+# Make the x axis labels easier to read.
+set xtics rotate out
+
+# Select histogram data
+set style data histogram
+set grid
+set boxwidth 1 relative
+set style fill solid 0.5 noborder
+set key samplen 4 spacing .8 font ",6"
+set key at screen 0.3, screen 0.2
+set style histogram clustered
+set auto x
+# Give the bars a plain fill pattern, and draw a solid line around them.
+set style fill solid border
+set style histogram clustered
+plot for [COL=2:5] 'cobegin.dat' using COL:xticlabels(1) title columnheader
+
+

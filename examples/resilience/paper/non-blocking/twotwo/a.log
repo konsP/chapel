@@ -1,0 +1,335 @@
+---(PID) NODE 2 PID 28419 
+---(PID) NODE 1 PID 9899 
+---(PID) NODE 3 PID 18279 
+---(PID) NODE 0 PID 21234 
+MasterLocale: bwlf32   
+
+PROGRAM END ======================1======= 
+
+arg= 1----------on locale 0
+arg= 1----------on locale 0
+arg= 2----------on locale 0
+arg= 2----------on locale 0
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+-- ID: 3  -- ALIVE 1 -- 
+---(PID) NODE 2 PID 28430 
+---(PID) NODE 3 PID 9910 
+---(PID) NODE 1 PID 21251 
+---(PID) NODE 0 PID 18289 
+MasterLocale: bwlf31   
+
+PROGRAM END ======================1======= 
+
+arg= 1----------on locale 0
+arg= 1----------on locale 0
+arg= 2----------on locale 0
+arg= 2----------on locale 0
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+-- ID: 3  -- ALIVE 1 -- 
+---(PID) NODE 2 PID 21262 
+---(PID) NODE 3 PID 18304 
+---(PID) NODE 1 PID 9920 
+---(PID) NODE 0 PID 28443 
+MasterLocale: bwlf03   
+
+PROGRAM END ======================1======= 
+
+arg= 1----------on locale 0
+arg= 1----------on locale 0
+arg= 2----------on locale 0
+arg= 2----------on locale 0
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+-- ID: 3  -- ALIVE 1 -- 
+---(PID) NODE 1 PID 9931 
+---(PID) NODE 2 PID 28460 
+---(PID) NODE 3 PID 21273 
+---(PID) NODE 0 PID 18315 
+MasterLocale: bwlf31   
+
+PROGRAM END ======================1======= 
+
+arg= 3----------on locale 0
+arg= 4----------on locale 0
+arg= 1----------on locale 0
+arg= 2----------on locale 0
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+-- ID: 3  -- ALIVE 1 -- 
+---(PID) NODE 3 PID 21285 
+---(PID) NODE 1 PID 9942 
+---(PID) NODE 2 PID 28471 
+---(PID) NODE 0 PID 18331 
+MasterLocale: bwlf31   
+
+PROGRAM END ======================1======= 
+
+arg= 1----------on locale 0
+arg= 2----------on locale 0
+arg= 2----------on locale 0
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+-- ID: 3  -- ALIVE 1 -- 
+---(PID) NODE 3 PID 9953 
+---(PID) NODE 2 PID 28481 
+---(PID) NODE 1 PID 21296 
+---(PID) NODE 0 PID 18345 
+MasterLocale: bwlf31   
+
+PROGRAM END ======================1======= 
+
+arg= 3----------on locale 0
+arg= 4----------on locale 0
+arg= 4----------on locale 0
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+-- ID: 3  -- ALIVE 1 -- 
+---(PID) NODE 2 PID 21306 
+---(PID) NODE 3 PID 9964 
+---(PID) NODE 1 PID 28491 
+---(PID) NODE 0 PID 18362 
+MasterLocale: bwlf31   
+
+PROGRAM END ======================1======= 
+
+arg= 1----------on locale 0
+arg= 3----------on locale 0
+arg= 2----------on locale 0
+arg= 2----------on locale 0
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+-- ID: 3  -- ALIVE 1 -- 
+---(PID) NODE 3 PID 18387 
+---(PID) NODE 1 PID 28501 
+---(PID) NODE 2 PID 9974 
+---(PID) NODE 0 PID 21318 
+MasterLocale: bwlf32   
+
+PROGRAM END ======================1======= 
+
+arg= 1----------on locale 0
+arg= 1----------on locale 0
+arg= 2----------on locale 0
+arg= 2----------on locale 0
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+-- ID: 3  -- ALIVE 1 -- 
+---(PID) NODE 2 PID 28511 
+---(PID) NODE 3 PID 18397 
+---(PID) NODE 1 PID 9985 
+---(PID) NODE 0 PID 21333 
+MasterLocale: bwlf32   
+
+PROGRAM END ======================1======= 
+
+arg= 3----------on locale 0
+arg= 4----------on locale 0
+arg= 4----------on locale 0
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+-- ID: 3  -- ALIVE 1 -- 
+---(PID) NODE 1 PID 28521 
+---(PID) NODE 2 PID 9996 
+---(PID) NODE 3 PID 18408 
+---(PID) NODE 0 PID 21347 
+MasterLocale: bwlf32   
+
+PROGRAM END ======================1======= 
+
+arg= 1----------on locale 0
+arg= 3----------on locale 0
+arg= 2----------on locale 0
+arg= 4----------on locale 0
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+-- ID: 3  -- ALIVE 1 -- 
+---(PID) NODE 3 PID 10008 
+---(PID) NODE 2 PID 21362 
+---(PID) NODE 1 PID 28533 
+---(PID) NODE 0 PID 18418 
+MasterLocale: bwlf31   
+
+PROGRAM END ======================1======= 
+
+arg= 3----------on locale 0
+arg= 3----------on locale 0
+arg= 4----------on locale 0
+arg= 4----------on locale 0
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+-- ID: 3  -- ALIVE 1 -- 
+---(PID) NODE 1 PID 21375 
+---(PID) NODE 3 PID 18433 
+---(PID) NODE 2 PID 10019 
+---(PID) NODE 0 PID 28543 
+MasterLocale: bwlf03   
+
+PROGRAM END ======================1======= 
+
+arg= 1----------on locale 0
+arg= 1----------on locale 0
+arg= 2----------on locale 0
+arg= 2----------on locale 0
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+-- ID: 3  -- ALIVE 1 -- 
+---(PID) NODE 3 PID 28560 
+---(PID) NODE 2 PID 21386 
+---(PID) NODE 1 PID 10030 
+---(PID) NODE 0 PID 18443 
+MasterLocale: bwlf31   
+
+PROGRAM END ======================1======= 
+
+arg= 1----------on locale 0
+arg= 2----------on locale 0
+arg= 2----------on locale 0
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+-- ID: 3  -- ALIVE 1 -- 
+---(PID) NODE 3 PID 28572 
+---(PID) NODE 1 PID 10041 
+---(PID) NODE 2 PID 21396 
+---(PID) NODE 0 PID 18466 
+MasterLocale: bwlf31   
+
+PROGRAM END ======================1======= 
+
+arg= 1----------on locale 0
+arg= 3----------on locale 0
+arg= 4----------on locale 0
+arg= 4----------on locale 0
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+-- ID: 3  -- ALIVE 1 -- 
+---(PID) NODE 1 PID 10052 
+---(PID) NODE 3 PID 18483 
+---(PID) NODE 2 PID 28582 
+---(PID) NODE 0 PID 21409 
+MasterLocale: bwlf32   
+
+PROGRAM END ======================1======= 
+
+arg= 1----------on locale 0
+arg= 2----------on locale 0
+arg= 2----------on locale 0
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+-- ID: 3  -- ALIVE 1 -- 
+---(PID) NODE 3 PID 21424 
+---(PID) NODE 1 PID 10063 
+---(PID) NODE 2 PID 28592 
+---(PID) NODE 0 PID 18493 
+MasterLocale: bwlf31   
+
+PROGRAM END ======================1======= 
+
+arg= 3----------on locale 0
+arg= 3----------on locale 0
+arg= 4----------on locale 0
+arg= 4----------on locale 0
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+-- ID: 3  -- ALIVE 1 -- 
+---(PID) NODE 3 PID 10083 
+---(PID) NODE 1 PID 28603 
+---(PID) NODE 2 PID 18510 
+---(PID) NODE 0 PID 21434 
+MasterLocale: bwlf32   
+
+PROGRAM END ======================1======= 
+
+arg= 1----------on locale 0
+arg= 1----------on locale 0
+arg= 2----------on locale 0
+arg= 2----------on locale 0
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+-- ID: 3  -- ALIVE 1 -- 
+---(PID) NODE 3 PID 10093 
+---(PID) NODE 1 PID 21450 
+---(PID) NODE 2 PID 28613 
+---(PID) NODE 0 PID 18522 
+MasterLocale: bwlf31   
+
+PROGRAM END ======================1======= 
+
+arg= 1----------on locale 0
+arg= 2----------on locale 0
+arg= 2----------on locale 0
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+-- ID: 3  -- ALIVE 1 -- 
+---(PID) NODE 2 PID 10103 
+---(PID) NODE 3 PID 18537 
+---(PID) NODE 1 PID 28623 
+---(PID) NODE 0 PID 21460 
+MasterLocale: bwlf32   
+
+PROGRAM END ======================1======= 
+
+arg= 1----------on locale 0
+arg= 1----------on locale 0
+arg= 2----------on locale 0
+arg= 2----------on locale 0
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+-- ID: 3  -- ALIVE 1 -- 
+---(PID) NODE 1 PID 28633 
+---(PID) NODE 2 PID 21475 
+---(PID) NODE 3 PID 10115 
+---(PID) NODE 0 PID 18557 
+MasterLocale: bwlf31   
+
+PROGRAM END ======================1======= 
+
+arg= 1----------on locale 0
+arg= 3----------on locale 0
+arg= 3----------on locale 0
+arg= 4----------on locale 0
+arg= 4----------on locale 0
+(COMM LAYER) 0 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 1 -- 
+-- ID: 2  -- ALIVE 1 -- 
+-- ID: 3  -- ALIVE 1 -- 

@@ -1,0 +1,23 @@
+// 1 signal/iter
+
+
+kill -USR2 31570
+kill -USR2 531
+kill -USR2 31631
+kill -USR2 608
+kill -USR2 4300
+kill -USR2 31759
+kill -USR2 713
+kill -USR2 784
+kill -USR2 4504
+kill -USR2 4553
+kill -USR2 944
+kill -USR2 4633
+kill -USR2 32061
+kill -USR2 4724
+kill -USR2 4759
+kill -USR2 1129
+kill -USR2 32210
+kill -USR2 32251
+kill -USR2 4909
+kill -USR2 4956

@@ -1,0 +1,35 @@
+---(PID) NODE 3 PID 15351 
+---(PID) NODE 1 PID 2517 
+---(PID) NODE 2 PID 14974 
+---(PID) NODE 0 PID 4497 
+MasterLocale: bwlf03   
+
+ pi = 3.14173 ----------on locale 0
+ pi = 3.14173 ----------on locale 2
+ pi = 3.14173 ----------on locale 3
+ pi = 3.14173 ----------on locale 2
+PROGRAM END ============= Time elapsed:195.154 
+
+(sigUSR1_handler) 1 RECEIVED SIGUSR1
+
+real	3m37.081s
+user	0m0.008s
+sys	0m0.008s
+
+---(PID) NODE 2 PID 15397 
+---(PID) NODE 3 PID 15011 
+---(PID) NODE 1 PID 2573 
+^[[A---(PID) NODE 0 PID 4540 
+MasterLocale: bwlf03   
+
+ pi = 3.14173 ----------on locale 1
+ pi = 3.14173 ----------on locale 1
+ pi = 3.14173 ----------on locale 3
+ pi = 3.14173 ----------on locale 3
+PROGRAM END ============= Time elapsed:186.377 
+
+(sigUSR1_handler) 2 RECEIVED SIGUSR1
+
+real	3m29.274s
+user	0m0.010s
+sys	0m0.005s

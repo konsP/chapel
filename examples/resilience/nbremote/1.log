@@ -1,0 +1,212 @@
+(MAIN) 1 *main* comm_init DONE ______ & config vars and chpl_main args and numLocales
+---(PID) NODE 1 PID 27745 
+(COMM_LAYER) 1 In AM_fork :::
+(COMM_LAYER) 1 In AM_fork ::: 2 
+(COMM_LAYER) 1 fork_wrapper:::
+(COMM_LAYER) 1 fork_wrapper::: 2
+(COMM LAYER) 1 chpl_comm_fork:: ### from 1 to 0 ### 
+(COMM LAYER) 1 chpl_comm_fork:: calling chpl_comm_fork 1 -> 0  ******************* userCodeStart=0 
+(COMM LAYER) 1 chpl_comm_fork:: calling chpl_comm_fork 1 -> 0  ******************* userCodeStart=0 END
+(COMM_LAYER) 1 In AM_fork_fast, my pid = 27745
+(COMM_LAYER) 1 In AM_fork_fast, ALLLLIVEEEEE amIalive= 0  
+(COMM_LAYER) 1 In AM_fork_fast, sending SIGNAL  
+*** Caught a fatal signal: SIGSEGV(11) on node 1/2
+--------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(AM_fork_nb_with_extras) 1 - Raising USR1 sig to my self
+ (AM_fork_nb_with_extras) 1 ------------------------STARTED...
+ (AM_fork_nb_with_extras)1   ********** DADAAAA!  
+ [1] /usr/bin/gstack 27745
+[1] Thread 4 (Thread 0x7fade8e0a700 (LWP 27747)):
+[1] #0  0x00007fadf0012264 in __lll_lock_wait () from /lib64/libpthread.so.0
+[1] #1  0x00007fadf000d53e in _L_lock_995 () from /lib64/libpthread.so.0
+[1] #2  0x00007fadf000d4a6 in pthread_mutex_lock () from /lib64/libpthread.so.0
+[1] #3  0x000000000052c898 in gasnetc_AMPoll ()
+[1] #4  0x00000000004ff31e in polling ()
+[1] #5  0x00000000004fa514 in comm_task_wrapper ()
+[1] #6  0x00007fadf000b9d1 in start_thread () from /lib64/libpthread.so.0
+[1] #7  0x00007fadef5b88fd in clone () from /lib64/libc.so.6
+[1] Thread 3 (Thread 0x7fade3fff700 (LWP 27748)):
+[1] #0  0x00007fadef59f287 in sched_yield () from /lib64/libc.so.6
+[1] #1  0x00000000004fcc48 in chpl_thread_yield ()
+[1] #2  0x00000000004fc0f2 in thread_begin ()
+[1] #3  0x00000000004fd61e in pthread_func ()
+[1] #4  0x00007fadf000b9d1 in start_thread () from /lib64/libpthread.so.0
+[1] #5  0x00007fadef5b88fd in clone () from /lib64/libc.so.6
+[1] Thread 2 (Thread 0x7fade37fe700 (LWP 27749)):
+[1] #0  0x00007fadef59f287 in sched_yield () from /lib64/libc.so.6
+[1] #1  0x00000000004fcc48 in chpl_thread_yield ()
+[1] #2  0x00000000004fc0f2 in thread_begin ()
+[1] #3  0x00000000004fd61e in pthread_func ()
+[1] #4  0x00007fadf000b9d1 in start_thread () from /lib64/libpthread.so.0
+[1] #5  0x00007fadef5b88fd in clone () from /lib64/libc.so.6
+[1] Thread 1 (Thread 0x7fadf0411740 (LWP 27745)):
+[1] #0  0x00007fadef59f287 in sched_yield () from /lib64/libc.so.6
+[1] #1  0x0000000000536c5e in gasneti_bt_gstack ()
+[1] #2  0x000000000053703f in gasneti_print_backtrace ()
+[1] #3  0x000000000059705e in gasneti_defaultSignalHandler ()
+[1] #4  <signal handler called>
+[1] #5  0x00007fadef5b1373 in select () from /lib64/libc.so.6
+[1] #6  0x00000000005a7deb in myselect ()
+[1] #7  0x00000000005a809f in inputWaiting(unsigned int) ()
+[1] #8  0x00000000005a42ad in AMUDP_SPMDHandleControlTraffic ()
+[1] #9  0x00000000005a1d8b in AM_Poll ()
+[1] #10 0x000000000052c8a4 in gasnetc_AMPoll ()
+[1] #11 0x000000000052f0f5 in gasnete_amdbarrier_try ()
+[1] #12 0x00000000004fff66 in chpl_comm_barrier ()
+[1] #13 0x000000000050011a in chpl_comm_pre_task_exit ()
+[1] #14 0x00000000004f7185 in chpl_exit_common ()
+[1] #15 0x00000000004f71cd in chpl_exit_all ()
+[1] #16 0x00000000004eb81d in main ()
+bash: line 1: 27745 Segmentation fault      './cobegin2loc_real' '__AMUDP_SLAVE_PROCESS__' 'amaterasu:51561' '-nl' '2'
+(MAIN) 0 *main* comm_init DONE ______ & config vars and chpl_main args and numLocales
+FORK_NB regular 0 ----------to 0  
+FORK_NB regular  0 ----------to 0  2 ************ 
+FORK_NB regular 0 ----------to 0  3 ************ 
+FORK_NB regular 0 ----------to 1  
+FORK_NB regular  0 ----------to 1  2 ************ 
+FORK_NB regular 0 ----------to 1  3 ************ 
+(COMM LAYER) 0 chpl_comm_fork:: ### from 0 to 1 ### 
+(COMM LAYER) 0 chpl_comm_fork:: calling chpl_comm_fork 0 -> 1  ******************* userCodeStart=0 
+(COMM LAYER) 0 chpl_comm_fork:: calling chpl_comm_fork 0 -> 1  ******************* userCodeStart=0 END
+(COMM_LAYER) 0 In AM_fork :::
+(COMM_LAYER) 0 In AM_fork ::: 2 
+(COMM_LAYER) 0 fork_wrapper:::
+(COMM_LAYER) 0 fork_wrapper::: 2
+(COMM LAYER) 0 chpl_comm_fork_fast 0 -> 1 :: calling chpl_comm_fork_fast ******************* 
+(COMM LAYER) 0 FORK FAST 0 -> 1 :: calling chpl_comm_fork_fast  where fid= 63  
+(COMM LAYER) 0 FORK FAST  --- Reached the end 
+---(PID) NODE 0 PID 4302 
+.............................................................................................................................................................................................................................................................................................................................................PROGRAM_OUTPUT: ======  GO GO 
+PROGRAM_OUTPUT: ======  DONE long running job on locale 0 
+(COMM LAYER) 0 chpl_comm_fork_nb 0 -> 1 :: calling chpl_comm_fork_nb_with_extras ******************* 
+(*******) 0 FORK_NB_with_extras  ----------to 1  START 
+(*******) 0 FORK_NB_with_extras ----------to 1   create fork_t object  
+(*******) 0 FORK_NB_with_extras ----------to 1   moving to execution  
+(*******) 0 FORK_NB_with_extras ----------to 1   fid = 95  
+(*******) 0 FORK_NB_with_extras   ----------to 1 ++++++++chpl_nodeID!=node +++++++ REMOTE EXECUTION 
+(*******) 0 FORK_NB_with_extras:: sending FORK_NB_WE 
+(*******) 0 FORK_NB_with_extras:: FORK_NB_WE  sent!! 
+(*******) 0 FORK_NB_with_extras::remoteForks ++  = 1 
+(*******) 0 FORK_NB_with_extras 0 -> 1 :: Reached the end-- 
+(*******) 0 FORK_NB_with_extras 0 -> 1 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 0 -- 
+(*******) 0 FORK_NB_with_e
+
+
+
+
+
+============================================================================================================
+
+
+
+bash: line 1:  5596 User defined signal 2   './cobegin2loc_real' '__AMUDP_SLAVE_PROCESS__' 'amaterasu:54718' '-nl' '2'
+bash: line 1: 29051 User defined signal 2   './cobegin2loc_real' '__AMUDP_SLAVE_PROCESS__' 'amaterasu:54718' '-nl' '2'
+(MAIN) 1 *main* comm_init DONE ______ & config vars and chpl_main args and numLocales
+---(PID) NODE 1 PID 29083 
+(COMM_LAYER) 1 In AM_fork :::
+(COMM_LAYER) 1 In AM_fork ::: 2 
+(COMM_LAYER) 1 fork_wrapper:::
+(COMM_LAYER) 1 fork_wrapper::: 2
+(COMM LAYER) 1 chpl_comm_fork:: ### from 1 to 0 ### 
+(COMM LAYER) 1 chpl_comm_fork:: calling chpl_comm_fork 1 -> 0  ******************* userCodeStart=0 
+(COMM LAYER) 1 chpl_comm_fork:: calling chpl_comm_fork 1 -> 0  ******************* userCodeStart=0 END
+(COMM_LAYER) 1 In AM_fork_fast, my pid = 29083
+(COMM_LAYER) 1 In AM_fork_fast, ALLLLIVEEEEE amIalive= 0  
+(COMM_LAYER) 1 In AM_fork_fast, sending SIGNAL  
+*** Caught a fatal signal: SIGSEGV(11) on node 0/2
+(MAIN) 0 *main* comm_init DONE ______ & config vars and chpl_main args and numLocales
+FORK_NB regular 0 ----------to 0  
+FORK_NB regular  0 ----------to 0  2 ************ 
+FORK_NB regular 0 ----------to 0  3 ************ 
+FORK_NB regular 0 ----------to 1  
+FORK_NB regular  0 ----------to 1  2 ************ 
+FORK_NB regular 0 ----------to 1  3 ************ 
+(COMM LAYER) 0 chpl_comm_fork:: ### from 0 to 1 ### 
+(COMM LAYER) 0 chpl_comm_fork:: calling chpl_comm_fork 0 -> 1  ******************* userCodeStart=0 
+(COMM LAYER) 0 chpl_comm_fork:: calling chpl_comm_fork 0 -> 1  ******************* userCodeStart=0 END
+(COMM_LAYER) 0 In AM_fork :::
+(COMM_LAYER) 0 In AM_fork ::: 2 
+(COMM_LAYER) 0 fork_wrapper:::
+(COMM_LAYER) 0 fork_wrapper::: 2
+(COMM LAYER) 0 chpl_comm_fork_fast 0 -> 1 :: calling chpl_comm_fork_fast ******************* 
+(COMM LAYER) 0 FORK FAST 0 -> 1 :: calling chpl_comm_fork_fast  where fid= 63  
+(COMM LAYER) 0 FORK FAST  --- Reached the end 
+---(PID) NODE 0 PID 5625 
+..........................................................................................................................................................PROGRAM_OUTPUT: ======  GO GO 
+PROGRAM_OUTPUT: ======  DONE long running job on locale 0 
+(COMM LAYER) 0 chpl_comm_fork_nb 0 -> 1 :: calling chpl_comm_fork_nb_with_extras ******************* 
+(*******) 0 FORK_NB_with_extras  ----------to 1  START 
+(*******) 0 FORK_NB_with_extras ----------to 1   create fork_t object  
+(*******) 0 FORK_NB_with_extras ----------to 1   moving to execution  
+(*******) 0 FORK_NB_with_extras ----------to 1   fid = 95  
+(*******) 0 FORK_NB_with_extras   ----------to 1 ++++++++chpl_nodeID!=node +++++++ REMOTE EXECUTION 
+(*******) 0 FORK_NB_with_extras:: sending FORK_NB_WE 
+(*******) 0 FORK_NB_with_extras:: FORK_NB_WE  sent!! 
+(*******) 0 FORK_NB_with_extras::remoteForks ++  = 1 
+(*******) 0 FORK_NB_with_extras 0 -> 1 :: Reached the end-- 
+(*******) 0 FORK_NB_with_extras 0 -> 1 :: FAILED NODES=========================-- 
+-- ID: 0  -- ALIVE 0 -- 
+-- ID: 1  -- ALIVE 0 -- 
+(*******) 0 FORK_NB_with_extras:: sending transit_msg 
+(COMM LAYER) 0 addToTransitMsgList :: adding fid=95 =====*******
+(COMM LAYER) 0 addToTransitMsgList :: adding fid=95 in else 
+(COMM LAYER) 0 =========== TRANSIT MSG LIST =========== 
+(COMM LAYER) 0 :::: (tail)-- fid = 95
+(COMM LAYER) 0 printTransitMsgList:: TransitMsgList 1 message(s) stored
+(COMM LAYER) 0 FORK_NB_with_extras 0 ->1 :: PHASE 1 print
+(COMM LAYER) 0 =========== TRANSIT MSG LIST =========== 
+(COMM LAYER) 0 :::: (tail)-- fid = 95
+(COMM LAYER) 0 printTransitMsgList:: TransitMsgList 1 message(s) stored
+PROGRAM_OUTPUT: ======  Time elapsed: 5.00113
+[0] /usr/bin/gstack 5625
+[0] Thread 4 (Thread 0x7f71223e5700 (LWP 5628)):
+[0] #0  0x00007f7128b8c373 in select () from /lib64/libc.so.6
+[0] #1  0x00000000005a7deb in myselect ()
+[0] #2  0x00000000005a809f in inputWaiting(unsigned int) ()
+[0] #3  0x00000000005a42ad in AMUDP_SPMDHandleControlTraffic ()
+[0] #4  0x00000000005a1d8b in AM_Poll ()
+[0] #5  0x000000000052c8a4 in gasnetc_AMPoll ()
+[0] #6  0x00000000004ff31e in polling ()
+[0] #7  0x00000000004fa514 in comm_task_wrapper ()
+[0] #8  0x00007f71295e69d1 in start_thread () from /lib64/libpthread.so.0
+[0] #9  0x00007f7128b938fd in clone () from /lib64/libc.so.6
+[0] Thread 3 (Thread 0x7f71219e4700 (LWP 5629)):
+[0] #0  0x00007f7128b7a287 in sched_yield () from /lib64/libc.so.6
+[0] #1  0x00000000004fcc48 in chpl_thread_yield ()
+[0] #2  0x00000000004fc0f2 in thread_begin ()
+[0] #3  0x00000000004fd61e in pthread_func ()
+[0] #4  0x00007f71295e69d1 in start_thread () from /lib64/libpthread.so.0
+[0] #5  0x00007f7128b938fd in clone () from /lib64/libc.so.6
+[0] Thread 2 (Thread 0x7f71211e3700 (LWP 5631)):
+[0] #0  0x00007f7128b7a287 in sched_yield () from /lib64/libc.so.6
+[0] #1  0x00000000004fcc48 in chpl_thread_yield ()
+[0] #2  0x00000000004fc0f2 in thread_begin ()
+[0] #3  0x00000000004fd61e in pthread_func ()
+[0] #4  0x00007f71295e69d1 in start_thread () from /lib64/libpthread.so.0
+[0] #5  0x00007f7128b938fd in clone () from /lib64/libc.so.6
+[0] Thread 1 (Thread 0x7f71299ec740 (LWP 5625)):
+[0] #0  0x00007f7128b7a287 in sched_yield () from /lib64/libc.so.6
+[0] #1  0x0000000000536c5e in gasneti_bt_gstack ()
+[0] #2  0x000000000053703f in gasneti_print_backtrace ()
+[0] #3  0x000000000059705e in gasneti_defaultSignalHandler ()
+[0] #4  <signal handler called>
+[0] #5  0x00007f7128b7a287 in sched_yield () from /lib64/libc.so.6
+[0] #6  0x00000000004fcc48 in chpl_thread_yield ()
+[0] #7  0x00000000004fb5c5 in chpl_task_yield ()
+[0] #8  0x000000000040cf81 in on_fn10 ()
+[0] #9  0x000000000040d2ea in wrapon_fn10 ()
+[0] #10 0x0000000000440529 in chpl_executeOn ()
+[0] #11 0x0000000000408568 in _waitEndCount ()
+[0] #12 0x0000000000408a38 in _waitEndCount2 ()
+[0] #13 0x000000000049d6c6 in chpl_gen_main ()
+[0] #14 0x00000000004eb641 in chpl_main ()
+[0] #15 0x00000000004fa051 in chpl_task_callMain ()
+[0] #16 0x00000000004eb810 in main ()
+bash: line 1:  5625 Segmentation fault      './cobegin2loc_real' '__AMUDP_SLAVE_PROCESS__' 'amaterasu:34267' '-nl' '2'
+--------------(SIGUSR2_handler) 1 RECEIVED SIGNAL SIGUSR2 - setting amIalive var 
+(AM_fork_nb_with_extras) 1 - Raising USR1 sig to my self
+ (AM_fork_nb_with_extras) 1 ------------------------STARTED...
+ (AM_fork_nb_with_extras)1   ********** DADAAAA!  
+ 

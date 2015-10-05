@@ -1,0 +1,30 @@
+---(PID) NODE 1 PID 3859 
+---(PID) NODE 2 PID 14468 
+---(PID) NODE 3 PID 14844 
+---(PID) NODE 0 PID 1827 
+MasterLocale: bwlf04   
+
+ pi = 3.14173 ----------on locale 1
+ pi = 3.14173 ----------on locale 2
+ pi = 3.14173 ----------on locale 3
+PROGRAM END ============= Time elapsed:143.261 
+
+
+real	2m44.808s
+user	0m0.005s
+sys	0m0.011s
+---(PID) NODE 1 PID 14891 
+---(PID) NODE 2 PID 1886 
+---(PID) NODE 3 PID 14506 
+---(PID) NODE 0 PID 3899 
+MasterLocale: bwlf03   
+
+ pi = 3.14173 ----------on locale 1
+ pi = 3.14173 ----------on locale 2
+ pi = 3.14173 ----------on locale 3
+PROGRAM END ============= Time elapsed:138.111 
+
+
+real	2m40.043s
+user	0m0.012s
+sys	0m0.004s

@@ -1,0 +1,21 @@
+//1 signal per iteration
+kill -USR2 10676
+kill -USR2 1134
+kill -USR2 1169
+kill -USR2 1204
+kill -USR2 9254
+kill -USR2 9288
+kill -USR2 10816
+kill -USR2 10848
+kill -USR2 10885
+kill -USR2 1379
+kill -USR2 1416
+kill -USR2 9454
+kill -USR2 1476
+kill -USR2 1501
+kill -USR2 11041
+kill -USR2 9550
+kill -USR2 9595
+kill -USR2 1621
+kill -USR2 9643
+kill -USR2 11170

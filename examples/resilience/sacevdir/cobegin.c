@@ -1,0 +1,547 @@
+/* cobegin.chpl:1 */
+static void chpl__init_cobegin(int64_t _ln, c_string _fn) {
+  c_string modFormatStr;
+  c_string modStr;
+  _ref_int32_t refIndentLevel = NULL;
+  if (chpl__init_cobegin_p) {
+    goto _exit_chpl__init_cobegin;
+  }
+  modFormatStr = "%*s\n";
+  modStr = "cobegin";
+  printModuleInit(modFormatStr, modStr, INT64(7));
+  refIndentLevel = &moduleInitLevel;
+  *(refIndentLevel) += INT64(1);
+  chpl__init_cobegin_p = true;
+  {
+    chpl__init_Time(INT64(1), "examples/resilience/cobegin.chpl");
+    chpl__init_Random(INT64(1), "examples/resilience/cobegin.chpl");
+  }
+  *(refIndentLevel) -= INT64(1);
+  _exit_chpl__init_cobegin:;
+  return;
+}
+
+/* cobegin.chpl:4 */
+static void chpl_user_main(chpl___EndCount _endCount) {
+  chpl___EndCount _endCount2 = NULL;
+  Timer total;
+  Timer this8;
+  _timevalue call_tmp;
+  _timevalue type_tmp;
+  _timevalue x;
+  _ref__timevalue _ref_tmp_ = NULL;
+  _real64 x2;
+  _ref__real64 _ref_tmp_2 = NULL;
+  chpl_bool x3;
+  _ref_chpl_bool _ref_tmp_3 = NULL;
+  Timer wrap_call_tmp;
+  _ref_Timer _ref_tmp_4 = NULL;
+  Timer t2;
+  Timer this9;
+  _timevalue call_tmp2;
+  _timevalue type_tmp2;
+  _timevalue x4;
+  _ref__timevalue _ref_tmp_5 = NULL;
+  _real64 x5;
+  _ref__real64 _ref_tmp_6 = NULL;
+  chpl_bool x6;
+  _ref_chpl_bool _ref_tmp_7 = NULL;
+  Timer wrap_call_tmp2;
+  _ref_Timer _ref_tmp_8 = NULL;
+  chpl_bool T;
+  _ref_Timer _ref_tmp_9 = NULL;
+  _real64 wrap_call_tmp3;
+  chpl_bool call_tmp3;
+  chpl____wide_chpl_string call_tmp4 = {CHPL_LOCALEID_T_INIT, NULL};
+  _ref_Timer _ref_tmp_10 = NULL;
+  _real64 wrap_call_tmp4;
+  chpl_bool call_tmp5;
+  _ref_Timer _ref_tmp_11 = NULL;
+  chpl____wide_chpl_string call_tmp6 = {CHPL_LOCALEID_T_INIT, NULL};
+  Timer t;
+  Timer this10;
+  _timevalue call_tmp7;
+  _timevalue type_tmp3;
+  _timevalue x7;
+  _ref__timevalue _ref_tmp_12 = NULL;
+  _real64 x8;
+  _ref__real64 _ref_tmp_13 = NULL;
+  chpl_bool x9;
+  _ref_chpl_bool _ref_tmp_14 = NULL;
+  Timer wrap_call_tmp5;
+  _ref_Timer _ref_tmp_15 = NULL;
+  chpl_bool T2;
+  _ref_Timer _ref_tmp_16 = NULL;
+  _real64 wrap_call_tmp6;
+  _real64 call_tmp8;
+  chpl_bool call_tmp9;
+  _ref_Timer _ref_tmp_17 = NULL;
+  _real64 wrap_call_tmp7;
+  _real64 call_tmp10;
+  chpl_bool call_tmp11;
+  _ref_Timer _ref_tmp_18 = NULL;
+  _tuple_1_star_int64_t i;
+  _tuple_1_star_int64_t this11;
+  chpl____wide_DefaultRectangularArr_locale_1_int64_t_F call_tmp12 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide_DefaultRectangularArr_locale_1_int64_t_F ret = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl_bool wrap_call_tmp8;
+  chpl____wide_DefaultRectangularDom_1_int64_t_F call_tmp13 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl_bool call_tmp14;
+  chpl____wide_chpl_string call_tmp15 = {CHPL_LOCALEID_T_INIT, NULL};
+  int64_t sum;
+  int64_t ret_x1;
+  chpl____wide__ref__tuple_1_star_int64_t ret_ = {CHPL_LOCALEID_T_INIT, NULL};
+  int64_t call_tmp16;
+  int64_t call_tmp17;
+  _ref_int64_t _ref_tmp_19 = NULL;
+  chpl____wide__ddata_locale call_tmp18 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide__ref_locale call_tmp19 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl_localeID_t call_tmp20;
+  chpl____wide_locale T3 = {CHPL_LOCALEID_T_INIT, NULL};
+  _class_localson_fn88 _args_foron_fn = NULL;
+  int64_t chpl_here_alloc_size;
+  chpl_opaque chpl_here_alloc_tmp;
+  chpl_localeID_t call_tmp21;
+  chpl____wide__EndCount T4 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide_chpl_string call_tmp22 = {CHPL_LOCALEID_T_INIT, NULL};
+  _ref_Timer _ref_tmp_20 = NULL;
+  _ref_Timer _ref_tmp_21 = NULL;
+  _real64 wrap_call_tmp9;
+  chpl____wide_chpl_string call_tmp23 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide_chpl_string call_tmp24 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide__ref_DefaultRectangularDom_1_int64_t_F chpl_macro_tmp_1418;
+  chpl____wide__ref__tuple_1_star_int64_t chpl_macro_tmp_1419;
+  chpl____wide__ref_int64_t chpl_macro_tmp_1420;
+  chpl____wide__ref__ddata_locale chpl_macro_tmp_1421;
+  chpl____wide__ref_locale chpl_macro_tmp_1422;
+  chpl____wide__EndCount chpl_macro_tmp_1423;
+  _endCount2 = _endCount;
+  (&this8)->accumulated = 0.0;
+  (&this8)->running = false;
+  call_tmp = chpl_null_timevalue();
+  x = type_tmp;
+  _ref_tmp_ = &x;
+  *(_ref_tmp_) = call_tmp;
+  (&this8)->time = x;
+  x2 = 0.0;
+  _ref_tmp_2 = &x2;
+  *(_ref_tmp_2) = 0.0;
+  (&this8)->accumulated = x2;
+  x3 = false;
+  _ref_tmp_3 = &x3;
+  *(_ref_tmp_3) = false;
+  (&this8)->running = x3;
+  wrap_call_tmp = _construct_Timer(x, x2, x3, &this8);
+  total = wrap_call_tmp;
+  _ref_tmp_4 = &total;
+  chpl_check_nil(_ref_tmp_4, INT64(6), "examples/resilience/cobegin.chpl");
+  start(_ref_tmp_4);
+  (&this9)->accumulated = 0.0;
+  (&this9)->running = false;
+  call_tmp2 = chpl_null_timevalue();
+  x4 = type_tmp2;
+  _ref_tmp_5 = &x4;
+  *(_ref_tmp_5) = call_tmp2;
+  (&this9)->time = x4;
+  x5 = 0.0;
+  _ref_tmp_6 = &x5;
+  *(_ref_tmp_6) = 0.0;
+  (&this9)->accumulated = x5;
+  x6 = false;
+  _ref_tmp_7 = &x6;
+  *(_ref_tmp_7) = false;
+  (&this9)->running = x6;
+  wrap_call_tmp2 = _construct_Timer(x4, x5, x6, &this9);
+  t2 = wrap_call_tmp2;
+  _ref_tmp_8 = &t2;
+  chpl_check_nil(_ref_tmp_8, INT64(9), "examples/resilience/cobegin.chpl");
+  start(_ref_tmp_8);
+  _ref_tmp_9 = &t2;
+  chpl_check_nil(_ref_tmp_9, INT64(10), "examples/resilience/cobegin.chpl");
+  wrap_call_tmp3 = elapsed(_ref_tmp_9, TimeUnits_seconds);
+  call_tmp3 = (wrap_call_tmp3 < 0.001);
+  T = call_tmp3;
+  while (T) {
+    wide_string_from_c_string(&call_tmp4, ".", INT64(0), INT64(0), INT64(11), "examples/resilience/cobegin.chpl");
+    write13(call_tmp4);
+    _ref_tmp_10 = &t2;
+    chpl_check_nil(_ref_tmp_10, INT64(10), "examples/resilience/cobegin.chpl");
+    wrap_call_tmp4 = elapsed(_ref_tmp_10, TimeUnits_seconds);
+    call_tmp5 = (wrap_call_tmp4 < 0.001);
+    T = call_tmp5;
+  }
+  _ref_tmp_11 = &t2;
+  chpl_check_nil(_ref_tmp_11, INT64(13), "examples/resilience/cobegin.chpl");
+  stop(_ref_tmp_11);
+  wide_string_from_c_string(&call_tmp6, "PROGRAM_OUTPUT: ======  GO GO", INT64(0), INT64(0), INT64(14), "examples/resilience/cobegin.chpl");
+  writeln6(call_tmp6);
+  (&this10)->accumulated = 0.0;
+  (&this10)->running = false;
+  call_tmp7 = chpl_null_timevalue();
+  x7 = type_tmp3;
+  _ref_tmp_12 = &x7;
+  *(_ref_tmp_12) = call_tmp7;
+  (&this10)->time = x7;
+  x8 = 0.0;
+  _ref_tmp_13 = &x8;
+  *(_ref_tmp_13) = 0.0;
+  (&this10)->accumulated = x8;
+  x9 = false;
+  _ref_tmp_14 = &x9;
+  *(_ref_tmp_14) = false;
+  (&this10)->running = x9;
+  wrap_call_tmp5 = _construct_Timer(x7, x8, x9, &this10);
+  t = wrap_call_tmp5;
+  _ref_tmp_15 = &t;
+  chpl_check_nil(_ref_tmp_15, INT64(16), "examples/resilience/cobegin.chpl");
+  start(_ref_tmp_15);
+  _ref_tmp_16 = &t;
+  chpl_check_nil(_ref_tmp_16, INT64(17), "examples/resilience/cobegin.chpl");
+  wrap_call_tmp6 = elapsed(_ref_tmp_16, TimeUnits_seconds);
+  call_tmp8 = ((_real64)(INT64(5)));
+  call_tmp9 = (wrap_call_tmp6 < call_tmp8);
+  T2 = call_tmp9;
+  while (T2) {
+    _ref_tmp_17 = &t;
+    chpl_check_nil(_ref_tmp_17, INT64(17), "examples/resilience/cobegin.chpl");
+    wrap_call_tmp7 = elapsed(_ref_tmp_17, TimeUnits_seconds);
+    call_tmp10 = ((_real64)(INT64(5)));
+    call_tmp11 = (wrap_call_tmp7 < call_tmp10);
+    T2 = call_tmp11;
+  }
+  _ref_tmp_18 = &t;
+  chpl_check_nil(_ref_tmp_18, INT64(19), "examples/resilience/cobegin.chpl");
+  stop(_ref_tmp_18);
+  *(this11 + INT64(0)) = INT64(1);
+  *(i + INT64(0)) = *(this11 + INT64(0));
+  ret = Locales;
+  call_tmp12 = ret;
+  chpl_check_nil((&call_tmp12)->addr, INT64(21), "examples/resilience/cobegin.chpl");
+  chpl_macro_tmp_1418.locale = (&call_tmp12)->locale;
+  chpl_macro_tmp_1418.addr = &(((&call_tmp12)->addr)->dom);
+  chpl_gen_comm_get(((void*)(&call_tmp13)), chpl_nodeFromLocaleID(&((chpl_macro_tmp_1418).locale), INT64(0), NULL), (chpl_macro_tmp_1418).addr, sizeof(chpl____wide_DefaultRectangularDom_1_int64_t_F), -1, INT64(1), INT64(21), "examples/resilience/cobegin.chpl");
+  chpl_check_nil((&call_tmp13)->addr, INT64(21), "examples/resilience/cobegin.chpl");
+  wrap_call_tmp8 = dsiMember2(&call_tmp13, &this11);
+  call_tmp14 = (! wrap_call_tmp8);
+  if (call_tmp14) {
+    wide_string_from_c_string(&call_tmp15, "array index out of bounds: ", INT64(0), INT64(0), INT64(21), "examples/resilience/cobegin.chpl");
+    halt2(call_tmp15, &this11, INT64(21), "examples/resilience/cobegin.chpl");
+  }
+  sum = INT64(0);
+  chpl_check_nil((&call_tmp12)->addr, INT64(21), "examples/resilience/cobegin.chpl");
+  chpl_macro_tmp_1419.locale = (&call_tmp12)->locale;
+  chpl_macro_tmp_1419.addr = &(((&call_tmp12)->addr)->blk);
+  ret_ = chpl_macro_tmp_1419;
+  chpl_macro_tmp_1420.locale = (ret_).locale;
+  chpl_macro_tmp_1420.addr = (*((ret_).addr) + INT64(0));
+  chpl_gen_comm_get(((void*)(&ret_x1)), chpl_nodeFromLocaleID(&((chpl_macro_tmp_1420).locale), INT64(0), NULL), (chpl_macro_tmp_1420).addr, sizeof(int64_t), -1, INT64(1), INT64(21), "examples/resilience/cobegin.chpl");
+  call_tmp16 = *(i + INT64(0));
+  call_tmp17 = (call_tmp16 * ret_x1);
+  _ref_tmp_19 = &sum;
+  *(_ref_tmp_19) += call_tmp17;
+  chpl_check_nil((&call_tmp12)->addr, INT64(21), "examples/resilience/cobegin.chpl");
+  chpl_macro_tmp_1421.locale = (&call_tmp12)->locale;
+  chpl_macro_tmp_1421.addr = &(((&call_tmp12)->addr)->shiftedData);
+  chpl_gen_comm_get(((void*)(&call_tmp18)), chpl_nodeFromLocaleID(&((chpl_macro_tmp_1421).locale), INT64(0), NULL), (chpl_macro_tmp_1421).addr, sizeof(chpl____wide__ddata_locale), -1, INT64(1), INT64(21), "examples/resilience/cobegin.chpl");
+  chpl_macro_tmp_1422.locale = (&call_tmp18)->locale;
+  chpl_macro_tmp_1422.addr = ((&call_tmp18)->addr + sum);
+  call_tmp19 = chpl_macro_tmp_1422;
+  chpl_gen_comm_get(((void*)(&T3)), chpl_nodeFromLocaleID(&((call_tmp19).locale), INT64(0), NULL), (call_tmp19).addr, sizeof(chpl____wide_locale), -1, INT64(1), INT64(21), "examples/resilience/cobegin.chpl");
+  call_tmp20 = (&T3)->locale;
+  _upEndCount2(_endCount2);
+  chpl_here_alloc_size = sizeof(chpl__class_localson_fn88_object);
+  chpl_here_alloc_tmp = chpl_here_alloc(chpl_here_alloc_size, INT16(36));
+  _args_foron_fn = ((_class_localson_fn88)(chpl_here_alloc_tmp));
+  call_tmp21 = chpl__initCopy_chpl_rt_localeID_t(call_tmp20);
+  chpl_check_nil(_args_foron_fn, INT64(21), "examples/resilience/cobegin.chpl");
+  (_args_foron_fn)->_0__tmp = call_tmp21;
+  chpl_macro_tmp_1423.locale = chpl_gen_getLocaleID();
+  chpl_macro_tmp_1423.addr = _endCount2;
+  T4 = chpl_macro_tmp_1423;
+  chpl_check_nil(_args_foron_fn, INT64(21), "examples/resilience/cobegin.chpl");
+  (_args_foron_fn)->_1__endCount = T4;
+  /*** wrapon_fn88 ***/ chpl_executeOnNB(&call_tmp20, INT32(95), _args_foron_fn, sizeof(chpl__class_localson_fn88_object), INT64(21), "examples/resilience/cobegin.chpl");
+  chpl_here_free(((void*)(_args_foron_fn)));
+  wide_string_from_c_string(&call_tmp22, "PROGRAM_OUTPUT: ======  start long running job on locale 0", INT64(0), INT64(0), INT64(24), "examples/resilience/cobegin.chpl");
+  writeln6(call_tmp22);
+  _ref_tmp_20 = &total;
+  chpl_check_nil(_ref_tmp_20, INT64(34), "examples/resilience/cobegin.chpl");
+  stop(_ref_tmp_20);
+  _ref_tmp_21 = &total;
+  chpl_check_nil(_ref_tmp_21, INT64(35), "examples/resilience/cobegin.chpl");
+  wrap_call_tmp9 = elapsed(_ref_tmp_21, TimeUnits_seconds);
+  wide_string_from_c_string(&call_tmp23, "PROGRAM_OUTPUT: ======  Time elapsed: ", INT64(0), INT64(0), INT64(35), "examples/resilience/cobegin.chpl");
+  wide_string_from_c_string(&call_tmp24, "\n", INT64(0), INT64(0), INT64(35), "examples/resilience/cobegin.chpl");
+  writeln9(call_tmp23, wrap_call_tmp9, call_tmp24);
+  return;
+}
+
+/* cobegin.chpl:4 */
+int64_t chpl_gen_main(chpl_main_argument* const _arg) {
+  chpl___EndCount this8 = NULL;
+  int64_t call_tmp;
+  chpl_opaque cast_tmp;
+  chpl___EndCount T = NULL;
+  atomic_int64 _init_class_tmp_;
+  atomic_int64 this9;
+  atomic_int_least64_t ret;
+  atomic_int_least64_t type_tmp;
+  atomic_int_least64_t ret2;
+  _ref_atomic_int_least64_t _ref_tmp_ = NULL;
+  _ref_atomic_int_least64_t T2 = NULL;
+  _ref_atomic_int_least64_t _ref_tmp_2 = NULL;
+  atomic_int_least64_t type_tmp2;
+  atomic_int_least64_t x;
+  _ref_atomic_int_least64_t _ref_tmp_3 = NULL;
+  atomic_int64 wrap_call_tmp;
+  chpl_task_list_p type_tmp3;
+  chpl_task_list_p x2;
+  _ref_chpl_task_list_p _ref_tmp_4 = NULL;
+  chpl___EndCount wrap_call_tmp2 = NULL;
+  call_tmp = sizeof(chpl_chpl___EndCount_object);
+  cast_tmp = chpl_here_alloc(call_tmp, INT16(16));
+  T = ((chpl___EndCount)(cast_tmp));
+  this8 = T;
+  ((object)(this8))->chpl__cid = chpl__cid_chpl___EndCount;
+  chpl_check_nil(this8, INT64(4), "examples/resilience/cobegin.chpl");
+  (this8)->i = _init_class_tmp_;
+  chpl_check_nil(this8, INT64(4), "examples/resilience/cobegin.chpl");
+  (this8)->taskCnt = INT64(0);
+  chpl_check_nil(this8, INT64(4), "examples/resilience/cobegin.chpl");
+  (this8)->taskList = NULL;
+  ret2 = type_tmp;
+  _ref_tmp_ = &ret2;
+  T2 = _ref_tmp_;
+  atomic_init_int_least64_t(T2, INT64(0));
+  _ref_tmp_ = T2;
+  _ref_tmp_2 = &ret;
+  *(_ref_tmp_2) = ret2;
+  x = type_tmp2;
+  _ref_tmp_3 = &x;
+  *(_ref_tmp_3) = ret;
+  (&this9)->_v = x;
+  wrap_call_tmp = _construct_atomic_int64(x, &this9);
+  chpl_check_nil(this8, INT64(4), "examples/resilience/cobegin.chpl");
+  (this8)->i = wrap_call_tmp;
+  chpl_check_nil(this8, INT64(4), "examples/resilience/cobegin.chpl");
+  (this8)->taskCnt = INT64(0);
+  type_tmp3 = NULL;
+  x2 = type_tmp3;
+  _ref_tmp_4 = &x2;
+  *(_ref_tmp_4) = NULL;
+  chpl_check_nil(this8, INT64(4), "examples/resilience/cobegin.chpl");
+  (this8)->taskList = x2;
+  wrap_call_tmp2 = _construct__EndCount(&wrap_call_tmp, INT64(0), x2, this8);
+  chpl_rt_preUserCodeHook();
+  chpl__init_cobegin(INT64(4), "examples/resilience/cobegin.chpl");
+  chpl_user_main(wrap_call_tmp2);
+  chpl_rt_postUserCodeHook();
+  _waitEndCount2(wrap_call_tmp2);
+  chpl__autoDestroyGlobals();
+  return INT64(0);
+}
+
+/* ChapelBase.chpl:5 */
+static void chpl__autoDestroyGlobals(void) {
+  channel_T_dynamic_T local_stderr;
+  channel_T_dynamic_T local_stdout;
+  channel_F_dynamic_T local_stdin;
+  chpl____wide_DefaultRectangularDom_1_int64_t_F local_LocaleSpace = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide_DefaultRectangularArr_locale_1_int64_t_F local_chpl_emptyLocales = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide_DefaultRectangularDom_1_int64_t_F local_chpl_emptyLocaleSpace = {CHPL_LOCALEID_T_INIT, NULL};
+  _ref_channel_F_dynamic_T _destructor_tmp_ = NULL;
+  _ref_channel_T_dynamic_T _destructor_tmp_2 = NULL;
+  _ref_channel_T_dynamic_T _destructor_tmp_3 = NULL;
+  local_stderr = stderr2;
+  local_stdout = stdout2;
+  local_stdin = stdin2;
+  local_LocaleSpace = LocaleSpace;
+  local_chpl_emptyLocales = chpl_emptyLocales;
+  local_chpl_emptyLocaleSpace = chpl_emptyLocaleSpace;
+  chpl__autoDestroy(&defaultDist);
+  chpl__autoDestroy2(&local_chpl_emptyLocaleSpace);
+  chpl__autoDestroy4(&local_chpl_emptyLocales);
+  chpl__autoDestroy4(&Locales);
+  chpl__autoDestroy2(&local_LocaleSpace);
+  _destructor_tmp_ = &local_stdin;
+  chpl___TILDE_channel(_destructor_tmp_);
+  _destructor_tmp_2 = &local_stdout;
+  chpl___TILDE_channel2(_destructor_tmp_2);
+  _destructor_tmp_3 = &local_stderr;
+  chpl___TILDE_channel2(_destructor_tmp_3);
+  return;
+}
+
+/* cobegin.chpl:21 */
+static void on_fn88(chpl____wide__EndCount* const _endCount) {
+  monteCarlo();
+  _downEndCount2(_endCount);
+  return;
+}
+
+/* cobegin.chpl:21 */
+static void wrapon_fn88(_class_localson_fn88 c) {
+  chpl____wide__EndCount _1__endCount = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl_check_nil(c, INT64(21), "examples/resilience/cobegin.chpl");
+  _1__endCount = (c)->_1__endCount;
+  on_fn88(&_1__endCount);
+  return;
+}
+
+/* cobegin.chpl:47 */
+static void monteCarlo(void) {
+  int64_t n;
+  chpl____wide_RandomStream_F rs = {CHPL_LOCALEID_T_INIT, NULL};
+  int64_t count;
+  range_int64_t_bounded_F call_tmp;
+  _ref_range_int64_t_bounded_F ret_to_arg_ref_tmp_ = NULL;
+  range_int64_t_bounded_F _ic__F0_this;
+  rangeBase_int64_t_bounded_F T;
+  rangeBase_int64_t_bounded_F _ic__F0_this2;
+  int64_t i;
+  int64_t ret;
+  int64_t type_tmp;
+  int64_t end;
+  int64_t T2;
+  int64_t ret2;
+  int64_t ret3;
+  chpl_bool call_tmp2;
+  int64_t ret4;
+  int64_t call_tmp3;
+  _ref_int64_t _ref_tmp_ = NULL;
+  chpl_bool T3;
+  chpl_bool call_tmp4;
+  _real64 wrap_call_tmp;
+  _real64 call_tmp5;
+  _real64 wrap_call_tmp2;
+  _real64 call_tmp6;
+  _real64 call_tmp7;
+  chpl_bool call_tmp8;
+  _ref_int64_t _ref_tmp_2 = NULL;
+  int64_t call_tmp9;
+  _ref_int64_t _ref_tmp_3 = NULL;
+  chpl_bool call_tmp10;
+  chpl____wide_chpl_string call_tmp11 = {CHPL_LOCALEID_T_INIT, NULL};
+  _real64 call_tmp12;
+  _real64 call_tmp13;
+  _real64 call_tmp14;
+  _real64 call_tmp15;
+  int32_t call_tmp16;
+  chpl_localeID_t call_tmp17;
+  _ref_chpl_localeID_t ret_to_arg_ref_tmp_2 = NULL;
+  chpl_localeID_t call_tmp18;
+  chpl____wide_locale call_tmp19 = {CHPL_LOCALEID_T_INIT, NULL};
+  int64_t call_tmp20;
+  chpl____wide_chpl_string call_tmp21 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide_chpl_string call_tmp22 = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide_RandomStream_F delete_tmp = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl____wide__syncvar_chpl_bool _field_destructor_tmp_ = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl_localeID_t call_tmp23;
+  chpl____wide_RandomStream_F rvfDerefTmp = {CHPL_LOCALEID_T_INIT, NULL};
+  _class_localson_fn89 _args_foron_fn = NULL;
+  int64_t chpl_here_alloc_size;
+  chpl_opaque chpl_here_alloc_tmp;
+  chpl____wide_RandomStream_F chpl_macro_tmp_1424;
+  chpl____wide__ref__syncvar_chpl_bool chpl_macro_tmp_1425;
+  n = INT64(100000000);
+  chpl_macro_tmp_1424.locale = chpl_gen_getLocaleID();
+  chpl_macro_tmp_1424.addr = RandomStream(INT64(589494289));
+  rs = chpl_macro_tmp_1424;
+  count = INT64(0);
+  ret_to_arg_ref_tmp_ = &call_tmp;
+  _build_range(INT64(1), INT64(100000000), ret_to_arg_ref_tmp_);
+  _ic__F0_this = call_tmp;
+  T = (&_ic__F0_this)->_base;
+  _ic__F0_this2 = T;
+  ret = (&_ic__F0_this2)->_low;
+  i = ret;
+  type_tmp = INT64(0);
+  ret2 = (&_ic__F0_this2)->_low;
+  ret3 = (&_ic__F0_this2)->_high;
+  call_tmp2 = (ret2 > ret3);
+  if (call_tmp2) {
+    T2 = ret;
+  } else {
+    ret4 = (&_ic__F0_this2)->_high;
+    call_tmp3 = (ret4 + INT64(1));
+    T2 = call_tmp3;
+  }
+  _ref_tmp_ = &type_tmp;
+  *(_ref_tmp_) = T2;
+  end = type_tmp;
+  call_tmp4 = (ret != type_tmp);
+  T3 = call_tmp4;
+  while (T3) {
+    chpl_check_nil((&rs)->addr, INT64(55), "examples/resilience/cobegin.chpl");
+    wrap_call_tmp = getNext(&rs);
+    call_tmp5 = (wrap_call_tmp * wrap_call_tmp);
+    chpl_check_nil((&rs)->addr, INT64(55), "examples/resilience/cobegin.chpl");
+    wrap_call_tmp2 = getNext(&rs);
+    call_tmp6 = (wrap_call_tmp2 * wrap_call_tmp2);
+    call_tmp7 = (call_tmp5 + call_tmp6);
+    call_tmp8 = (call_tmp7 <= 1.0);
+    if (call_tmp8) {
+      _ref_tmp_2 = &count;
+      *(_ref_tmp_2) += INT64(1);
+    }
+    call_tmp9 = (i + INT64(1));
+    _ref_tmp_3 = &i;
+    *(_ref_tmp_3) = call_tmp9;
+    call_tmp10 = (i != end);
+    T3 = call_tmp10;
+  }
+  wide_string_from_c_string(&call_tmp11, "count", INT64(0), INT64(0), INT64(57), "examples/resilience/cobegin.chpl");
+  writeln7(call_tmp11, count);
+  call_tmp12 = ((_real64)(count));
+  call_tmp13 = (call_tmp12 * 4.0);
+  call_tmp14 = ((_real64)(n));
+  call_tmp15 = (call_tmp13 / call_tmp14);
+  call_tmp16 = chpl_task_getRequestedSubloc();
+  ret_to_arg_ref_tmp_2 = &call_tmp17;
+  chpl_buildLocaleID(chpl_nodeID, call_tmp16, ret_to_arg_ref_tmp_2, INT64(58), "examples/resilience/cobegin.chpl");
+  call_tmp18 = chpl__initCopy_chpl_rt_localeID_t(call_tmp17);
+  call_tmp19 = chpl_localeID_to_locale(&call_tmp18);
+  chpl_check_nil((&call_tmp19)->addr, INT64(58), "examples/resilience/cobegin.chpl");
+  call_tmp20 = id(&call_tmp19);
+  wide_string_from_c_string(&call_tmp21, "pi = ", INT64(0), INT64(0), INT64(58), "examples/resilience/cobegin.chpl");
+  wide_string_from_c_string(&call_tmp22, " ----------on locale ", INT64(0), INT64(0), INT64(58), "examples/resilience/cobegin.chpl");
+  writeln8(call_tmp21, call_tmp15, call_tmp22, call_tmp20);
+  delete_tmp = rs;
+  chpl_check_nil((&delete_tmp)->addr, INT64(59), "examples/resilience/cobegin.chpl");
+  chpl_macro_tmp_1425.locale = (&delete_tmp)->locale;
+  chpl_macro_tmp_1425.addr = &(((&delete_tmp)->addr)->RandomStreamPrivate_lock_DOLLAR_);
+  chpl_gen_comm_get(((void*)(&_field_destructor_tmp_)), chpl_nodeFromLocaleID(&((chpl_macro_tmp_1425).locale), INT64(0), NULL), (chpl_macro_tmp_1425).addr, sizeof(chpl____wide__syncvar_chpl_bool), -1, INT64(1), INT64(59), "examples/resilience/cobegin.chpl");
+  chpl_check_nil((&_field_destructor_tmp_)->addr, INT64(59), "examples/resilience/cobegin.chpl");
+  chpl___TILDE__syncvar(&_field_destructor_tmp_);
+  chpl_here_free(((void*)((&_field_destructor_tmp_)->addr)));
+  call_tmp23 = (&rs)->locale;
+  rvfDerefTmp = rs;
+  chpl_here_alloc_size = sizeof(chpl__class_localson_fn89_object);
+  chpl_here_alloc_tmp = chpl_here_alloc(chpl_here_alloc_size, INT16(36));
+  _args_foron_fn = ((_class_localson_fn89)(chpl_here_alloc_tmp));
+  chpl_check_nil(_args_foron_fn, INT64(59), "examples/resilience/cobegin.chpl");
+  (_args_foron_fn)->_0__tmp = call_tmp23;
+  chpl_check_nil(_args_foron_fn, INT64(59), "examples/resilience/cobegin.chpl");
+  (_args_foron_fn)->_1_rvfDerefTmp = rvfDerefTmp;
+  /*** wrapon_fn89 ***/ chpl_executeOn(&call_tmp23, INT32(96), _args_foron_fn, sizeof(chpl__class_localson_fn89_object), INT64(59), "examples/resilience/cobegin.chpl");
+  chpl_here_free(((void*)(_args_foron_fn)));
+  return;
+}
+
+/* cobegin.chpl:59 */
+static void on_fn89(chpl____wide_RandomStream_F* const delete_tmp) {
+  chpl_opaque call_tmp;
+  call_tmp = ((void*)((delete_tmp)->addr));
+  chpl_here_free(call_tmp);
+  return;
+}
+
+/* cobegin.chpl:59 */
+static void wrapon_fn89(_class_localson_fn89 c) {
+  chpl____wide_RandomStream_F _1_rvfDerefTmp = {CHPL_LOCALEID_T_INIT, NULL};
+  chpl_check_nil(c, INT64(59), "examples/resilience/cobegin.chpl");
+  _1_rvfDerefTmp = (c)->_1_rvfDerefTmp;
+  on_fn89(&_1_rvfDerefTmp);
+  return;
+}
+

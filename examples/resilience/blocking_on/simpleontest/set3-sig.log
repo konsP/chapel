@@ -1,0 +1,80 @@
+//3 signals per iteration
+kill -USR2 8434
+kill -USR2 32404
+kill -USR2 32760
+============================
+kill -USR2 32439
+kill -USR2 8467
+kill -USR2 326
+============================
+kill -USR2 8501
+kill -USR2 32461
+kill -USR2 359
+============================
+kill -USR2 8522
+kill -USR2 392
+kill -USR2 32506
+============================
+kill -USR2 8555
+kill -USR2 428
+kill -USR2 32541
+============================
+kill -USR2 8588
+kill -USR2 32573
+kill -USR2 474
+============================
+kill -USR2 8624
+kill -USR2 32605
+kill -USR2 509
+============================
+kill -USR2 32627
+kill -USR2 8659
+kill -USR2 540
+============================
+kill -USR2 8705
+kill -USR2 32673
+kill -USR2 565
+============================
+kill -USR2 8738
+kill -USR2 32708
+kill -USR2 611
+============================
+kill -USR2 32750
+kill -USR2 8765
+kill -USR2 650
+============================
+kill -USR2 303
+kill -USR2 8799
+kill -USR2 682
+============================
+kill -USR2 351
+kill -USR2 8845
+kill -USR2 716
+============================
+kill -USR2 8879
+kill -USR2 374
+kill -USR2 737
+============================
+kill -USR2 408
+kill -USR2 8901
+kill -USR2 784
+============================
+kill -USR2 8935
+kill -USR2 443
+kill -USR2 815
+============================
+kill -USR2 493
+kill -USR2 8968
+kill -USR2 849
+============================
+kill -USR2 9001
+kill -USR2 528
+kill -USR2 883
+============================
+kill -USR2 563
+kill -USR2 916
+kill -USR2 9034
+============================
+kill -USR2 585
+kill -USR2 9067
+kill -USR2 936

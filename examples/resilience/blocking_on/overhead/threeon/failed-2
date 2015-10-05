@@ -1,0 +1,39 @@
+---(PID) NODE 2 PID 14757 
+---(PID) NODE 1 PID 4256 
+---(PID) NODE 3 PID 2229 
+---(PID) NODE 0 PID 15147 
+MasterLocale: bwlf31   
+
+ pi = 3.14173 ----------on locale 0
+ pi = 3.14173 ----------on locale 0
+ pi = 3.14173 ----------on locale 0
+PROGRAM END ============= Time elapsed:134.225 
+
+(sigUSR1_handler) 3 RECEIVED SIGUSR1
+(sigUSR1_handler) 1 RECEIVED SIGUSR1
+(sigUSR1_handler) 2 RECEIVED SIGUSR1
+
+real	2m35.876s
+user	0m0.006s
+sys	0m0.007s
+
+-bash-4.1$ time ./ov_threeon -nl 4
+---(PID) NODE 3 PID 15199 
+---(PID) NODE 2 PID 4318 
+---(PID) NODE 1 PID 14809 
+---(PID) NODE 0 PID 2298 
+MasterLocale: bwlf04   
+
+ pi = 3.14173 ----------on locale 0
+ pi = 3.14173 ----------on locale 0
+ pi = 3.14173 ----------on locale 0
+PROGRAM END ============= Time elapsed:143.533 
+
+(sigUSR1_handler) 1 RECEIVED SIGUSR1
+(sigUSR1_handler) 2 RECEIVED SIGUSR1
+(sigUSR1_handler) 3 RECEIVED SIGUSR1
+
+real	2m46.954s
+user	0m0.009s
+sys	0m0.007s
+
