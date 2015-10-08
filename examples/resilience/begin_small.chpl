@@ -21,6 +21,7 @@ proc main() {
 		on Locales[3] do begin {
 			monteCarlo(6);	
 		}	
+		
 	}
 
 	//writeln("PROGRAM_OUTPUT: ======  GO GO ");

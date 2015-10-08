@@ -7,7 +7,7 @@ proc main() {
 
 	var t2 = new Timer();
 	t2.start();
-	while(t2.elapsed() <20){}	
+	while(t2.elapsed() <10){}	
 	t2.stop();
 	writeln("PROGRAM_OUTPUT: ======  GO GO ");
 	
@@ -17,6 +17,11 @@ proc main() {
 			foo(1);
 		on Locales[2] do 
 			foo(2);	
+		on Locales[3] do{
+				foo(3);	
+				on Locales[2] do begin
+					foo(4);
+		}
 	}
 
 	total.stop();

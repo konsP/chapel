@@ -10,30 +10,26 @@ proc main() {
 	while(t.elapsed() < 20){		
 	}
 	t.stop();
-	writeln("Sum initially = ", sum,"--------- on locale ", here.id);
+	writeln("INITIAL ", sum,"--------- on locale ", here.id);
 	writeln("MasterLocale: ", here.name,"   \n");
 
 	on Locales(1) do {
-			//plusOne(sum);
-			writeln("Sum BEFORE = ", sum,"--------- on locale ", here.id);
 			sum += 1;
 			writeln("Sum AFTER = ", sum,"--------- on locale ", here.id);
 	}
 	on Locales(2) do {
-			//plusOne(sum);
-			writeln("Sum BEFORE = ", sum,"--------- on locale ", here.id);
-			sum += 1;
-			writeln("Sum AFTER = ", sum,"--------- on locale ", here.id);
+			sum -= 1;
+			writeln("Sum AFTER 2 = ", sum,"--------- on locale ", here.id);
 	}
 	
-	//NB cases: error: non-lvalue actual is passed to 'inout' formal 'sum' of plusOne() [functionResolution.cpp:32
-	//on + begin , cobegin on , coforall
-	if(sum ==1) then
-		writeln("Sum returns = ", sum,"--------- on locale ", here.id);
-	else if(sum ==2) then
-		writeln("Sum returns = ", sum,"--------- on locale ", here.id);
-	else
-		writeln("Sum returns = ", sum,"--------- on locale ", here.id);
+	on Locales(3) do {		
+			sum += here.id;
+			writeln("Sum AFTER 2 = ", sum,"--------- on locale ", here.id);
+	}
+	
+
+	writeln("FINAL ", sum,"--------- on locale ", here.id);
+
 	writeln("DONE");
 }
 

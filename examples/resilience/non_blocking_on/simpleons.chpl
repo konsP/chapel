@@ -13,12 +13,12 @@ proc main() {
 	t.stop();
 	writeln("MasterLocale: ", here.name,"   \n");
 		on Locales[1] do begin {
-			foo(1);//fact();
-			//monteCarlo();
+			//foo(1);//fact();
+			monteCarlo(1);
 		}
 		on Locales[2] do begin {
-			foo(2);//fact();
-			//monteCarlo();
+			//foo(2);//fact();
+			monteCarlo(2);
 		}
 	total.stop();
 	writeln("PROGRAM END ============= Time elapsed:", total.elapsed()," \n");
@@ -26,7 +26,7 @@ proc main() {
 	
 }
 
-
+/*
 proc monteCarlo(){
 	const      n = 100000000, 				// number of random points to try
 	seed = 589494289; 					// seed for random number generator
@@ -40,6 +40,23 @@ proc monteCarlo(){
 	
 	writeln(" pi = ",  count * 4.0 / n, " ----------on locale ", here.id);
 	
+	delete rs;
+} */
+
+proc monteCarlo(x){
+	const      n = 1000000, 				// number of random points to try
+	seed = 589494289; 					// seed for random number generator
+	//writeln(seed);
+	var rs = new RandomStream(seed, parSafe=false);
+	var count = 0;
+	
+	
+
+	for i in 1..n do
+		if (rs.getNext()**2 + rs.getNext()**2) <= 1.0 then
+			count += 1;
+	//writeln("PROGRAM_OUTPUT: count = ", count," ----------on locale ", here.id);
+	writeln("PROGRAM_OUTPUT: pi = ",  count*4.0/n , " ard  x = ",x,"----------on locale ", here.id);
 	delete rs;
 }
 
