@@ -42,6 +42,9 @@
 #include <unistd.h>
 
 
+
+#define PRINTING 0
+
 //
 // task pool: linked list of tasks
 //
@@ -146,6 +149,9 @@ static c_string idleTaskName = "|idle|";
 
 static chpl_fn_p comm_task_fn;
 
+static int 								amIdead; //locale status 
+
+
 //
 // Internal functions.
 //
@@ -158,6 +164,7 @@ static void                    set_current_ptask(task_pool_p);
 static void                    report_locked_threads(void);
 static void                    report_all_tasks(void);
 static void                    SIGINT_handler(int sig);
+static void                    SIGUSR2_handler(int sig);
 static void                    initializeLockReportForThread(void);
 static chpl_bool               set_block_loc(int, c_string);
 static void                    unset_block_loc(void);
@@ -174,6 +181,8 @@ static task_pool_p             add_to_task_pool(chpl_fn_p,
                                                 chpl_bool,
                                                 chpl_task_prvDataImpl_t,
                                                 chpl_task_list_p);
+                                                
+
 
 //
 // Condition variable methods
@@ -398,6 +407,8 @@ void chpl_task_init(void) {
   if (blockreport || taskreport) {
     signal(SIGINT, SIGINT_handler);
   }
+  //setting signal handler
+  signal(SIGUSR2, SIGUSR2_handler);
 
   initialized = true;
 }
@@ -818,7 +829,7 @@ void chpl_task_startMovedTask(chpl_fn_p fp,
                               void* a,
                               c_sublocid_t subloc,
                               chpl_taskID_t id,
-                              chpl_bool serial_state) {
+                              chpl_bool serial_state) {													
   movedTaskWrapperDesc_t* pmtwd;
   chpl_task_prvDataImpl_t private = {
     .prvdata = { .serial_state = serial_state } };
@@ -833,7 +844,8 @@ void chpl_task_startMovedTask(chpl_fn_p fp,
   *pmtwd = (movedTaskWrapperDesc_t)
            { fp, a, canCountRunningTasks,
              private };
-
+  if(PRINTING)
+		printf("(TASK) %d startMovedTask id: %d \n", chpl_nodeID, (int)id);
   // begin critical section
   chpl_thread_mutexLock(&threading_lock);
 
@@ -848,6 +860,8 @@ void chpl_task_startMovedTask(chpl_fn_p fp,
 
 static void movedTaskWrapper(void* a) {
   movedTaskWrapperDesc_t* pmtwd = (movedTaskWrapperDesc_t*) a;
+  if(PRINTING)
+ 		printf("MOVEDTASKWRAPPER %d\n", chpl_nodeID);
   if (pmtwd->countRunning)
     chpl_taskRunningCntInc(0, NULL);
   (pmtwd->fp)(pmtwd->arg);
@@ -1069,6 +1083,15 @@ static void SIGINT_handler(int sig) {
   chpl_exit_any(1);
 }
 
+
+static void SIGUSR2_handler(int sig) { 
+  if(sig == SIGUSR2 && chpl_nodeID!=0){
+	amIdead = 1;
+	if(PRINTING)
+		printf("(sigUSR2_handler) %d RECEIVED SIGUSR2  \n", chpl_nodeID); //- chpl_task_exit() 
+  }
+ signal(SIGUSR2, SIGUSR2_handler);
+}
 
 //
 // This function should be called exactly once per thread (not task!),
@@ -1491,6 +1514,8 @@ static task_pool_p add_to_task_pool(chpl_fn_p fp,
     (task_pool_p) chpl_mem_alloc(sizeof(task_pool_t),
                                         CHPL_RT_MD_TASK_POOL_DESC,
                                         0, 0);
+                                        
+                                 
   ptask->id           = get_next_task_id();
   ptask->fun          = fp;
   ptask->arg          = a;
@@ -1508,15 +1533,18 @@ static task_pool_p add_to_task_pool(chpl_fn_p fp,
   }
 
   ptask->next = NULL;
-
+ 
+  if(amIdead)
+  	printf("%d TASKS- add_to_task_pool  - here.status  = %d  task fun =?? \n", chpl_nodeID, amIdead);
   if (task_pool_tail)
     task_pool_tail->next = ptask;
   else
     task_pool_head = ptask;
   ptask->prev = task_pool_tail;
   task_pool_tail = ptask;
-
   queued_task_cnt++;
+  if(amIdead)
+  	printf("%d TASKS- add_to_task_pool  - here.status  = %d queued_task_cnt = %d \n", chpl_nodeID, amIdead, queued_task_cnt);
 
   chpl_task_do_callbacks(chpl_task_cb_event_kind_create,
                          ptask->filename,

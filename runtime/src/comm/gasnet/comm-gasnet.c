@@ -52,6 +52,7 @@ static int chpl_comm_no_debug_private = 0;
 static gasnet_seginfo_t* seginfo_table = NULL;
 
 
+
 typedef struct chpl_comm_transitMsgAlt* chpl_comm_transitMsgAlt_p;
 //per locale
 static volatile chpl_comm_transitMsgAlt_p guest1list, guest2list;
@@ -62,13 +63,13 @@ static volatile  chpl_comm_transitMsgAlt_p msgCurr;
 
 int userCodeStart=0, inRecovery=0, initialisation_done =0, recoveriesSum = 0, sigOrder[10], nextSig=0, commMsgs=0;
 static int fail_update_done = 0, child_alive=0, parent_alive=0, timeoutflag=0,timeouted = 0,processedAMtimeoutNB =0, locale_is_dead=0, nbfork =0, buddiesNo =2;
-static volatile int current_parent =0, amIalive =0,  handled_failure =0, status_update =0,  remoteForks=0, needToRecover=0;
+static volatile int current_parent =0, amIdead =0,  handled_failure =0, status_update =0,  remoteForks=0, needToRecover=0, once=0, recoveredAlready=0;
 struct buddies myBuddies;
 struct buddies myGuests;
-
+static volatile int remoteCountPut=0, remoteCountGet=0;
 /*
 //int commMsgs=0;
-//static volatile int amIalive =0; //static int amIalive; 
+//static volatile int amIdead =0; //static int amIdead; 
 //static volatile int handled_failure =0; //handled on fork_wrapper_res or LATER
 //static volatile int status_update =0;
 //static volatile int remoteForks=0;
@@ -118,6 +119,8 @@ int 						chpl_comm_getLocaleStatus(void);
 int 						chpl_comm_getPerformedRecovery(void);
 void						chpl_comm_setInRecovery(void);
 void 						statusFunct(void);
+
+void  						chpl_comm_fork_fast_res(c_nodeid_t, c_sublocid_t ,chpl_fn_int_t , void *, size_t); 
 //unused
 //void 						addTransits(chpl_comm_transitMsgAlt_p, chpl_comm_transitArgAlt_p);
 //void 						printArgs(chpl_comm_transitArgAlt_p);
@@ -137,6 +140,8 @@ void 						statusFunct(void);
 #define PRINTING 0
 #define DPRINTING 0
 #define DBG 0
+#define REMOTEDBG 0
+
 
 
 // Gasnet AM handler arguments are only 32 bits, so here we have
@@ -324,6 +329,7 @@ static failed_t* failed_table =NULL;
 #define FORK_NB       130 // non-blocking fork 
 #define FORK_NB_LARGE 131 // non-blocking fork with a huge argument
 #define FORK_FAST     132 // run the function in the handler (use with care)
+#define FORK_FAST_RES 161
 #define SIGNAL        133 // ack of synchronous fork
 #define PRIV_BCAST    134 // put data at addr (used for private broadcast)
 #define PRIV_BCAST_LARGE 135 // put data at addr (used for private broadcast)
@@ -339,20 +345,23 @@ static failed_t* failed_table =NULL;
 #define FAIL_UPDATE_REQUEST	  	144 // update for future child node (blocking fork)
 #define FAIL_UPDATE_REPLY	  	145 // reply with update (blocking fork)
 #define IN_TRANSIT	  			146 // new message in transit
-#define IN_TRANSIT_DEL	  		147 // free message in transit
-#define FORK_RES		  		148 // resilient blocking fork
-#define FORK_RES_LARGE 			149 // resilient blocking fork (large arg)
-#define FORK_NB_RES	  			150 // resilient non-blocking fork
-#define FORK_NB_RES_LARGE	  	151 // resilient non-blocking fork(large arg)
+#define IN_TRANSIT_LARGE	  	147 // new message in transit large
+#define IN_TRANSIT_DEL	  		148 // free message in transit
+//#define IN_TRANSIT_DEL_LARGE	  	149 // free message in transit large
+#define TIMEOUTOTHER 			149 // UNUSED
+#define FORK_RES		  		150 // resilient blocking fork
+#define FORK_RES_LARGE 			151 // resilient blocking fork (large arg)
+#define FORK_NB_RES	  			152 // resilient non-blocking fork
+#define FORK_NB_RES_LARGE	  	153 // resilient non-blocking fork(large arg)
 
-#define PID			  			152 // register pid of every bootstrapped locale
-#define TIMEOUT		  			153 // suicide message (blocking fork)
-#define TIMEOUTNB	  			154 // suicide message (non-blocking fork)
-#define FREE_TM		  			155 // acknowledgement for transit msg 
-#define QUIT 					156 // UNUSED
-#define GUESTFAILURE			157 // UNUSED
-#define BUDDYFAILURE 			158 // UNUSED
-#define TIMEOUTOTHER 			159 // UNUSED
+#define PID			  			154 // register pid of every bootstrapped locale
+#define TIMEOUT		  			155 // suicide message (blocking fork)
+#define TIMEOUTNB	  			156 // suicide message (non-blocking fork)
+#define FREE_TM		  			157 // acknowledgement for transit msg 
+#define QUIT 					158 // UNUSED
+#define GUESTFAILURE			159 // UNUSED
+#define BUDDYFAILURE 			160 // UNUSED
+#define NOTIFICATION			161 
 
 
 
@@ -463,6 +472,7 @@ static void AM_fail(gasnet_token_t token, void* buf, size_t nbytes) {
 }
 
 static void AM_fail_update_reply(gasnet_token_t token, void* buf, size_t nbytes) {
+	if(!amIdead){
      update_t* updateNode = (update_t*)chpl_mem_alloc(sizeof(update_t), CHPL_RT_MD_COMM_UPDATE_NODE, 0, 0);
      if(PRINTING)
 		printf("(COMM LAYER) %d  AM_fail_update_reply ::::   \n ", chpl_nodeID);      
@@ -479,6 +489,7 @@ static void AM_fail_update_reply(gasnet_token_t token, void* buf, size_t nbytes)
 		printf("(COMM LAYER) %d  AM_fail_update_reply ::::  fail_update_done =1\n ", chpl_nodeID);
 	 fail_update_done = 1;
 	 chpl_mem_free(updateNode, 0, 0);	
+	}
 }
 
 //executed on locale 0 
@@ -505,6 +516,7 @@ static void AM_fail_update_request(gasnet_token_t token, void* buf, size_t nbyte
 	chpl_mem_free(updateB, 0, 0);
 }
 
+//UNUSED
 static void AM_guest_failure(gasnet_token_t token, void* buf, size_t nbytes) {
 	failed_t* newFailed = (failed_t*)chpl_mem_alloc(sizeof(failed_t), CHPL_RT_MD_COMM_DEAD_NODE, 0, 0);
 	int rec;
@@ -515,7 +527,8 @@ static void AM_guest_failure(gasnet_token_t token, void* buf, size_t nbytes) {
 		printf("(AM_guest_failure) %d  : failure on %d - what's next??  \n ", chpl_nodeID, newFailed->dID);
 	chpl_mem_free(newFailed, 0, 0);
 }
-//TODO
+
+//UNUSED
 static void AM_buddy_failure(gasnet_token_t token, void* buf, size_t nbytes) {}
 
 // for in transit msgs
@@ -587,7 +600,11 @@ chpl_comm_transitMsgAlt_p  deleteMsgArg(chpl_comm_transitMsgAlt_p head, chpl_com
 		printf("delete %d : ENTERING WHILE LOOP with recoveryFlag = %d - looking for msg-dst = %d \n", chpl_nodeID, recoveryFlag, msg->dst);
 	if(recoveryFlag)
 		msg->mid = 0; // delete only recovered messages
-	while(ptr != NULL){
+		
+	while(ptr){
+		
+		assert(msg->dst);
+		assert(ptr->dst);
 		if(ptr->dst== msg->dst){ 
 			found = 1;
 			break;
@@ -674,7 +691,7 @@ chpl_comm_transitMsgAlt_p lookupMsg(chpl_comm_transitMsgAlt_p head, int Rid){ //
         }
     }
     //assert(ptr!=NULL);
-	if(DPRINTING)
+	if(PRINTING)
 		printf(" %d lookup funct : found = %d \n", chpl_nodeID, found);
     if(1== found ){
 	        ptr->mid =0; //mark
@@ -684,48 +701,74 @@ chpl_comm_transitMsgAlt_p lookupMsg(chpl_comm_transitMsgAlt_p head, int Rid){ //
     }
 }
 
-//TODO
-static void AM_in_transit_large(gasnet_token_t token, void* buf, size_t nbytes) {}
-
-//hanlder for IN_TRANSIT signal (called on Loc 0)
-static void AM_in_transit(gasnet_token_t token, void* buf, size_t nbytes) {
+//hanlder for IN_TRANSIT_LARGE signal (called on buddy locales)
+static void AM_in_transit_large(gasnet_token_t token, void* buf, size_t nbytes) {
+  if(!amIdead){
+  	chpl_comm_transitMsgAlt_p transitInfo = (chpl_comm_transitMsgAlt_p) chpl_mem_allocMany(1, nbytes, CHPL_RT_MD_COMM_RECV_TRANSIT_MSG_LARGE, 0, 0);      	                                 	
+	void* arg = chpl_mem_allocMany(1, transitInfo->arg_size, CHPL_RT_MD_COMM_RECV_TRANSIT_MSG_ARG, 0, 0);
+    void* tr_arg;
+    chpl_memcpy(transitInfo, buf, nbytes);
+	chpl_memcpy(&tr_arg, transitInfo->arg, sizeof(void*));
+	chpl_comm_get(arg, transitInfo->src, tr_arg, transitInfo->arg_size, -1 /*typeIndex: unused*/, 1, 0, "transit message large arg");
+		
+	chpl_memcpy(&transitInfo->arg, arg, transitInfo->arg_size);
 	
-	chpl_comm_transitMsgAlt_p transitInfo = (chpl_comm_transitMsgAlt_p) chpl_mem_allocMany(1, nbytes, CHPL_RT_MD_COMM_RECV_TRANSIT_MSG, 0, 0);      	                                 	
-	chpl_memcpy(transitInfo, buf, nbytes);
+	//as in the regular AM_in_transit
 	if(PRINTING)
-		printf("(AM_in_transit) %d  addTransits() call\n ", chpl_nodeID);
+		printf("(AM_in_transit_large) %d  addTransits() call\n ", chpl_nodeID);
 	if(myGuests.first == transitInfo->dst){
 		guest1list = addTransitMsg(guest1list,transitInfo);
 		if(PRINTING)
-			printf("(AM_in_transit) %d  added to my 1st list - sender %d \n ", chpl_nodeID, transitInfo->dst);
+			printf("(AM_in_transit_large) %d  added to my 1st list - sender %d \n ", chpl_nodeID, transitInfo->dst);
 	}else if(myGuests.second == transitInfo->dst){
 		guest2list = addTransitMsg(guest2list,transitInfo);
 		if(PRINTING)
-			printf("(AM_in_transit) %d  added to my 2nd list - sender %d \n ", chpl_nodeID, transitInfo->dst);
+			printf("(AM_in_transit_large) %d  added to my 2nd list - sender %d \n ", chpl_nodeID, transitInfo->dst);
 	}else{
-		printf("(AM_in_transit) %d  ERROR: not hosting data from loc %d\n ", chpl_nodeID, transitInfo->dst);	 
+		printf("(AM_in_transit_large) %d  ERROR: not hosting data from loc %d\n ", chpl_nodeID, transitInfo->dst);	 
 	}
-	if(PRINTING)
-		printf("(AM_in_transit) %d  DONE\n ", chpl_nodeID);
-	
-	
+		/* this is what happens in AM_fork_large after execution of fork
+		 * should I be doing the same?
+		 * cannot free arg locally
+		 * cannot free transitInfo locally
+		 * should send a FREE_TM (have an unused version already)
+		 * back to the src but this may take too long
+		 * 
+		 * GASNET_Safe(gasnet_AMRequestShort2(f->caller, SIGNAL, AckArg0(f->ack), AckArg1(f->ack)));
+		 * chpl_mem_free(f, 0, 0);
+		 * chpl_mem_free(arg, 0, 0);
+		*/
+  }
 }
 
-//hanlder for IN_TRANSIT_DEL signal (called on Loc 0) -- CURRENT
+/** NOTE TO SELF--
+ * since we are only looking at the dst of the transit message in order to decide to delete it
+ * maybe it makes sense to only pack src, dst, fid when sending the IN_TRANSIT_DEL request
+ * 
+ * could possible replace this by a AMShort request
+ * 
+ * So, we need to provide different versions for IN_TRANSIT and IN_TRANSIT_LARGE
+ * but not for IN_TRANSIT_DEL*/
+/* no need to distinguish between IN_TRANSIT _DEL and IN_TRANSIT_DEL_LARGE
+ * when packing the message we only add src, dst, fid, arg_size and
+ * not mid, arg(regular or pointer), next so
+ * no need for thsi handler
+ * static void AM_in_transit_del_large(gasnet_token_t token, void* buf, size_t nbytes) {}	
+*/
+
+//hanlder for IN_TRANSIT_DEL signal (called on buddy locales)
 static void AM_in_transit_del(gasnet_token_t token, void* buf, size_t nbytes) {
+  if(!amIdead){
 	int rId, fl;
 	chpl_comm_transitMsgAlt_p transitInfo = (chpl_comm_transitMsgAlt_p) chpl_mem_allocMany(1, nbytes, CHPL_RT_MD_COMM_RECV_TRANSIT_MSG, 0, 0);  
 	chpl_comm_transitMsgAlt_p glist;
 	chpl_memcpy(transitInfo, buf, nbytes);
-	
 	
 	if(DPRINTING){
 		printf("(AM_in_transit_DEL) %d src = %d DST = %d fid = %d \n", chpl_nodeID, transitInfo->src, transitInfo->dst, transitInfo->fid);
 		//printTransits(guest1list);
 		//printTransits(guest2list);
 	}
-	
-	
 	//decide which list *** 
 	if(myGuests.first == transitInfo->dst){
 		if(PRINTING)
@@ -741,20 +784,23 @@ static void AM_in_transit_del(gasnet_token_t token, void* buf, size_t nbytes) {
 	}
 	remoteForks--;
 	if(DPRINTING)
-		printf("*****************(COMM LAYER) %d AM_in_transit_DEL :: DELETING fid = %d  DONE!!! and remoteForks-- = %d \n", chpl_nodeID, transitInfo->fid, remoteForks);
+		printf("(AM_in_transit_del) %d DELETING fid = %d  DONE!!! and remoteForks-- = %d \n", chpl_nodeID, transitInfo->fid, remoteForks);
 	if(PRINTING){
-		printf("(COMM LAYER) %d AM_in_transit_DEL :: DELETED fid = %d  \n", chpl_nodeID, transitInfo->fid);
-		if(PRINTING){
-			printTransits(guest1list);
-			printTransits(guest2list);
-		}
+		printf("(AM_in_transit_del %d DELETED fid = %d  \n", chpl_nodeID, transitInfo->fid);
+		//if(PRINTING){
+		//	printTransits(guest1list);
+		//	printTransits(guest2list);
+		//}
 	}
+	//chpl_mem_free(transitInfo,0,0); //should I do this here?
+  }
 }	
+
+
 
 static void AM_fork_fast(gasnet_token_t token, void* buf, size_t nbytes) {
   fork_t *f = buf;
-  if(PRINTING)
-		printf("(AM_fork_fast) %d , my pid = %d, amIalive= %d\n", chpl_nodeID, getpid(), amIalive);
+
   if (f->arg_size)
     chpl_ftable_call(f->fid, &f->arg);
   else
@@ -763,20 +809,48 @@ static void AM_fork_fast(gasnet_token_t token, void* buf, size_t nbytes) {
                                    AckArg0(f->ack), AckArg1(f->ack)));
 }
 
+
+
+static void AM_fork_fast_res(gasnet_token_t token, void* buf, size_t nbytes) {
+  fork_t *f = buf;
+  if(PRINTING)
+		printf("(AM_fork_fast) %d , my pid = %d, amIdead= %d\n", chpl_nodeID, getpid(), amIdead);
+  if(amIdead){//dead
+	failed_t* newFailedNode= (failed_t*)chpl_mem_alloc(sizeof(failed_t), CHPL_RT_MD_COMM_DEAD_NODE, 0, 0);
+	handled_failure=1;
+	status_update =0;
+	newFailedNode->dID = chpl_nodeID;
+	newFailedNode->parentID = f->caller;
+	newFailedNode->alive= 1;
+	if(PRINTING)
+		printf("(fork_wrapper_res) %d sending TIMEOUT to %d",chpl_nodeID, f->caller);
+	GASNET_Safe(gasnet_AMRequestMedium0(f->caller, TIMEOUT, newFailedNode, sizeof(failed_t)));
+	chpl_mem_free(newFailedNode, 0, 0);  
+  }else{ //alive
+  	if (f->arg_size)
+    	chpl_ftable_call(f->fid, &f->arg);
+  	else
+    	chpl_ftable_call(f->fid, NULL);
+ 	GASNET_Safe(gasnet_AMReplyShort2(token, SIGNAL,
+                                   AckArg0(f->ack), AckArg1(f->ack)));
+  }
+}
+
 static void SIGUSR1_handler(int sig) { 
   if(sig == SIGUSR1){ 
-	amIalive = 1;
+	amIdead = 1;
 	status_update=1;
+	raise(SIGUSR2); //raise USR2 for the tasking layer to catch
 	if(PRINTING)
 		printf("(sigUSR1_handler) %d RECEIVED SIGUSR1  \n", chpl_nodeID);
   }
   signal(SIGUSR1, SIGUSR1_handler);
 }
-
+/*
 //UNUSED
 static void SIGUSR2_handler(int sig) { 
   if(sig == SIGUSR2 && chpl_nodeID!=0){
-	amIalive = 1;
+	amIdead = 1;
 	status_update=1;
 	if(PRINTING)
 		printf("(sigUSR2_handler) %d RECEIVED SIGUSR2  \n", chpl_nodeID); //- chpl_task_exit() 
@@ -784,12 +858,12 @@ static void SIGUSR2_handler(int sig) {
   }
  signal(SIGUSR2, SIGUSR2_handler);
 }
-
+*/
 //UNUSED
 static void SIGALRM_handler(int sig) { 
   if(sig == SIGALRM && chpl_nodeID!=0){
-	amIalive = 1;
-	printf("--------------(SIGALRM_handler) %d RECEIVED SIGNAL SIGALRM - setting amIalive var \n", chpl_nodeID);	
+	amIdead = 1;
+	printf("--------------(SIGALRM_handler) %d RECEIVED SIGNAL SIGALRM - setting amIdead var \n", chpl_nodeID);	
   }
   signal(SIGALRM, SIGALRM_handler);
 }
@@ -833,8 +907,8 @@ static volatile int sigread =0;
 static void fork_wrapper_res(fork_t *f) { //% invokes function directlt or creates task that evaluates the function
 	int ret = 1;
 	if(PRINTING)
-		printf("(fork_wrapper_res)%d   ***********************-=-------*********amIalive %d \n ",chpl_nodeID, amIalive);
-	if(amIalive){
+		printf("(fork_wrapper_res)%d   ***********************-=-------*********amIdead %d \n ",chpl_nodeID, amIdead);
+	if(amIdead){
 		failed_t* newFailedNode= (failed_t*)chpl_mem_alloc(sizeof(failed_t), CHPL_RT_MD_COMM_DEAD_NODE, 0, 0);
 		handled_failure=1;
 		status_update =0;
@@ -916,15 +990,14 @@ static void AM_fork_large(gasnet_token_t token, void* buf, size_t nbytes) {
                            f->serial_state);
 }
 
-
 static void fork_large_wrapper_res(fork_t* f) {
 	int ret = 1;
 	if(PRINTING)
-		printf("(fork_large_wrapper_res()%d   ***********************-=-------*********amIalive %d \n ",chpl_nodeID, amIalive);
-	if(amIalive){
+		printf("(fork_large_wrapper_res)%d  amIdead %d \n ",chpl_nodeID, amIdead);
+	if(amIdead){
 		failed_t* newFailedNode= (failed_t*)chpl_mem_alloc(sizeof(failed_t), CHPL_RT_MD_COMM_DEAD_NODE, 0, 0);
 		if(PRINTING)
-			printf("(fork_large_wrapper_res) (send_signal_timeout) %d  --------------sending timeout msg-------------:   \n",chpl_nodeID);
+			printf("(fork_large_wrapper_res)%d sending tTIMEOUT msg to parent \n",chpl_nodeID);
 		newFailedNode->dID = chpl_nodeID;
 		newFailedNode->parentID = f->caller;
 		newFailedNode->alive= 1;
@@ -933,6 +1006,8 @@ static void fork_large_wrapper_res(fork_t* f) {
 	}else{ //all went well
 		void* arg = chpl_mem_allocMany(1, f->arg_size, CHPL_RT_MD_COMM_FRK_RCV_ARG, 0, 0);
         void* f_arg;
+        if(PRINTING)
+			printf("(fork_large_wrapper_res)%d calling f with large arg \n",chpl_nodeID);
 		chpl_memcpy(&f_arg, f->arg, sizeof(void*));
 		chpl_comm_get(arg, f->caller, f_arg, f->arg_size, -1 /*typeIndex: unused*/, 1, 0, "fork large");
 		chpl_ftable_call(f->fid, arg);
@@ -950,8 +1025,6 @@ static void AM_fork_large_res(gasnet_token_t token, void* buf, size_t nbytes) {
   if(PRINTING)
 	printf("(AM_fork_large_res) %d In AM_fork_large_res, my pid = %d my ppid = %d \n", chpl_nodeID, my_pid, getppid());  
   chpl_memcpy(f, buf, nbytes);
-  if(PRINTING)
-	printf("(AM_fork_large_res) %d ------------------------Doing real work...\n ", chpl_nodeID);
   chpl_task_startMovedTask((chpl_fn_p)fork_large_wrapper_res, (void*)f,
                            f->subloc, chpl_nullTaskID,
                            f->serial_state);
@@ -985,30 +1058,28 @@ static void fork_nb_wrapper_res(fork_t *f){
 	int i;
 	void* argCopy = NULL;
 	struct buddies rembuddies;
-	if(!amIalive){ 		//all went well
+	if(!amIdead){ 		//all went well
 		chpl_comm_transitMsgAlt_p mymsg, head;
-		assert(amIalive==0);
+		assert(amIdead==0);
 		locale_is_dead =2;//set locale_is_dead for the RT and module functions
-		if(DPRINTING){
+		if(PRINTING){
 			printf("(fork_wrapper_nb_res) %d   --> --> IN RECOVERY: %d RECOVERED LOCALE : %d  \n",chpl_nodeID, f->recoveryfl,f->recoveredLoc);
 			printf("(fork_wrapper_nb_res)%d   ********** ALL GOOD  \n ",chpl_nodeID);
 		}
 		/***** execute the fork ********/
-		if(DPRINTING)
-			printf("(fork_nb_large_wrapper_res)%d f->fid = %d \n", chpl_nodeID, f->fid);
 		if (f->arg_size){
 			chpl_ftable_call(f->fid, &f->arg);
 		}else{
-			if(DPRINTING)
+			if(PRINTING)
 				printf("(fork_wrapper_nb_res)%d without f->arg_size \n", chpl_nodeID);
 			chpl_ftable_call(f->fid, NULL);	
 		}		
 		/***** pack IN_TRANSIT DEL ********/
 		if(f->recoveryfl){ //check if this is a regular or recovery task
-			if(DPRINTING)
+			if(PRINTING)
 				printf("(fork_wrapper_nb_res)%d  task-fid %d is a RECOVERY TASK \n ",chpl_nodeID, f->fid);
 		}else{
-			if(DPRINTING)
+			if(PRINTING)
 				printf("(fork_wrapper_nb_res)%d   task-fid %d is a NORMAL TASK TASK \n ",chpl_nodeID, f->fid);
 		}
 		if(PRINTING)
@@ -1022,21 +1093,23 @@ static void fork_nb_wrapper_res(fork_t *f){
 		mymsg->fid = f->fid;
 		mymsg->arg_size = f->arg_size;	//no data ref, no mid, no next
 		/**** send transit msg DEL *****/
-		if(DPRINTING)
+		if(PRINTING)
 			printf("(fork_wrapper_nb_res)%d transit mesg DELL: SRC: %d DST %d FID %d\n ",chpl_nodeID, mymsg->src, mymsg->dst, mymsg->fid);
 		if(f->recoveryfl){
-			if(DPRINTING)
+			if(PRINTING)
 				printf("DEBUG --> (fork_wrapper_nb_res)%d  calculating buddies of recovered locale = %d \n", chpl_nodeID, f->recoveredLoc);
 			rembuddies = calculateBuddies(f->recoveredLoc); //this doesn't work (it sends del to the wrong place byddy2 of adopter instead of buddy 2 of failed=			
-			if(DPRINTING){
-				printf("----> (fork_wrapper_nb_res)%d  buddies of recovered %d are %d and %d \n", chpl_nodeID, f->recoveredLoc, rembuddies.first, rembuddies.second);
+			if(PRINTING){
+				printf("(fork_wrapper_nb_res)%d  buddies of recovered %d are %d and %d \n", chpl_nodeID, f->recoveredLoc, rembuddies.first, rembuddies.second);
 				printf("(fork_wrapper_nb_res)%d   ******fid = %d **** send IN_TRANSIT_DEL to buddy2 %d \n ",chpl_nodeID, f->fid, rembuddies.second);
 			}
 			//only sending to second buddy (first should be me)
-			if(chpl_nodeID== rembuddies.first)
+			if(chpl_nodeID== rembuddies.first){
+				printf("(fork_wrapper_nb_res)%d   *RECOVERYTASK*****fid = %d **** send IN_TRANSIT_DEL to buddy2 %d \n ",chpl_nodeID, f->fid, rembuddies.second);
 				GASNET_Safe(gasnet_AMRequestMedium0((c_nodeid_t)rembuddies.second, IN_TRANSIT_DEL, mymsg, sizeof(struct chpl_comm_transitMsgAlt)));
+			}
 		}else{
-			if(DPRINTING)
+			if(PRINTING)
 				printf("(fork_wrapper_nb_res)%d   ******fid = %d **** send IN_TRANSIT_DEL to mybuddies %d %d \n ",chpl_nodeID, f->fid,myBuddies.first, myBuddies.second);
 			GASNET_Safe(gasnet_AMRequestMedium0((c_nodeid_t)myBuddies.second, IN_TRANSIT_DEL, mymsg, sizeof(struct chpl_comm_transitMsgAlt)));
 			GASNET_Safe(gasnet_AMRequestMedium0((c_nodeid_t)myBuddies.first, IN_TRANSIT_DEL, mymsg, sizeof(struct chpl_comm_transitMsgAlt)));
@@ -1045,12 +1118,12 @@ static void fork_nb_wrapper_res(fork_t *f){
 	}else{ // I am dead - (SIGUSR1: task layer has shut down - is this a good idea?)
 		int prev;
 		failed_t* newFailed = (failed_t*)chpl_mem_alloc(sizeof(failed_t), CHPL_RT_MD_COMM_DEAD_NODE, 0, 0);
-		assert(amIalive==1);
-		if(DPRINTING)
+		assert(amIdead==1);
+		if(PRINTING)
 			printf("(fork_wrapper_nb_res)%d   ********** NOT  GOOD  \n ",chpl_nodeID);
 		//set locale_is_dead for the RT and module functions (do I need this?)
 		locale_is_dead =1;
-		if(DPRINTING){
+		if(PRINTING){
 			printf("(fork_wrapper_nb_res) %d   Setting locale_is_dead = %d  \n",chpl_nodeID, chpl_comm_getLocaleStatus());
 			printf("(fork_wrapper_nb_res) %d   Creating failed_t  \n",chpl_nodeID);
 		}
@@ -1082,7 +1155,7 @@ static void fork_nb_wrapper_res(fork_t *f){
 			newFailed->alive=1;
 			rembuddies = calculateBuddies(f->recoveredLoc); 
 			if(chpl_nodeID== rembuddies.first);{ //what if I am the second buddy? then let it fail
-				if(DPRINTING)
+				if(PRINTING)
 					printf("(FW_NB_WE) %d -sending TIMEOUTNB with failed_t to %d 's 2nd buddy: %d \n",chpl_nodeID,f->recoveredLoc,rembuddies.second);
 				GASNET_Safe(gasnet_AMRequestMedium0((c_nodeid_t)rembuddies.second, TIMEOUTNB, newFailed, sizeof(failed_t)));
 			}
@@ -1104,10 +1177,8 @@ static void AM_fork_nb_res(gasnet_token_t  token, void *buf, size_t nbytes) {
   int i;
   f = (fork_t*)chpl_mem_allocMany(nbytes, sizeof(char), CHPL_RT_MD_COMM_FRK_RCV_INFO, 0, 0);                                        
   chpl_memcpy(f, buf, nbytes);
-  if(DPRINTING)
+  if(PRINTING)
 	printf("(AM_fork_nb_res) %d --my buddies are %d and %d \n ", chpl_nodeID,myBuddies.first, myBuddies.second);
-  if(PRINTING)	
-    printf("(AM_fork_nb_res) %d ----------Starting fork_wrapper_nb_res for fid = %d \n ", chpl_nodeID, f->fid );
   chpl_task_startMovedTask((chpl_fn_p)fork_nb_wrapper_res, (void*)f,
                            f->subloc, chpl_nullTaskID,
                            f->serial_state);
@@ -1116,51 +1187,95 @@ static void AM_fork_nb_res(gasnet_token_t  token, void *buf, size_t nbytes) {
 
 static void fork_nb_large_wrapper_res(fork_t* f) {
 	int i;
-	void* arg = chpl_mem_allocMany(1, f->arg_size, CHPL_RT_MD_COMM_FRK_RCV_ARG, 0, 0);	
-	void* f_arg;
-	chpl_memcpy(&f_arg, f->arg, sizeof(void*));
-	chpl_comm_get(arg, f->caller, f_arg, f->arg_size, -1 /*typeIndex: unused*/, 1, 0, "fork large");
-	GASNET_Safe(gasnet_AMRequestMedium0(f->caller, FREE, &(f->ack), sizeof(f->ack)));
-	if(!amIalive){ 		//all went well
-		chpl_comm_transitMsgAlt_p mymsg, head;
-		assert(amIalive==0);
+	struct buddies rembuddies;
+	if(!amIdead){ 		//all went well
+		chpl_comm_transitMsgAlt_p mymsg, head;	
+		void* arg = chpl_mem_allocMany(1, f->arg_size, CHPL_RT_MD_COMM_FRK_RCV_ARG, 0, 0);	
+		void* f_arg;
+		
+		assert(amIdead==0);
 		if(PRINTING)
 			printf("(fork_nb_large_wrapper_res)%d   ********** ALL GOOD  \n ",chpl_nodeID);
+		/** get argument */
+		chpl_memcpy(&f_arg, f->arg, sizeof(void*));
+		chpl_comm_get(arg, f->caller, f_arg, f->arg_size, -1 /*typeIndex: unused*/, 1, 0, "fork large");
+		/** sent FREE to the caller */
+		GASNET_Safe(gasnet_AMRequestMedium0(f->caller, FREE, &(f->ack), sizeof(f->ack)));	
 		/***** execute the fork ********/
 		if(PRINTING)
-			printf("(fork_nb_large_wrapper_res)%d   3 **********________-----_________ amialive is %d  \n ",chpl_nodeID, amIalive);
+			printf("(fork_nb_large_wrapper_res)%d amIdead is %d executing fork \n ",chpl_nodeID, amIdead);
 		chpl_ftable_call(f->fid, arg);
+		/**** pack transit msg DEL *****/
 		if(PRINTING)
-			printf("(fork_wrapper_nb_res)%d called f  ************************* \n", chpl_nodeID);
-		/***** pack IN_TRANSIT DEL ********/
-		if(PRINTING)
-			printf("(fork_wrapper_nb_res)%d   pack transit mesg DEL  \n ",chpl_nodeID);
+			printf("(fork_nb_large_wrapper_res)%d   pack transit mesg DEL  \n ",chpl_nodeID);
 		mymsg = (chpl_comm_transitMsgAlt_p)chpl_mem_alloc(sizeof(struct chpl_comm_transitMsgAlt),CHPL_RT_MD_COMM_SEND_TRANSIT_MSG, 0, 0);  		
 		mymsg->src = f->caller;
-		mymsg->dst = (int)chpl_nodeID;
+		if(f->recoveryfl)
+			mymsg->dst = f->recoveredLoc; 
+		else
+			mymsg->dst = (int)chpl_nodeID;
 		mymsg->fid = f->fid;
 		mymsg->arg_size = f->arg_size;
+		
 		/**** send transit msg DEL *****/
 		if(PRINTING)
-			printf("(fork_wrapper_nb_res)%d   ********** send IN_TRANSIT_DEL to locale BUDDIES \n ",chpl_nodeID);
-		GASNET_Safe(gasnet_AMRequestMedium0((c_nodeid_t)myBuddies.first, IN_TRANSIT_DEL, mymsg, sizeof(struct chpl_comm_transitMsgAlt)));
-		GASNET_Safe(gasnet_AMRequestMedium0((c_nodeid_t)myBuddies.second, IN_TRANSIT_DEL, mymsg, sizeof(struct chpl_comm_transitMsgAlt)));
-		chpl_mem_free(mymsg, 0, 0);	  
+			printf("(fork_wrapper_nb_res)%d transit mesg DELL: SRC: %d DST %d FID %d\n ",chpl_nodeID, mymsg->src, mymsg->dst, mymsg->fid);
+		if(f->recoveryfl){
+			if(PRINTING)
+				printf("DEBUG --> (fork_wrapper_nb_res)%d  calculating buddies of recovered locale = %d \n", chpl_nodeID, f->recoveredLoc);
+			rembuddies = calculateBuddies(f->recoveredLoc); //this doesn't work (it sends del to the wrong place byddy2 of adopter instead of buddy 2 of failed=			
+			if(PRINTING){
+				printf("(fork_wrapper_nb_res)%d  buddies of recovered %d are %d and %d \n", chpl_nodeID, f->recoveredLoc, rembuddies.first, rembuddies.second);
+				printf("(fork_wrapper_nb_res)%d   ******fid = %d **** send IN_TRANSIT_DEL to buddy2 %d \n ",chpl_nodeID, f->fid, rembuddies.second);
+			}
+			//only sending to second buddy (first should be me)
+			if(chpl_nodeID== rembuddies.first)
+				GASNET_Safe(gasnet_AMRequestMedium0((c_nodeid_t)rembuddies.second, IN_TRANSIT_DEL, mymsg, sizeof(struct chpl_comm_transitMsgAlt)));
+		}else{
+			if(PRINTING)
+				printf("(fork_wrapper_nb_res)%d   ******fid = %d **** send IN_TRANSIT_DEL to mybuddies %d %d \n ",chpl_nodeID, f->fid,myBuddies.first, myBuddies.second);
+			GASNET_Safe(gasnet_AMRequestMedium0((c_nodeid_t)myBuddies.first, IN_TRANSIT_DEL, mymsg, sizeof(struct chpl_comm_transitMsgAlt)));
+			GASNET_Safe(gasnet_AMRequestMedium0((c_nodeid_t)myBuddies.second, IN_TRANSIT_DEL, mymsg, sizeof(struct chpl_comm_transitMsgAlt)));
+		}
+		chpl_mem_free(mymsg, 0, 0);	
+		chpl_mem_free(f, 0, 0);
+  		chpl_mem_free(arg, 0, 0);
 	}else{ // I am dead
 		failed_t* newFailed = (failed_t*)chpl_mem_alloc(sizeof(failed_t), CHPL_RT_MD_COMM_DEAD_NODE, 0, 0);
-		assert(amIalive==1);
-		if(DPRINTING)
-			printf("(fork_wrapper_nb_res) %d   Creating failed_t  \n",chpl_nodeID);
+	
+		assert(amIdead==1);
+		/**pack failed_t*/
 		newFailed->dID= chpl_nodeID;
 		newFailed->parentID = f->caller;
 		newFailed->alive=1;
+		
 		if(PRINTING)
-			printf("(fork_wrapper_nb_res) %d   --------------sending TIMEOUTNB with failed_tto node 0 ------------:   \n",chpl_nodeID);
-		GASNET_Safe(gasnet_AMRequestMedium0((c_nodeid_t)0, TIMEOUTNB, newFailed, sizeof(failed_t)));
-		if(PRINTING)
-			printf("(fork_wrapper_nb_res)%d  ________-----_________ amialive is %d  EXITING \n ",chpl_nodeID, amIalive);
+			printf("(fork_wrapper_nb_large_res)%d   ********** NOT  GOOD  \n ",chpl_nodeID);
+		locale_is_dead =1;
+		if(PRINTING){
+			printf("(fork_wrapper_nb_large_res) %d   Setting locale_is_dead = %d  \n",chpl_nodeID, chpl_comm_getLocaleStatus());
+			printf("(fork_wrapper_nb_large_res) %d   Creating failed_t  \n",chpl_nodeID);
+		}
+		if(f->recoveryfl){
+			newFailed->dID= f->recoveredLoc;
+			//newFailed->parentID = f->caller; //no idea who the parent is in this case - do I care?
+			newFailed->alive=1;
+			rembuddies = calculateBuddies(f->recoveredLoc); 
+			if(chpl_nodeID== rembuddies.first);{ //what if I am the second buddy? then let it fail
+				if(PRINTING)
+					printf("(fork_wrapper_nb_large_res) %d -sending TIMEOUTNB with failed_t to %d 's 2nd buddy: %d \n",chpl_nodeID,f->recoveredLoc,rembuddies.second);
+				GASNET_Safe(gasnet_AMRequestMedium0((c_nodeid_t)rembuddies.second, TIMEOUTNB, newFailed, sizeof(failed_t)));
+			}
+		}else{	
+			newFailed->dID= chpl_nodeID; 			//my self - dead
+			newFailed->parentID = f->caller;
+			newFailed->alive=1;
+			if(PRINTING)
+				printf("(fork_wrapper_nb_large_res) %d sending TIMEOUTNB with failed_to my 1st buddy: %d \n",chpl_nodeID, myBuddies.first);
+			GASNET_Safe(gasnet_AMRequestMedium0((c_nodeid_t)myBuddies.first, TIMEOUTNB, newFailed, sizeof(failed_t)));
+		}
+		chpl_mem_free(newFailed, 0, 0);
 	}	
-	chpl_mem_free(arg, 0, 0);
 }
 
 static void AM_fork_nb_large_res(gasnet_token_t token, void* buf, size_t nbytes) {
@@ -1200,6 +1315,63 @@ static void AM_fork_nb_large(gasnet_token_t token, void* buf, size_t nbytes) {
   chpl_task_startMovedTask((chpl_fn_p)fork_nb_large_wrapper, (void*)f,
                            f->subloc, chpl_nullTaskID,
                            f->serial_state);
+}
+
+
+
+//hanlder for IN_TRANSIT signal (called on buddy locales)
+static void AM_in_transit(gasnet_token_t token, void* buf, size_t nbytes) {
+   if(!amIdead){	
+	chpl_comm_transitMsgAlt_p transitInfo = (chpl_comm_transitMsgAlt_p) chpl_mem_allocMany(1, nbytes, CHPL_RT_MD_COMM_RECV_TRANSIT_MSG, 0, 0);      	                                 	
+	chpl_memcpy(transitInfo, buf, nbytes);
+	//pro-active recovery
+	if(failed_table[transitInfo->dst].alive==1 &&  failed_table[transitInfo->dst].parentID == 999){ //need to do recovery 
+		fork_t* recoveryFork;
+		int f_size;
+		printf("(AM_in_transit) %d  Starting Recovery for node = %d \n ", chpl_nodeID, transitInfo->dst);
+		failed_table[transitInfo->dst].parentID = transitInfo->src;
+		
+		f_size = sizeof(fork_t) + (transitInfo->arg_size);
+		recoveryFork = (fork_t*)chpl_mem_allocMany(f_size, sizeof(char), CHPL_RT_MD_COMM_FRK_SND_INFO, 0, 0);
+		recoveryFork->caller =transitInfo->src;  				
+		recoveryFork->subloc =0;
+		recoveryFork->ack = recoveryFork; 					
+		recoveryFork->serial_state = chpl_task_getSerial();		
+		recoveryFork->fid = transitInfo->fid;
+		recoveryFork-> arg_size = transitInfo->arg_size;
+		recoveryFork->recoveryfl = 1; 		//set it as a recovery task
+		recoveryFork->recoveredLoc = transitInfo->dst; 
+		chpl_memcpy(&(recoveryFork->arg), transitInfo->arg, transitInfo->arg_size);
+		recoveredAlready = transitInfo->dst;
+		if(DPRINTING){
+			printf("(AM_in_transit) %d  **** Launching Recovery Fork  caller: %d  fid: %d  arg_size: %d arg %d in recovery %d recoveredlocale %d\n",
+				chpl_nodeID, recoveryFork->caller, recoveryFork->fid, recoveryFork->arg_size, *((int*)recoveryFork->arg), recoveryFork->recoveryfl, recoveryFork->recoveredLoc);
+  		}
+		chpl_task_startMovedTask((chpl_fn_p)fork_nb_wrapper_res, (void*)recoveryFork,
+		recoveryFork->subloc, chpl_nullTaskID,
+		recoveryFork->serial_state);
+		printf("(AM_in_transit) %d  **** Recovery Fork DONE \n", chpl_nodeID);
+    }else{ //add to list
+	
+		if(PRINTING)
+			printf("(AM_in_transit) %d  addTransits() call\n ", chpl_nodeID);
+		if(myGuests.first == transitInfo->dst){
+			guest1list = addTransitMsg(guest1list,transitInfo);
+			if(PRINTING)
+				printf("(AM_in_transit) %d  added to my 1st list - sender %d \n ", chpl_nodeID, transitInfo->dst);
+		}else if(myGuests.second == transitInfo->dst){
+			guest2list = addTransitMsg(guest2list,transitInfo);
+			if(PRINTING)
+				printf("(AM_in_transit) %d  added to my 2nd list - sender %d \n ", chpl_nodeID, transitInfo->dst);
+		}else{
+			printf("(AM_in_transit) %d  ERROR: not hosting data from loc %d\n ", chpl_nodeID, transitInfo->dst);	 
+		}
+		if(PRINTING)
+			printf("(AM_in_transit) %d  DONE\n ", chpl_nodeID);
+	}
+  }else{
+	  printf(" AM_in_transit - I AM  DEAD %d\n\n", chpl_nodeID);
+ }
 }
 
 static void AM_signal(gasnet_token_t token, gasnet_handlerarg_t a0, gasnet_handlerarg_t a1) {
@@ -1254,8 +1426,6 @@ static void AM_free_tm(gasnet_token_t token, void* buf, size_t nbytes) {
   */
 }
 
-
-
 // this is currently unused; it's intended to be used to implement
 // exit_any with cleanup on all nodes. 
 static void AM_exit_any(gasnet_token_t token, void* buf, size_t nbytes) {
@@ -1300,6 +1470,7 @@ static void AM_pid(gasnet_token_t token, void *buf, size_t nbytes) { /*NOT USED*
 */}
 
 static void AM_timeout(gasnet_token_t token, void *buf, size_t nbytes) {
+  	
 	failed_t* newFailed2 = (failed_t*)chpl_mem_alloc(sizeof(failed_t), CHPL_RT_MD_COMM_DEAD_NODE, 0, 0);
 	chpl_memcpy(newFailed2, buf, nbytes);
 	if(PRINTING)
@@ -1313,6 +1484,8 @@ static void AM_timeout(gasnet_token_t token, void *buf, size_t nbytes) {
 
 //res-buddy locales version
 static void AM_timeout_nb(gasnet_token_t token, void *buf, size_t nbytes) {
+
+if(!amIdead){	
 	failed_t* failedNode = (failed_t*)chpl_mem_alloc(sizeof(failed_t), CHPL_RT_MD_COMM_DEAD_NODE, 0, 0);
 	int idToRecover,f_size, rec, coworker;
 	int found =0;
@@ -1327,6 +1500,10 @@ static void AM_timeout_nb(gasnet_token_t token, void *buf, size_t nbytes) {
 		printf("(AM_timeout_nb) %d reading failed_t idToRecover= %d (dst)\n", chpl_nodeID, idToRecover);
 	//record failure
 	rec = recordFailure(idToRecover, failedNode->parentID);
+	//check if this has been already recovered!!!
+	printf("(AM_timeout_nb) %d idToRecover= %d recoveredAlready=%d \n", chpl_nodeID, idToRecover, recoveredAlready);
+	if(recoveredAlready!=idToRecover){	
+	
 	if(DPRINTING)
 		printf("(AM_timeout_nb %d: Before lookupMsgsg WITH ID=%d\n", chpl_nodeID, idToRecover);
 	//pick one guestlist
@@ -1393,19 +1570,49 @@ static void AM_timeout_nb(gasnet_token_t token, void *buf, size_t nbytes) {
 		else
 			coworker = recbuddies.first;
 		
+		/*NOTE TO SELF : 
+		 * Recovery on the first buddy locale will execute either on AM_in_transit or on AM_timeout_nb
+		 * When recovery happens on Am_in_transit the message is not added to the transit list of 
+		 * the 1st buddy locale -> from the above snippet we get msg !found -> pass to the second buddy locale for recovery
+		 * -- instead buddy locale should notify for the execution (somehow)
+		 * So, we can either choose to do recovery on buddy locale 1 in 2 places 
+		 * OR allow recovery to fallback to buddy locale 2*/
+		
 		if(chpl_nodeID == recbuddies.first){
 			if(DPRINTING)
-			printf("(AM_timeout_nb) %d not found. passing to 2nd buddy : %d \n", chpl_nodeID, coworker);
-			GASNET_Safe(gasnet_AMRequestMedium0((c_nodeid_t)coworker, TIMEOUTNB, failedNode, sizeof(failed_t)));
+			printf("(AM_timeout_nb) %d not found. passing to 2nd buddy : %d ### NOT\n", chpl_nodeID, coworker);
+			//GASNET_Safe(gasnet_AMRequestMedium0((c_nodeid_t)coworker, TIMEOUTNB, failedNode, sizeof(failed_t)));
 		}else{
 			if(DPRINTING)
 				printf("(AM_timeout_nb) %d  I am the 2nd buddy - raise FATAL ERROR  \n", chpl_nodeID);
 			//chpl_task_exit();// exit_common(1); - the compiler complains about this
+			//fprintf(stderr, "ERROR : TOO MANY FAILURES \n Aborting...\n  " );    
+      		//fflush(stderr);
+      		chpl_error("ERROR : TOO MANY FAILURES \n Aborting...\n  ", 0, NULL);
+			gasnet_exit(1);
 		}
 	}		
 	chpl_mem_free(failedNode, 0, 0);
+
+	}else{
+		printf("(AM_timeout_nb) %d Already recovered task on node %d -- NOT DOING ANYTHING \n", chpl_nodeID, idToRecover);
+	}
+ }else{
+	chpl_error("ERROR : TOO MANY FAILURES \n Aborting...\n  ", 0, NULL);
+	gasnet_exit(1);	 
+}
 }
 
+
+static void AM_notification(gasnet_token_t token, void *buf, size_t nbytes) {
+  if(!amIdead){	
+	failed_t* ft = (failed_t*)chpl_mem_allocMany(1, chpl_numNodes*sizeof(failed_t), CHPL_RT_MD_COMM_DEAD_NODE, 0, 0);
+	int rec;
+	chpl_memcpy(ft, buf, nbytes);
+	printf("(AM_notification) %d Received ID %d\n",chpl_nodeID, ft->dID);
+	rec = recordFailure(ft->dID, ft->parentID);
+  }
+}
 
 //UNUSED
 static void AM_timeout_other (gasnet_token_t token, void *buf, size_t nbytes){
@@ -1496,6 +1703,7 @@ static gasnet_handlerentry_t ftable[] = {
   {FAIL, 		     	AM_fail}, 					/*resilience*/
   {FAIL_UPDATE_REPLY, 	AM_fail_update_reply}, 		/*resilience*/
   {IN_TRANSIT,       	AM_in_transit}, 			/*resilience*/
+  {IN_TRANSIT_LARGE,    AM_in_transit_large}, 			/*resilience*/
   {BCAST_FAIL_TABLE,	AM_bcast_fail_table}, 		/*resilience*/		
   {FAIL_UPDATE_REQUEST, AM_fail_update_request},	/*resilience*/
   {FORK_RES, 			AM_fork_res}, 				/*resilience*/
@@ -1504,13 +1712,15 @@ static gasnet_handlerentry_t ftable[] = {
   {FORK_RES_LARGE,		AM_fork_large_res},			/*resilience*/
   {FORK_NB_RES,			AM_fork_nb_res},			/*resilience*/
   {IN_TRANSIT_DEL,		AM_in_transit_del},			/*resilience*/
+ // {IN_TRANSIT_DEL_LARGE,AM_in_transit_del_large},	/*resilience*/
   {TIMEOUTNB,		    AM_timeout_nb},				/*resilience*/
   {FORK_NB_RES_LARGE,	AM_fork_nb_large_res},		/*resilience*/
   {QUIT,				AM_quit},					//UNUSED?
   {TIMEOUTOTHER,		AM_timeout_other},			//UNUSED?
   {GUESTFAILURE,		AM_guest_failure},			/*resilience*/
   {BUDDYFAILURE, 		AM_buddy_failure},			/*resilience*/
-  {FAILEDNODES, 		AM_failed_nodes}
+  {FAILEDNODES, 		AM_failed_nodes},
+  {NOTIFICATION, 		AM_notification}
 };
 
 //
@@ -1622,6 +1832,20 @@ static volatile int pollingQuit;
 static void polling(void* x) {
   pollingRunning = 1;
   while (!pollingQuit) {
+	if(amIdead && !once){
+		int failurenotification;
+		failed_t* newFailedNode;
+		printf("%d -- DEAD ***** ****** ***** \n", chpl_nodeID);
+		once=1;
+		/**alt_timeout_impl*/
+		newFailedNode= (failed_t*)chpl_mem_alloc(sizeof(failed_t), CHPL_RT_MD_COMM_DEAD_NODE, 0, 0);
+		newFailedNode->dID = chpl_nodeID;
+		newFailedNode->parentID = 999;
+		newFailedNode->alive= 1;
+		//failurenotification = (int)chpl_nodeID;
+		GASNET_Safe(gasnet_AMRequestMedium0(myBuddies.first, NOTIFICATION, newFailedNode, sizeof(failed_t)));
+		/***/
+	}
     (void) gasnet_AMPoll(); //status monitor here?
     chpl_task_yield();
   }
@@ -1753,7 +1977,7 @@ void chpl_comm_init(int *argc_p, char ***argv_p) {
   gasnet_set_waitmode(GASNET_WAIT_BLOCK);
   
   // set status variable alive - on all nodes 
-  amIalive = 0;
+  amIdead = 0;
 	
   //initialise lists - on all nodes
   guest1list = NULL;
@@ -1799,7 +2023,7 @@ int chpl_comm_numPollingTasks(void) {
 //mark when the user's code starts executing
 void chpl_comm_userCode_starts(){
 	userCodeStart= 1;
-	if(PRINTING)
+	if(DPRINTING)
 		printf("userCode set ===================================\n");
 	if(chpl_nodeID==0)
 		initialisation_done=1;
@@ -2008,6 +2232,9 @@ static void exit_any_clean(int status) {
 #endif
 
 void chpl_comm_exit(int all, int status) {
+	//if(DPRINTING)
+  		printf("%d : remoteCountPut %d remoteCountGet %d\n", chpl_nodeID, remoteCountPut, remoteCountGet);	
+	
   if (all) {
     exit_common(status);
   }
@@ -2022,7 +2249,10 @@ void  chpl_comm_put(void* addr, c_nodeid_t node, void* raddr,
                     int ln, c_string fn) {
   const size_t size = elemSize*len;
   int remote_in_segment;
-
+  remoteCountPut =+1;
+  if(REMOTEDBG){
+	printf("put\n");
+  }
   if (chpl_nodeID == node) {
     memmove(raddr, addr, size);
   } else {
@@ -2099,7 +2329,10 @@ void  chpl_comm_get(void* addr, c_nodeid_t node, void* raddr,
                     int ln, c_string fn) {
   const size_t size = elemSize*len;
   int remote_in_segment;
-
+  remoteCountGet+=1;
+  if(REMOTEDBG){
+  	printf("get\n");
+  }
   if (chpl_nodeID == node) {
     memmove(addr, raddr, size);
   } else {
@@ -2329,8 +2562,6 @@ void  chpl_comm_put_strd(void* dstaddr, size_t* dststrides, c_nodeid_t dstnode_i
   gasnet_puts_bulk(dstnode, dstaddr, dststr, srcaddr, srcstr, cnt, strlvls); 
 }
 
-//WithExtras
-////GASNET - introduce locale-int size  - is caller in fork_t redundant? active message can determine this.
 void  chpl_comm_fork_res(c_nodeid_t node, c_sublocid_t subloc,chpl_fn_int_t fid, void *arg, int32_t arg_size) {
 				 
   fork_t* info;
@@ -2344,19 +2575,19 @@ void  chpl_comm_fork_res(c_nodeid_t node, c_sublocid_t subloc,chpl_fn_int_t fid,
   clock_t cpu_clock;
   double diff;
 	
-  if(PRINTING)
-	printf("(chpl_comm_fork_res) %d -> %d # my pid = %d\n\n",chpl_nodeID, (int) node, getpid());
+
   if (chpl_nodeID == node) { 											//local execution
 	if(PRINTING)
-		printf("( chpl_comm_fork_res) %d -> %d :: EXECUTE LOCALLY\n",  chpl_nodeID, (int) node);
+		printf("( chpl_comm_fork_res) %d -> %d :: EXECUTES LOCALLY\n",  chpl_nodeID, (int) node);
 	chpl_ftable_call(fid, arg);	
   }else{																//remote execution
-	int i;										
+	int i;	
+	//Visual debug support
+	chpl_vdebug_log_fork(node, subloc, fid, arg, arg_size);									
 	if(PRINTING)
-		printf("( chpl_comm_fork_res) %d -> %d:: EXECUTE REMOTELY\n", chpl_nodeID, (int) node);	
+		printf("( chpl_comm_fork_res) %d -> %d:: EXECUTES REMOTELY\n", chpl_nodeID, (int) node);	
     if (chpl_verbose_comm && !chpl_comm_no_debug_private)
-     //printf("%d: %s:%d: remote put to %d\n", chpl_nodeID, fn, ln, node);
- 
+    //	printf("%d: %s:%d: remote put to %d\n", chpl_nodeID, fn, ln, node);
     if (chpl_comm_diagnostics && !chpl_comm_no_debug_private) {
       chpl_sync_lock(&chpl_comm_diagnostics_sync);
       chpl_comm_commDiagnostics.fork++;
@@ -2369,8 +2600,7 @@ void  chpl_comm_fork_res(c_nodeid_t node, c_sublocid_t subloc,chpl_fn_int_t fid,
       info_size = sizeof(fork_t) + sizeof(void*);
     }
     info = (fork_t*)chpl_mem_allocMany(1, info_size,
-                                        CHPL_RT_MD_COMM_FRK_SND_INFO, 0, 0);
-                                       
+                                        CHPL_RT_MD_COMM_FRK_SND_INFO, 0, 0);                          
     info->caller = chpl_nodeID;
     info->subloc = subloc;
     info->ack = &done;
@@ -2401,7 +2631,7 @@ void  chpl_comm_fork_res(c_nodeid_t node, c_sublocid_t subloc,chpl_fn_int_t fid,
 		
 		//if (sizeof(update_t)<= gasnet_AMMaxShort())
 		//printf(" %d:: TODO Use a short request for FAIL_UPDATE_REQUEST\n",chpl_nodeID);		
-
+		//GASNET_Safe(gasnet_AMRequestShort0((c_nodeid_t)0, FAIL_UPDATE_REQUEST, updateT));
 		GASNET_Safe(gasnet_AMRequestMedium0((c_nodeid_t)0, FAIL_UPDATE_REQUEST, updateT, sizeof(update_t)));
 		
 		// wait for reply from locale 0
@@ -2416,7 +2646,7 @@ void  chpl_comm_fork_res(c_nodeid_t node, c_sublocid_t subloc,chpl_fn_int_t fid,
 	if(child_alive==1){
 		if(PRINTING)
 			printf("(chpl_comm_fork_res) %d -> %d:: CHILD ALIVE\n", chpl_nodeID, (int) node);		
-		/** PHASE 2 (launch fork)*/
+		/** launch fork*/
 		init_done_obj(&done, 1);//INIT_DONE_OBJ(done, 1);
 			
 		if (passArg) {
@@ -2431,7 +2661,6 @@ void  chpl_comm_fork_res(c_nodeid_t node, c_sublocid_t subloc,chpl_fn_int_t fid,
 			chpl_memcpy(&(info->arg), &arg, sizeof(void*)); //dispatch the message without arg
 			GASNET_Safe(gasnet_AMRequestMedium0(node, FORK_RES_LARGE, info, info_size));
 		}
-		///////
 		if(PRINTING)
 			printf("(chpl_comm_fork_res) %d -> %d:: fork sent  - waiting on done flag \n", chpl_nodeID, (int) node);		
 		/**wait on done.flag or timeout */
@@ -2442,15 +2671,10 @@ void  chpl_comm_fork_res(c_nodeid_t node, c_sublocid_t subloc,chpl_fn_int_t fid,
 		}
 		/** PHASE 2.1 failure detection TIMEOUT from child */
 		if(!done.flag && timeoutflag==1){ 		
-			if(PRINTING)					
-					printf("(chpl_comm_fork_res) %d -> %d:: TIMEOUT setting failflag \n", chpl_nodeID, (int) node);
 			failflag=1;
 			timeoutflag=0;
 		}
-		//if (!done.flag && failflag){ //there was a timeout from the child node : TIMEOUTNS passed
 		if (failflag==1){
-			if(PRINTING)  
-				printf("(chpl_comm_fork_res) %d -> %d::  CHILD DEAD - RECOVERY 1 ############################## \n", chpl_nodeID, (int) node);
 			failflag =0;	
 			/**record  the failure*/ 
 			if(chpl_nodeID!=0){ //notify locale 0 for the failure 
@@ -2458,8 +2682,8 @@ void  chpl_comm_fork_res(c_nodeid_t node, c_sublocid_t subloc,chpl_fn_int_t fid,
 				childF->dID = (int)node;
 				childF->parentID = info->caller;
 				childF->alive = 1;
-				//if (sizeof(failed_t) <= gasnet_AMMaxShort())
-				//	printf(" TODO(chpl_comm_fork_res) %d -> %d::  Use a short request for FAIL \n",chpl_nodeID , (int)node);
+				//if(shortMsg)
+				//	printf("(chpl_comm_fork_res) %d -> %d::  Use a short request for FAIL \n",chpl_nodeID , (int)node);
 				GASNET_Safe(gasnet_AMRequestMedium0((c_nodeid_t)0, FAIL, childF, sizeof(failed_t))); 
 				
 				//GASNET_Safe(gasnet_AMRequestMedium0((c_nodeid_t)0, MSGSENT, mymsg, sizeof(struct chpl_comm_transitMsg)));
@@ -2503,9 +2727,6 @@ void  chpl_comm_fork_res(c_nodeid_t node, c_sublocid_t subloc,chpl_fn_int_t fid,
  }  
 } //fchpl_comm_fork_res
 
-
-////GASNET - introduce locale-int size
-////GASNET - is caller in fork_t redundant? active message can determine this.
 void  chpl_comm_fork(c_nodeid_t node, c_sublocid_t subloc,
                      chpl_fn_int_t fid, void *arg, size_t arg_size) {
   fork_t* info;
@@ -2516,7 +2737,7 @@ void  chpl_comm_fork(c_nodeid_t node, c_sublocid_t subloc,
   
   /**decide if we need to call chpl_comm_fork_res*/
   if (userCodeStart){ 
-	  if(PRINTING)
+	if(PRINTING)
 		printf("(chpl_comm_fork) %d -> %d :: calling chpl_comm_fork_res \n", chpl_nodeID, (int) node);
 	chpl_comm_fork_res(node, subloc, fid, arg, arg_size); 		//call the version with extras(after initialisation)
   }else{
@@ -2559,7 +2780,7 @@ void  chpl_comm_fork(c_nodeid_t node, c_sublocid_t subloc,
     	info->arg_size = arg_size;
 
     	init_done_obj(&done, 1);
-
+    	
     	if (passArg) {
       		if (arg_size)
         		chpl_memcpy(&(info->arg), arg, arg_size);
@@ -2570,7 +2791,6 @@ void  chpl_comm_fork(c_nodeid_t node, c_sublocid_t subloc,
     	}
     	if(PRINTING)
 			printf("(chpl_comm_fork)  %d -> %d  FORK sent \n",chpl_nodeID, (int) node);																//call the regular version (during initialisation)
-
 
     	wait_done_obj(&done);
     	chpl_mem_free(info, 0, 0);
@@ -2587,10 +2807,7 @@ void printMemory(void* mem, int bytes){
 	}
 }
 
-
-
-//WithExtras -- second version --CURRENT
-// fork_nb with extras
+// fork_nb res
 void  chpl_comm_fork_nb_res(c_nodeid_t node, c_sublocid_t subloc,chpl_fn_int_t fid, void *arg, int32_t arg_size) {
 	fork_t *info;
 	int     info_size, i, testval;
@@ -2604,7 +2821,7 @@ void  chpl_comm_fork_nb_res(c_nodeid_t node, c_sublocid_t subloc,chpl_fn_int_t f
 	struct buddies childBuddies; 
 	chpl_comm_transitMsgAlt_p glist;
 	/** create fork_t object*/
-	if(DPRINTING)
+	if(PRINTING)
 		printf("(FORK_NB_RES) %d  to %d   create fork_t object  \n",chpl_nodeID, node);
 	if (passArg) {
 		info_size = sizeof(fork_t) + arg_size;
@@ -2667,16 +2884,15 @@ void  chpl_comm_fork_nb_res(c_nodeid_t node, c_sublocid_t subloc,chpl_fn_int_t f
 		if(PRINTING)
 			printf("(FORK_NB_RES)::  %d packing transit_msg \n", chpl_nodeID);	
 		
-		if(chpl_nodeID==0){
+		
+		if(passArg){
 			tm_size = sizeof(struct chpl_comm_transitMsgAlt) + arg_size;
+			mymsg = (chpl_comm_transitMsgAlt_p)chpl_mem_allocMany(tm_size, sizeof(char), CHPL_RT_MD_COMM_SEND_TRANSIT_MSG, 0, 0); 
 		}else{
-			if(passArg)
-				tm_size = sizeof(struct chpl_comm_transitMsgAlt) + arg_size;
-			else
-				tm_size = sizeof(struct chpl_comm_transitMsgAlt) + sizeof(void*);
+			tm_size = sizeof(struct chpl_comm_transitMsgAlt) + sizeof(void*);
+			mymsg = (chpl_comm_transitMsgAlt_p)chpl_mem_allocMany(tm_size, sizeof(char), CHPL_RT_MD_COMM_SEND_TRANSIT_MSG_LARGE, 0, 0); 
 		}
-
-		mymsg = (chpl_comm_transitMsgAlt_p)chpl_mem_allocMany(tm_size, sizeof(char), CHPL_RT_MD_COMM_SEND_TRANSIT_MSG, 0, 0); 	
+			
 		mymsg->fid = fid;
 		mymsg->src = (int)chpl_nodeID;
 		mymsg->dst = node;
@@ -2706,7 +2922,7 @@ void  chpl_comm_fork_nb_res(c_nodeid_t node, c_sublocid_t subloc,chpl_fn_int_t f
 			}else{
 				printf("(FORK_NB_RES) %d  error1: don't know where to store the message -sent from %d\n ", chpl_nodeID, mymsg->dst);
 			}
-		}else{ //I am not 1st buddylocale
+		}else{ //1st buddy is a remote locale
 			if(passArg){
 				chpl_memcpy(&(mymsg->arg),arg,arg_size);
 				GASNET_Safe(gasnet_AMRequestMedium0((c_nodeid_t)childBuddies.first, IN_TRANSIT, mymsg, tm_size));
@@ -2714,8 +2930,15 @@ void  chpl_comm_fork_nb_res(c_nodeid_t node, c_sublocid_t subloc,chpl_fn_int_t f
 					printf("(FORK_NB_RES):: %d -> %d  sent IN_TRANSIT to buddy 1:  %d \n ", chpl_nodeID,(int)node, childBuddies.first);
 
 			}else{
-				//TODO: send IN_TRANSIT_LARGE
-				printf("(FORK_NB_RES):: %d TODO: need to send IN_TRANSIT_LARGE 1st buddy locale\n", chpl_nodeID);
+				// If the arg bundle is too large to fit in fork_t (i.e. passArg == false), 
+    			// Copy the args into auxilliary memory and pass a pointer to this instead.
+    			argCopy = chpl_mem_allocMany(1, arg_size,
+                                 CHPL_RT_MD_COMM_SEND_TRANSIT_MSG_ARG, 0, 0);
+    			chpl_memcpy(argCopy, arg, arg_size);
+    			*(void**)(&(mymsg->arg)) = argCopy;
+				GASNET_Safe(gasnet_AMRequestMedium0((c_nodeid_t)childBuddies.first, IN_TRANSIT_LARGE, mymsg, tm_size));
+				if(PRINTING)
+					printf("(FORK_NB_RES):: %d -> %d  sent IN_TRANSIT_LARGE to buddy 1:  %d \n ", chpl_nodeID,(int)node, childBuddies.first);
 			}
 		}
 		
@@ -2735,15 +2958,22 @@ void  chpl_comm_fork_nb_res(c_nodeid_t node, c_sublocid_t subloc,chpl_fn_int_t f
 			}else{
 				printf("(FORK_NB_RES) %d  error2: don't know where to store the message -sent from %d\n ", chpl_nodeID, mymsg->dst);
 			}
-		}else{ //I am not 2nd buddylocale
+		}else{ //2nd buddy is remote
 			if(passArg){
 				chpl_memcpy(&(mymsg->arg),arg,arg_size);
 				GASNET_Safe(gasnet_AMRequestMedium0((c_nodeid_t)childBuddies.second, IN_TRANSIT, mymsg, tm_size));
-				if(DPRINTING)
+				if(PRINTING)
 					printf("(FORK_NB_RES):: %d -  sent IN_TRANSIT to buddy 2: %d \n ", chpl_nodeID, childBuddies.second);
 			}else{
-				//TODO: send IN_TRANSIT_LARGE
-				printf("(FORK_NB_RES):: %d TODO: need to send IN_TRANSIT_LARGE 2nd buddy locale\n", chpl_nodeID);
+				// If the arg bundle is too large to fit in fork_t (i.e. passArg == false), 
+    			// Copy the args into auxilliary memory and pass a pointer to this instead.
+    			argCopy = chpl_mem_allocMany(1, arg_size,
+                                 CHPL_RT_MD_COMM_SEND_TRANSIT_MSG_ARG, 0, 0);
+    			chpl_memcpy(argCopy, arg, arg_size);
+    			*(void**)(&(mymsg->arg)) = argCopy;
+				GASNET_Safe(gasnet_AMRequestMedium0((c_nodeid_t)childBuddies.second, IN_TRANSIT_LARGE, mymsg, tm_size));
+				if(PRINTING)
+					printf("(FORK_NB_RES):: %d -> %d  sent IN_TRANSIT_LARGE to buddy 1:  %d \n ", chpl_nodeID,(int)node, childBuddies.first);
 			}
 		}
 
@@ -2758,16 +2988,12 @@ void  chpl_comm_fork_nb_res(c_nodeid_t node, c_sublocid_t subloc,chpl_fn_int_t f
 				printf("(FORK_NB_RES)::  %d  fork sent  \n", chpl_nodeID);
 		}else{
 			GASNET_Safe(gasnet_AMRequestMedium0(node, FORK_NB_RES_LARGE, info, info_size)); //add FORK_NB_RES_large signal and handlers
-			if(DBG)
+			if(PRINTING)
 				printf("(FORK_NB_RES)::  %d FORK_LARGE sent\n", chpl_nodeID);
 		}	
-		remoteForks++; //do I need this counter?
+		remoteForks++; //do I need this counter? A: MAYBE
 	}
-	if(PRINTING)
-		printf("(FORK_NB_RES) %d :: DONEEE!! \n", chpl_nodeID);	
 }
-
-
 
 void  chpl_comm_fork_nb(c_nodeid_t node, c_sublocid_t subloc,
                         chpl_fn_int_t fid, void *arg, size_t arg_size) {
@@ -2849,6 +3075,67 @@ void  chpl_comm_fork_fast(c_nodeid_t node, c_sublocid_t subloc,
 
   if(PRINTING)
 	printf("(COMM LAYER) %d chpl_comm_fork_fast %d -> %d   \n",chpl_nodeID, chpl_nodeID, (int) node);
+  if(userCodeStart){
+	    printf("(COMM LAYER) %d calling chpl_comm_fork_fast_res %d -> %d   \n",chpl_nodeID, chpl_nodeID, (int) node);
+  		chpl_comm_fork_fast_res(node, subloc, fid, arg, arg_size);
+  }else{
+	  
+ 	 if (chpl_nodeID == node) {
+    	chpl_ftable_call(fid, arg);
+  	} else {
+    	// Visual Debug Support
+    	chpl_vdebug_log_fast_fork(node, subloc, fid, arg, arg_size);
+
+    	if (passArg) {
+      	if (chpl_verbose_comm && !chpl_comm_no_debug_private)
+        	printf("%d: remote (no-fork) task created on %d\n",
+              	 chpl_nodeID, node);
+      	if (chpl_comm_diagnostics && !chpl_comm_no_debug_private) {
+        	chpl_sync_lock(&chpl_comm_diagnostics_sync);
+       	 	chpl_comm_commDiagnostics.fork_fast++;
+        	chpl_sync_unlock(&chpl_comm_diagnostics_sync);
+      	}
+      	info = (fork_t *) &infod;
+
+      	info->caller = chpl_nodeID;
+      	info->subloc = subloc;
+      	info->ack = &done;
+      	info->serial_state = chpl_task_getSerial();
+     	info->fid = fid;
+      	info->arg_size = arg_size;
+      	info->recoveryfl=0;
+      	if(PRINTING)
+	    	printf("(COMM LAYER) %d FORK FAST %d -> %d :: calling chpl_comm_fork_fast  where fid= %d  \n",chpl_nodeID, chpl_nodeID, (int) node, (int)info->fid);
+     
+      	init_done_obj(&done, 1);
+
+      	if (arg_size)
+        	chpl_memcpy(&(info->arg), arg, arg_size);
+      	GASNET_Safe(gasnet_AMRequestMedium0(node, FORK_FAST, info, info_size));
+      	// NOTE: We still have to wait for the handler to complete
+
+      	wait_done_obj(&done);
+
+    	} else {
+      	// Call the normal chpl_comm_fork()
+      		chpl_comm_fork(node, subloc, fid, arg, arg_size);
+    	}
+  	}
+  }
+}
+
+// GASNET - should only be called for "small" functions
+void  chpl_comm_fork_fast_res(c_nodeid_t node, c_sublocid_t subloc,
+                          chpl_fn_int_t fid, void *arg, size_t arg_size) {
+  char infod[gasnet_AMMaxMedium()];
+  fork_t* info;
+  size_t  info_size = sizeof(fork_t) + arg_size;
+  done_t  done;
+  int     passArg = info_size <= gasnet_AMMaxMedium();
+  int 	  failflag;
+  uint_least32_t prev;
+  if(PRINTING)
+	printf("(COMM LAYER) %d chpl_comm_fork_fast %d -> %d   \n",chpl_nodeID, chpl_nodeID, (int) node);
  
   if (chpl_nodeID == node) {
     chpl_ftable_call(fid, arg);
@@ -2881,25 +3168,66 @@ void  chpl_comm_fork_fast(c_nodeid_t node, c_sublocid_t subloc,
 
       if (arg_size)
         chpl_memcpy(&(info->arg), arg, arg_size);
-      GASNET_Safe(gasnet_AMRequestMedium0(node, FORK_FAST, info, info_size));
+      GASNET_Safe(gasnet_AMRequestMedium0(node, FORK_FAST_RES, info, info_size));
       // NOTE: We still have to wait for the handler to complete
-
-      wait_done_obj(&done);
-
+      //wait_done_obj(&done);
+      if(PRINTING)
+			printf("(chpl_comm_fork_res) %d -> %d:: fast fork sent  - waiting on done flag \n", chpl_nodeID, (int) node);		
+	  /**wait on done.flag or timeout */
+	  failflag=0;
+	  while (!done.flag && !timeoutflag){ 
+		(void) gasnet_AMPoll(); 									//detect updates from an AM
+		chpl_task_yield();
+	  }
+	  
+	  /** failure detection TIMEOUT from child */
+	  if(!done.flag && timeoutflag==1){ 		
+		failflag=1;
+		timeoutflag=0;
+	  }
+	  if (failflag==1){
+		failflag =0;	
+		/**record  the failure*/ 
+		if(chpl_nodeID!=0){ //notify locale 0 for the failure 
+			failed_t* childF = (failed_t*)chpl_mem_alloc(sizeof(failed_t), CHPL_RT_MD_COMM_DEAD_NODE, 0, 0);
+			childF->dID = (int)node;
+			childF->parentID = info->caller;
+			childF->alive = 1;
+			//if (sizeof(failed_t) <= gasnet_AMMaxShort())
+			//	printf(" TODO(chpl_comm_fork_res) %d -> %d::  Use a short request for FAIL \n",chpl_nodeID , (int)node);
+			GASNET_Safe(gasnet_AMRequestMedium0((c_nodeid_t)0, FAIL, childF, sizeof(failed_t))); 
+				
+			//GASNET_Safe(gasnet_AMRequestMedium0((c_nodeid_t)0, MSGSENT, mymsg, sizeof(struct chpl_comm_transitMsg)));
+			chpl_mem_free(childF, 0, 0);
+		}else{ //record failed node locally
+			int rec = recordFailure(node,info->caller);
+			//deleteFromTransitMsgList2(mymsg);
+		}
+		//execute locally on the parent
+		if(PRINTING)
+			printf("(chpl_comm_fork_fast_res) %d -> %d:: executing locally, TIMEOUT from child %d \n", chpl_nodeID, (int) node, (int)node);
+		chpl_ftable_call(fid, arg);	
+				
+		//downCount the task --this occurs locally on the parent       
+		prev = atomic_fetch_add_explicit_uint_least32_t(&done.count, 1,memory_order_seq_cst);
+		if (prev +1 == done.target)    
+			done.flag = 1;
+			
+		if(PRINTING)
+				printf("(chpl_comm_fork_fast_res) %d -> %d::   RECOVERY 1 ########## finished  \n",chpl_nodeID, (int) node);
+		/**PHASE 2.2 FORK successful */
+	  }
+	  
     } else {
       // Call the normal chpl_comm_fork()
       chpl_comm_fork(node, subloc, fid, arg, arg_size);
     }
   }
-  if(PRINTING)
-    printf("(COMM LAYER) %d FORK FAST  --- Reached the end \n",chpl_nodeID);
 }
 
-void chpl_comm_make_progress(void)
-{
+void chpl_comm_make_progress(void){
   gasnet_AMPoll();
 }
-
 
 void chpl_startVerboseComm() {
   chpl_verbose_comm = 1;
@@ -3000,7 +3328,6 @@ uint64_t chpl_numCommForks(void) {
 uint64_t chpl_numCommNBForks(void) {
   return chpl_comm_commDiagnostics.fork_nb;
 }
-
 
 void chpl_comm_gasnet_help_register_global_var(int i, wide_ptr_t wide_addr) {
   if (chpl_nodeID == 0) {
