@@ -22,8 +22,10 @@
 module ChapelLocale {
 
   use LocaleModel;
-
-  //
+  config param debugDistPrinting=true;
+  
+		
+  //	
   // Node and sublocale types and special sublocale values.
   //
   type chpl_nodeID_t = int(32);
@@ -229,6 +231,8 @@ module ChapelLocale {
       // Simple locales barrier, see implementation below for notes
       var b: localesBarrier;
       var flags: [1..#numLocales-1] localesSignal;
+     // if(debugDistPrinting) then
+				//writeln("ChapelLocale.chpl - iter chpl_initOnLocales");
       coforall locIdx in 0..#numLocales /*ref(b)*/ {
         on __primitive("chpl_on_locale_num",
                        chpl_buildLocaleID(locIdx:chpl_nodeID_t,
@@ -305,6 +309,8 @@ module ChapelLocale {
   // to iterate in parallel over the locales to set up the LocaleModel
   // object.
   proc chpl_init_rootLocale() {
+		//if(debugDistPrinting) then
+				//writeln("ChapelLocale.chpl - chpl_init_rootLocale()");
     origRootLocale = new RootLocale();
     (origRootLocale:RootLocale).init();
   }
@@ -356,7 +362,9 @@ module ChapelLocale {
   const dummyLocale = new locale();
 
   extern proc chpl_task_getRequestedSubloc(): chpl_sublocID_t;
-
+  //extern proc chpl_comm_getLocaleStatus(): int;
+	
+	
   pragma "insert line file info"
   export
   proc chpl_getLocaleID(ref localeID: chpl_localeID_t) {
@@ -383,6 +391,7 @@ module ChapelLocale {
       // For code prior to rootLocale initialization
       return dummyLocale;
   }
+ 
 
 
   pragma "insert line file info"
@@ -438,6 +447,97 @@ module ChapelLocale {
     on this do blockedTasks = chpl_task_getNumBlockedTasks();
     return blockedTasks;
   }
+ 
+  proc locale.checkLocaleStatus() {
+    var localeDead: int;
+    extern proc chpl_comm_getLocaleStatus() : int(32);
+    on this do localeDead = chpl_comm_getLocaleStatus();
+    return localeDead;
+  }
+  
+  proc locale.checkBuddyLocaleStatus(){
+	var deadBuddy:int;
+	extern proc chpl_comm_getBuddyLocaleStatus(): int(32);
+	on this do deadBuddy = chpl_comm_getBuddyLocaleStatus();
+	return deadBuddy;
+  }
+  
+  
+ /*proc checkStatus(lid){
+	var status: int;
+	var h = chpl_localeID_to_locale(lid);
+	extern proc chpl_comm_getLocaleStatus() : int(32);
+	on h do status = chpl_comm_getLocaleStatus();
+	return status;
+}*/
+  
+//
+//Aux functions for failed_table
+//
+
+/*int32_t chpl_comm_get_failed_table(int nodeID){
+	return failed_table[nodeID].alive;
+}
+void 	chpl_comm_set_failed_table(int nodeID){
+	failed_table[nodeID].alive =1;
+}
+*/
+  
+ //the same as void update_failed_table(int id)
+proc locale.set_failed_table_val(lid:int){
+	extern proc update_failed_table(int);
+	on this do update_failed_table(lid);
+	writeln(here.id, " setting ", lid, " to dead in failed table" );
+}
+
+proc locale.get_failed_table_val(lid:int){
+	var isDead: int(32);
+	extern proc chpl_comm_get_failed_table(int): int(32);
+	on this do isDead = chpl_comm_get_failed_table(lid);
+	writeln(here.id, " getting ", lid, " status from failed table");
+	return isDead;
+}
+  
+//int32_t  chpl_comm_get_failed_table(int nodeID){// returns 32 // input 64
+//	return failed_table[nodeID].alive;}
+
+
+  
+/**  
+
+  proc locale.checkHowManyrecoveries() {
+    var totalrecoveries: int;
+    extern proc chpl_comm_getPerformedRecovery() : int;
+    on this do totalrecoveries = chpl_comm_getPerformedRecovery();
+    return totalrecoveries;
+  }
+
+  proc locale.setRecoveryVariable() {
+    extern proc chpl_comm_setInRecovery(): int;
+    on this do  chpl_comm_setInRecovery();
+  }
+  
+ //proc locale.getRecoveryVariable() {
+	var inRec: int;
+    extern proc chpl_comm_getInRecovery(): int;
+    on this do  chpl_comm_getInRecovery();
+    return inRec;
+  }
+
+  proc locale.HowManyChildren(){
+	var numChildren: int;
+	extern proc getChildCount() : int;
+    on this do numChildren = here.getChildCount();  
+	return numChildren;	  
+  }
+
+  // proc locale.checkInRecovery(){
+	   var recovering: int;
+	   extern proc inRecovery():int;
+	    on this do recovering = here.inRecovery();  
+		return recovering;
+	}	 
+*/
 
 //########################################################################}
 
