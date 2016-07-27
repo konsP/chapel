@@ -17,6 +17,9 @@
  * limitations under the License.
  */
 
+
+var printAux = false;
+
 // Useful functions for implementing distributions
 
 inline proc getDataParTasksPerLocale() {
@@ -30,6 +33,10 @@ inline proc getDataParIgnoreRunningTasks() {
 inline proc getDataParMinGranularity() {
   return dataParMinGranularity;
 }
+
+
+
+//extern proc chpl_comm_getLocaleStatus() : int;
 
 //
 // return a rank*t tuple initialized to val
@@ -176,6 +183,8 @@ proc _computeBlock(numelems, numblocks, blocknum, wayhi,
 
   return (blo, bhi);
 }
+
+
 
 //
 // naive routine for dividing numLocales into rank factors
@@ -447,23 +456,78 @@ proc _undensCheck(param cond, type argtypes, param errlevel = 2) {
   if !cond then compilerError("unDensify() is defined only on matching domains, ranges, and quasi-homogenous tuples of ranges, but is invoked on ", typeToString(argtypes), errlevel);
 }
 
+//
+//Resilience util
+//
+
+proc _computeBuddyId(numlocs:int):int{ //not in use
+	if(here.id-1 >=0 && here.id-1<=(numlocs-1)) then
+		return here.id-1;
+	else
+		return numlocs-1;	
+}
+//using this
+proc _computeBuddyId2(loc:int, numberofbuddies:int, place:int, numlocs:int):int { 
+		assert(place <= numberofbuddies);
+		if(loc+place >=0 && loc+place<=(numlocs-1)) then
+			return loc+place;
+		else
+			return loc+place-numlocs;
+}
+
+
+proc _computeBuddy2(loc:int, numberofbuddies:int, place:int, numlocs:int): locale { 
+		assert(place <= numberofbuddies);
+		var did = _computeBuddyId2(loc, numberofbuddies, place, loc);
+		return Locales[did];
+}
+
+proc _computeBuddy(loc: locale): locale {
+	if(loc.id-1 >=0 && loc.id-1<=(numLocales-1)) then
+		return Locales[loc.id-1];
+	else
+		return Locales[numLocales-1];	
+	//return Locales[(loc.id-1) % numLocales];
+}
+
+proc _computeGuest(loc: locale): locale {
+	if(loc.id+1 >=0 && loc.id+1<=(numLocales-1)) then
+		return Locales[loc.id+1];
+	else
+		return Locales[0];
+}
+//using this
+proc _computeGuestId(loc:int, numberofbuddies:int, place:int, numlocs:int):int{
+	assert(place <= numberofbuddies);
+	if(loc-place >=0 && loc-place<=(numlocs-1)) then
+			return loc-place;
+		else
+			return (numlocs-1)-loc;
+}
 
 //
 // setupTargetLocalesArray
 //
 proc setupTargetLocalesArray(targetLocDom, targetLocArr, specifiedLocArr) {
   param rank = targetLocDom.rank;
+	if (printAux) then
+	writeln(chpl_nodeID, "DSIUtil setup TargetLocalesArray in DSIUtil");
   if rank != 1 && specifiedLocArr.rank == 1 {
     const factors = _factor(rank, specifiedLocArr.numElements);
     var ranges: rank*range;
     for param i in 1..rank do
       ranges(i) = 0..#factors(i);
     targetLocDom = {(...ranges)};
+    if (printAux) then
+		writeln(here.id, "DSIUtil calling reshape on  specifiedLocArr",specifiedLocArr," and targetLocDom", targetLocDom , " in DSIUtil");
     targetLocArr = reshape(specifiedLocArr, targetLocDom);
   } else {
     if specifiedLocArr.rank != rank then
       compilerError("specified target array of locales must equal 1 or distribution rank");
     var ranges: rank*range;
+    if (printAux) then
+		writeln(chpl_nodeID, "calling forloop on specifiedLocArr ",specifiedLocArr," and targetLocDom", targetLocDom , " in DSIUtil");
+
     for param i in 1..rank do
       ranges(i) = 0..#specifiedLocArr.domain.dim(i).length;
     targetLocDom = {(...ranges)};
